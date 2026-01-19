@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYU Pathway Student Support Hub</title>
+    <meta name="description"
+        content="Your comprehensive support hub for BYU Pathway students. Find tutorials, registration help, career resources, and connect with mentors.">
+    <meta name="keywords" content="BYU Pathway, student support, tutorials, registration, career resources">
+    <meta name="author" content="BYU Pathway Support Team">
+    <meta property="og:title" content="BYU Pathway Student Support Hub">
+    <meta property="og:description"
+        content="Your comprehensive support hub for BYU Pathway students. Find tutorials, registration help, career resources, and connect with mentors.">
+    <meta property="og:image" content="resources/hero-main.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="BYU Pathway Student Support Hub">
+    <meta property="og:description"
+        content="Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials, registration help, career resources, and connect with mentors.">
+    <meta property="og:image" content="https://yourdomain.com/resources/hero-main.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/">
+    <meta property="twitter:title" content="BYU Pathway Student Support Hub">
+    <meta property="twitter:description"
+        content="Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials, registration help, career resources, and connect with mentors.">
+    <meta property="twitter:image" content="https://yourdomain.com/resources/hero-main.jpg">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --sage: #10b981;
+            --cream: #fefce8;
+            --coral: #f97316;
+            --slate: #64748b;
+            --light-blue: #e0f2fe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        .font-display {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coral) 0%, #ea580c 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+        }
+
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .typing-cursor {
+            color: var(--coral);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* Skip link for accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .focus\:not-sr-only:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+        }
+
+        /* Keyboard navigation styles */
+        .keyboard-nav :focus {
+            outline: 2px solid var(--coral);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-gray-900">Skip
+        to main content</a>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold" style="color: var(--navy);">
+                            <i class="fas fa-graduation-cap mr-2" style="color: var(--coral);"></i>
+                            BYU Pathway Support
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-sm font-medium">Home</a>
+                        <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
+                        <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
+                        <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="globalSearch" placeholder="Search resources..."
+                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+
+                    <!-- Hamburger Menu Button -->
+                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav-menu md:hidden" id="mobileNavMenu">
+                <a href="index.html">Home</a>
+                <a href="registration.html">Registration Help</a>
+                <a href="post-registration.html">Setup Guide</a>
+                <a href="jobs.html">Career Resources</a>
+                <a href="how-to.html">How-To Tutorials</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <h1 class="font-display text-5xl lg:text-6xl font-semibold mb-6" style="color: var(--navy);">
+                            <span id="typed-text"></span>
+                        </h1>
+                        <p class="text-xl mb-8 leading-relaxed" style="color: var(--slate);">
+                            Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials,
+                            registration help, career resources, and connect with mentors who understand your journey.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button onclick="scrollToSection('resources')"
+                                class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg">
+                                <i class="fas fa-rocket mr-2"></i>
+                                Get Started
+                            </button>
+                            <button onclick="window.location.href='how-to.html'"
+                                class="border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-white"
+                                style="border-color: var(--navy); color: var(--navy);">
+                                <i class="fas fa-play mr-2"></i>
+                                Watch Tutorials
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="resources/hero-main.jpg" alt="BYU Pathway students studying together"
+                            class="rounded-2xl shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full" style="background-color: var(--sage);"></div>
+                                <span class="text-sm font-medium">Live Support Available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                <div class="scroll-indicator cursor-pointer" onclick="scrollToSection('resources')">
+                    <i class="fas fa-chevron-down text-2xl" style="color: var(--navy);"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Resources -->
+        <section id="resources" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                        Everything You Need to Succeed
+                    </h2>
+                    <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                        From registration to career placement, we've organized all the resources you need
+                        into four key areas of support.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Registration Help -->
+                    <div
+                        class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in stagger-delay-1">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: var(--light-blue);">
+                            <i class="fas fa-clipboard-list text-2xl" style="color: var(--navy);"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Registration Help</h3>
+                        <p class="mb-6" style="color: var(--slate);">
+                            Step-by-step guidance through the registration process, troubleshooting common issues,
+                            and understanding requirements.
+                        </p>
+                        <a href="registration.html" class="inline-flex items-center font-semibold transition-colors"
+                            style="color: var(--coral);">
+                            Get Help
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Setup & Tutorials -->
+                    <div
+                        class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in stagger-delay-2">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: #ecfdf5;">
+                            <i class="fas fa-cogs text-2xl" style="color: var(--sage);"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Setup Guide</h3>
+                        <p class="mb-6" style="color: var(--slate);">
+                            Learn how to set up Canvas, Microsoft 365, portal navigation, and understand
+                            how all systems work together.
+                        </p>
+                        <a href="post-registration.html"
+                            class="inline-flex items-center font-semibold transition-colors"
+                            style="color: var(--coral);">
+                            Start Setup
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Career Resources -->
+                    <div
+                        class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in stagger-delay-3">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: #fff7ed;">
+                            <i class="fas fa-briefcase text-2xl" style="color: var(--coral);"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Career Resources</h3>
+                        <p class="mb-6" style="color: var(--slate);">
+                            Job opportunities, resume building, interview preparation, and connections
+                            to employers who value BYU Pathway students.
+                        </p>
+                        <a href="jobs.html" class="inline-flex items-center font-semibold transition-colors"
+                            style="color: var(--coral);">
+                            Explore Jobs
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- How-To Tutorials -->
+                    <div
+                        class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in stagger-delay-4">
+                        <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: #fef3c7;">
+                            <i class="fas fa-play-circle text-2xl" style="color: #f59e0b;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Video Tutorials</h3>
+                        <p class="mb-6" style="color: var(--slate);">
+                            Comprehensive video library covering everything from basic setup to advanced
+                            features, with searchable content and filters.
+                        </p>
+                        <a href="how-to.html" class="inline-flex items-center font-semibold transition-colors"
+                            style="color: var(--coral);">
+                            Watch Videos
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Journey Visualization -->
+        <section class="py-20" style="background-color: var(--light-blue);">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                        Your Pathway Journey
+                    </h2>
+                    <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                        Follow the proven path that thousands of students have taken to achieve their educational goals.
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <img src="resources/student-journey.jpg" alt="BYU Pathway student journey pathway"
+                        class="w-full h-auto rounded-2xl shadow-lg fade-in" loading="lazy">
+
+                    <!-- Journey Steps Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                            <div
+                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-1">
+                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
+                                    style="background-color: var(--navy);">
+                                    <span class="text-white font-bold">1</span>
+                                </div>
+                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Register</h3>
+                                <p class="text-sm" style="color: var(--slate);">Complete application and get endorsed
+                                </p>
+                            </div>
+
+                            <div
+                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-2">
+                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
+                                    style="background-color: var(--sage);">
+                                    <span class="text-white font-bold">2</span>
+                                </div>
+                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Setup</h3>
+                                <p class="text-sm" style="color: var(--slate);">Configure systems and learn tools</p>
+                            </div>
+
+                            <div
+                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-3">
+                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
+                                    style="background-color: var(--coral);">
+                                    <span class="text-white font-bold">3</span>
+                                </div>
+                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Learn</h3>
+                                <p class="text-sm" style="color: var(--slate);">Complete courses and build skills</p>
+                            </div>
+
+                            <div
+                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-4">
+                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
+                                    style="background-color: #8b5cf6;">
+                                    <span class="text-white font-bold">4</span>
+                                </div>
+                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Succeed</h3>
+                                <p class="text-sm" style="color: var(--slate);">Graduate and advance your career</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories -->
+        <section class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                        Student Success Stories
+                    </h2>
+                    <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                        Real stories from real students who overcame challenges and achieved their goals.
+                    </p>
+                </div>
+
+                <div class="splide" id="testimonial-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mx-4">
+                                    <div class="flex items-center mb-6">
+                                        <img src="resources/mentor-support.jpg" alt="Student testimonial"
+                                            class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy">
+                                        <div>
+                                            <h4 class="font-semibold" style="color: var(--navy);">Sarah M.</h4>
+                                            <p class="text-sm" style="color: var(--slate);">PathwayConnect Graduate</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg italic mb-4" style="color: var(--slate);">
+                                        "The registration process seemed overwhelming at first, but the step-by-step
+                                        guides
+                                        and supportive community made all the difference. I never felt alone in my
+                                        journey."
+                                    </p>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="splide__slide">
+                                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mx-4">
+                                    <div class="flex items-center mb-6">
+                                        <img src="resources/career-success.jpg" alt="Student testimonial"
+                                            class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy">
+                                        <div>
+                                            <h4 class="font-semibold" style="color: var(--navy);">Carlos R.</h4>
+                                            <p class="text-sm" style="color: var(--slate);">Online Degree Student</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg italic mb-4" style="color: var(--slate);">
+                                        "The career resources and job connections helped me land a remote position that
+                                        doubled my income. BYU Pathway didn't just give me education—it changed my
+                                        life."
+                                    </p>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="splide__slide">
+                                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mx-4">
+                                    <div class="flex items-center mb-6">
+                                        <img src="resources/microsoft365-setup.jpg" alt="Student testimonial"
+                                            class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy">
+                                        <div>
+                                            <h4 class="font-semibold" style="color: var(--navy);">Maria L.</h4>
+                                            <p class="text-sm" style="color: var(--slate);">Certificate Student</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-lg italic mb-4" style="color: var(--slate);">
+                                        "The Microsoft 365 tutorials were a lifesaver! I went from being intimidated by
+                                        technology to confidently using all the tools for my assignments."
+                                    </p>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="py-20" style="background: linear-gradient(135deg, var(--navy) 0%, #1e40af 100%);">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl font-semibold text-white mb-4">
+                        Making a Difference
+                    </h2>
+                    <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                        Join thousands of students who have found success through BYU Pathway Worldwide.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="fade-in">
+                        <div class="stats-counter text-white mb-2" data-target="50000">0</div>
+                        <p class="text-blue-100 font-medium">Students Supported</p>
+                    </div>
+
+                    <div class="fade-in stagger-delay-1">
+                        <div class="stats-counter text-white mb-2" data-target="200">0</div>
+                        <p class="text-blue-100 font-medium">Video Tutorials</p>
+                    </div>
+
+                    <div class="fade-in stagger-delay-2">
+                        <div class="stats-counter text-white mb-2" data-target="13500">0</div>
+                        <p class="text-blue-100 font-medium">Job Connections</p>
+                    </div>
+
+                    <div class="fade-in stagger-delay-3">
+                        <div class="stats-counter text-white mb-2" data-target="95">0</div>
+                        <p class="text-blue-100 font-medium">Success Rate %</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">
+                    © 2025 BYU Pathway Student Support Hub. Built with ❤️ for students worldwide.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Register service worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js')
+                    .then(function (registration) {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    }, function (err) {
+                        console.log('Service Worker registration failed:', err);
+                    });
+            });
+        }
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>

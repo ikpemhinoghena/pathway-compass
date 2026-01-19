@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Help - BYU Pathway Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --sage: #10b981;
+            --cream: #fefce8;
+            --coral: #f97316;
+            --slate: #64748b;
+            --light-blue: #e0f2fe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        .font-display {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            background-color: var(--coral);
+            color: white;
+        }
+
+        .step-indicator.completed {
+            background-color: var(--sage);
+            color: white;
+        }
+
+        .step-indicator.inactive {
+            background-color: #e5e7eb;
+            color: #9ca3af;
+        }
+
+        .diagnostic-card {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .diagnostic-card:hover {
+            border-color: var(--coral);
+            background-color: #fff7ed;
+        }
+
+        .diagnostic-card.selected {
+            border-color: var(--sage);
+            background-color: #ecfdf5;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--coral) 0%, var(--sage) 100%);
+            transition: width 0.5s ease;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f9fafb;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-thumbnail:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold" style="color: var(--navy);">
+                            <i class="fas fa-graduation-cap mr-2" style="color: var(--coral);"></i>
+                            BYU Pathway Support
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                        <a href="registration.html" class="nav-link text-sm font-medium text-orange-600">Registration
+                            Help</a>
+                        <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
+                        <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="pageSearch" placeholder="Search registration help..."
+                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="font-display text-5xl font-semibold mb-6" style="color: var(--navy);">
+                        Registration Help & Support
+                    </h1>
+                    <p class="text-xl mb-8 leading-relaxed" style="color: var(--slate);">
+                        Get step-by-step guidance through the BYU Pathway registration process.
+                        Our interactive diagnostic tool will help identify and resolve your specific issues quickly.
+                    </p>
+                    <button onclick="startDiagnostic()"
+                        class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+                        <i class="fas fa-stethoscope mr-2"></i>
+                        Start Diagnostic Tool
+                    </button>
+                </div>
+                <div class="relative">
+                    <img src="resources/registration-process.jpg" alt="BYU Pathway registration process"
+                        class="rounded-2xl shadow-2xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Diagnostic Tool -->
+    <section id="diagnostic-tool" class="py-20 bg-white hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl font-semibold mb-4" style="color: var(--navy);">
+                    Registration Diagnostic Tool
+                </h2>
+                <p class="text-lg" style="color: var(--slate);">
+                    Answer a few questions to get personalized help for your registration issues.
+                </p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium" style="color: var(--slate);">Progress</span>
+                    <span class="text-sm font-medium" style="color: var(--slate);"><span id="current-step">1</span> of
+                        <span id="total-steps">5</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+                </div>
+            </div>
+
+            <!-- Diagnostic Steps -->
+            <div id="diagnostic-content" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                <!-- Step 1: Issue Type -->
+                <div class="diagnostic-step active" id="step-1">
+                    <h3 class="text-2xl font-semibold mb-6" style="color: var(--navy);">What type of registration issue
+                        are you experiencing?</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="diagnostic-card p-6 rounded-xl border"
+                            onclick="selectOption('issue-type', 'new-application')">
+                            <div class="flex items-center">
+                                <i class="fas fa-file-alt text-2xl mr-4" style="color: var(--coral);"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">New Application</h4>
+                                    <p class="text-sm" style="color: var(--slate);">First-time application process</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="diagnostic-card p-6 rounded-xl border"
+                            onclick="selectOption('issue-type', 'returning-student')">
+                            <div class="flex items-center">
+                                <i class="fas fa-user-return text-2xl mr-4" style="color: var(--sage);"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Returning Student</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Re-enrolling after a break</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="diagnostic-card p-6 rounded-xl border"
+                            onclick="selectOption('issue-type', 'technical-issue')">
+                            <div class="flex items-center">
+                                <i class="fas fa-cog text-2xl mr-4" style="color: var(--navy);"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Technical Issue</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Website or system problems</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="diagnostic-card p-6 rounded-xl border"
+                            onclick="selectOption('issue-type', 'endorsement')">
+                            <div class="flex items-center">
+                                <i class="fas fa-handshake text-2xl mr-4" style="color: #8b5cf6;"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Endorsement</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Ecclesiastical endorsement issues
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional steps will be dynamically loaded based on selections -->
+                <div id="diagnostic-steps-container"></div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between mt-8">
+                    <button id="prev-btn" onclick="previousStep()"
+                        class="px-6 py-3 border border-gray-300 rounded-lg font-semibold text-gray-600 hover:bg-gray-50 transition-all"
+                        style="display: none;">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Previous
+                    </button>
+                    <div></div>
+                    <button id="next-btn" onclick="nextStep()"
+                        class="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+                        disabled>
+                        Next
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Timeline -->
+    <section class="py-20" style="background-color: var(--light-blue);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Registration Timeline
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Follow these steps to complete your BYU Pathway registration successfully.
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full"
+                    style="background-color: var(--sage);"></div>
+
+                <!-- Timeline Steps -->
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div class="relative flex items-center fade-in">
+                        <div class="flex-shrink-0 w-1/2 pr-8 text-right">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Create Application
+                                </h3>
+                                <p class="mb-4" style="color: var(--slate);">Start your application at byupathway.edu
+                                    and provide basic information.</p>
+                                <div class="text-sm" style="color: var(--coral);">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    15-20 minutes
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center"
+                            style="background-color: var(--coral);">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                        <div class="flex-shrink-0 w-1/2 pl-8">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold mb-2" style="color: var(--navy);">What You'll Need:</h4>
+                                <ul class="text-sm space-y-1" style="color: var(--slate);">
+                                    <li>• Personal information</li>
+                                    <li>• Educational history</li>
+                                    <li>• Church membership details</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative flex items-center fade-in">
+                        <div class="flex-shrink-0 w-1/2 pr-8">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold mb-2" style="color: var(--navy);">Contact Your Leader:</h4>
+                                <ul class="text-sm space-y-1" style="color: var(--slate);">
+                                    <li>• Schedule interview</li>
+                                    <li>• Discuss your goals</li>
+                                    <li>• Complete endorsement</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center"
+                            style="background-color: var(--sage);">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                        <div class="flex-shrink-0 w-1/2 pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Ecclesiastical
+                                    Endorsement</h3>
+                                <p class="mb-4" style="color: var(--slate);">Meet with your bishop or branch president
+                                    for an endorsement interview.</p>
+                                <div class="text-sm" style="color: var(--sage);">
+                                    <i class="fas fa-calendar mr-1"></i>
+                                    Schedule within 1 week
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative flex items-center fade-in">
+                        <div class="flex-shrink-0 w-1/2 pr-8 text-right">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Choose Path & Courses
+                                </h3>
+                                <p class="mb-4" style="color: var(--slate);">Select your degree path and register for
+                                    your first semester courses.</p>
+                                <div class="text-sm" style="color: var(--navy);">
+                                    <i class="fas fa-graduation-cap mr-1"></i>
+                                    Academic guidance available
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center"
+                            style="background-color: var(--navy);">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                        <div class="flex-shrink-0 w-1/2 pl-8">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold mb-2" style="color: var(--navy);">Popular Paths:</h4>
+                                <ul class="text-sm space-y-1" style="color: var(--slate);">
+                                    <li>• PathwayConnect (recommended)</li>
+                                    <li>• Advanced Path (experienced)</li>
+                                    <li>• Certificate Programs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative flex items-center fade-in">
+                        <div class="flex-shrink-0 w-1/2 pr-8">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <h4 class="font-semibold mb-2" style="color: var(--navy);">Payment Options:</h4>
+                                <ul class="text-sm space-y-1" style="color: var(--slate);">
+                                    <li>• Heber J. Grant Discount (10-50%)</li>
+                                    <li>• Additional 15% off Block 2</li>
+                                    <li>• Payment plans available</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center"
+                            style="background-color: #8b5cf6;">
+                            <span class="text-white font-bold">4</span>
+                        </div>
+                        <div class="flex-shrink-0 w-1/2 pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Pay Tuition</h3>
+                                <p class="mb-4" style="color: var(--slate);">Complete payment and apply for available
+                                    tuition discounts.</p>
+                                <div class="text-sm" style="color: #8b5cf6;">
+                                    <i class="fas fa-dollar-sign mr-1"></i>
+                                    Due by second day of classes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Issues FAQ -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Common Registration Issues
+                </h2>
+                <p class="text-xl" style="color: var(--slate);">
+                    Quick answers to frequently asked registration questions.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center" onclick="toggleFAQ(1)">
+                        <h3 class="text-lg font-semibold" style="color: var(--navy);">I can't log in to the new portal
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-1"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-1">
+                        <div class="px-6 pb-6">
+                            <p class="mb-4" style="color: var(--slate);">
+                                The new portal requires your byupathway.edu login, not your Church account. Check your
+                                email
+                                for a message titled "New BYU-Pathway Portal" with your new login credentials.
+                            </p>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="text-sm font-medium mb-2">Steps to resolve:</p>
+                                <ol class="text-sm space-y-1" style="color: var(--slate);">
+                                    <li>1. Search your email for "New BYU-Pathway Portal"</li>
+                                    <li>2. Use the byupathway.edu login provided in that email</li>
+                                    <li>3. Sign in with your Church account when prompted</li>
+                                    <li>4. If you can't find the email, use login@byupathway.edu</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center" onclick="toggleFAQ(2)">
+                        <h3 class="text-lg font-semibold" style="color: var(--navy);">My ecclesiastical endorsement is
+                            delayed</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-2"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-2">
+                        <div class="px-6 pb-6">
+                            <p class="mb-4" style="color: var(--slate);">
+                                Endorsements can take time, especially if your leader is unfamiliar with the process.
+                                Here's how to help move things along:
+                            </p>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <p class="text-sm font-medium mb-2">What to do:</p>
+                                <ul class="text-sm space-y-1" style="color: var(--slate);">
+                                    <li>• Contact your bishop/branch president directly</li>
+                                    <li>• Provide them with your endorsement request details</li>
+                                    <li>• Ask them to check their email (including spam folder)</li>
+                                    <li>• Offer to help them access the endorsement system</li>
+                                    <li>• Consider asking a counselor to assist if needed</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center" onclick="toggleFAQ(3)">
+                        <h3 class="text-lg font-semibold" style="color: var(--navy);">I'm getting a "hold" message when
+                            trying to register</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-3"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-3">
+                        <div class="px-6 pb-6">
+                            <p class="mb-4" style="color: var(--slate);">
+                                Holds prevent registration until specific requirements are met. Common holds include:
+                            </p>
+                            <div class="space-y-4">
+                                <div class="bg-yellow-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2">Academic Hold</h4>
+                                    <p class="text-sm" style="color: var(--slate);">May require transcripts or academic
+                                        clearance</p>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2">Financial Hold</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Previous balance or payment issue
+                                    </p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2">Administrative Hold</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Contact support for assistance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center" onclick="toggleFAQ(4)">
+                        <h3 class="text-lg font-semibold" style="color: var(--navy);">Which path should I choose:
+                            PathwayConnect or Advanced?</h3>
+                        <i class="fas fa-chevron-down transition-transform" id="faq-icon-4"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-4">
+                        <div class="px-6 pb-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-blue-50 p-6 rounded-lg">
+                                    <h4 class="font-semibold mb-3" style="color: var(--navy);">PathwayConnect
+                                        (Recommended)</h4>
+                                    <ul class="text-sm space-y-2" style="color: var(--slate);">
+                                        <li>• First three semesters include foundational courses</li>
+                                        <li>• No ACT/SAT required for admission</li>
+                                        <li>• All courses count toward your degree</li>
+                                        <li>• Built-in academic and religion courses</li>
+                                        <li>• Best for most students, especially first-time college</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-green-50 p-6 rounded-lg">
+                                    <h4 class="font-semibold mb-3" style="color: var(--navy);">Advanced Path</h4>
+                                    <ul class="text-sm space-y-2" style="color: var(--slate);">
+                                        <li>• For students with significant university experience</li>
+                                        <li>• Primarily for U.S. students</li>
+                                        <li>• Requires 2.0+ GPA or 3.0 in PathwayConnect</li>
+                                        <li>• More detailed application process</li>
+                                        <li>• Direct entry to degree program</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tutorials Section -->
+    <section class="py-20" style="background-color: var(--cream);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Registration Video Tutorials
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Watch step-by-step video guides for the most common registration processes.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video 1 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="video-thumbnail relative h-48">
+                        <img src="resources/hero-main.jpg" alt="Application Process Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--coral);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Complete Application Process
+                        </h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Step-by-step walkthrough of the entire
+                            application from start to finish.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color: var(--light-blue); color: var(--navy);">15 min</span>
+                            <button onclick="playVideo('application-process')"
+                                class="text-sm font-semibold hover:underline" style="color: var(--coral);">
+                                Watch Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="video-thumbnail relative h-48">
+                        <img src="resources/mentor-support.jpg" alt="Endorsement Process Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--sage);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Ecclesiastical Endorsement
+                        </h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">How to request and complete your
+                            ecclesiastical endorsement.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color: #ecfdf5; color: var(--sage);">12 min</span>
+                            <button onclick="playVideo('endorsement-process')"
+                                class="text-sm font-semibold hover:underline" style="color: var(--coral);">
+                                Watch Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden fade-in">
+                    <div class="video-thumbnail relative h-48">
+                        <img src="resources/microsoft365-setup.jpg" alt="Portal Navigation Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--navy);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Portal Navigation</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Learn how to navigate the new BYU Pathway
+                            student portal.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-3 py-1 rounded-full"
+                                style="background-color: var(--light-blue); color: var(--navy);">8 min</span>
+                            <button onclick="playVideo('portal-navigation')"
+                                class="text-sm font-semibold hover:underline" style="color: var(--coral);">
+                                Watch Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="how-to.html"
+                    class="inline-flex items-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+                    <i class="fas fa-play-circle mr-2"></i>
+                    View All Tutorials
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-6" style="color: var(--navy);">
+                    Still Need Help?
+                </h2>
+                <p class="text-xl mb-8" style="color: var(--slate);">
+                    Our support team is here to help you succeed. Don't hesitate to reach out!
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                            style="background-color: var(--light-blue);">
+                            <i class="fas fa-comments text-2xl" style="color: var(--navy);"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Live Chat</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Get instant help from our support team</p>
+                        <button onclick="openChat()" class="text-sm font-semibold hover:underline"
+                            style="color: var(--coral);">
+                            Start Chat
+                        </button>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                            style="background-color: #ecfdf5;">
+                            <i class="fas fa-envelope text-2xl" style="color: var(--sage);"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Email Support</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Send us a detailed message</p>
+                        <a href="mailto:support@byupathway.org" class="text-sm font-semibold hover:underline"
+                            style="color: var(--coral);">
+                            Send Email
+                        </a>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                            style="background-color: #fef3c7;">
+                            <i class="fas fa-phone text-2xl" style="color: #f59e0b;"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Phone Support</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Call us during business hours</p>
+                        <a href="tel:+1-855-842-6976" class="text-sm font-semibold hover:underline"
+                            style="color: var(--coral);">
+                            (855) BYU-PATH
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <h3 class="font-semibold mb-2" style="color: var(--navy);">Help Center Hours</h3>
+                    <p class="text-sm" style="color: var(--slate);">
+                        Monday - Friday: 6:00 AM - 6:00 PM (Mountain Time)<br>
+                        Saturday: 6:00 AM - 12:00 PM (Mountain Time)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">
+                    © 2025 BYU Pathway Student Support Hub. Built with ❤️ for students worldwide.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Registration-specific JavaScript
+        let diagnosticData = {};
+        let currentStep = 1;
+        let totalSteps = 5;
+
+        // Start diagnostic tool
+        function startDiagnostic() {
+            document.getElementById('diagnostic-tool').classList.remove('hidden');
+            document.getElementById('diagnostic-tool').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Select diagnostic option
+        function selectOption(category, value) {
+            // Remove previous selections
+            document.querySelectorAll('.diagnostic-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Add selection to clicked card
+            event.currentTarget.classList.add('selected');
+
+            // Store selection
+            diagnosticData[category] = value;
+
+            // Enable next button
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        // Navigate to next step
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateDiagnosticStep();
+            } else {
+                showDiagnosticResults();
+            }
+        }
+
+        // Navigate to previous step
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateDiagnosticStep();
+            }
+        }
+
+        // Update diagnostic step display
+        function updateDiagnosticStep() {
+            // Update progress
+            document.getElementById('current-step').textContent = currentStep;
+            const progressPercent = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-fill').style.width = progressPercent + '%';
+
+            // Show/hide navigation buttons
+            document.getElementById('prev-btn').style.display = currentStep > 1 ? 'block' : 'none';
+            document.getElementById('next-btn').disabled = true;
+
+            // Load step content (simplified for demo)
+            loadStepContent();
+        }
+
+        // Load step content based on current step and previous answers
+        function loadStepContent() {
+            const container = document.getElementById('diagnostic-steps-container');
+
+            // This would be more complex in a real implementation
+            // For now, we'll show a simplified progression
+            if (currentStep === 2) {
+                container.innerHTML = `
+                    <div class="diagnostic-step active">
+                        <h3 class="text-2xl font-semibold mb-6" style="color: var(--navy);">Tell us more about your situation</h3>
+                        <div class="space-y-4">
+                            <div class="diagnostic-card p-6 rounded-xl border" onclick="selectOption('situation', 'first-time')">
+                                <h4 class="font-semibold mb-2">This is my first time applying to college</h4>
+                                <p class="text-sm text-gray-600">I'm new to higher education</p>
+                            </div>
+                            <div class="diagnostic-card p-6 rounded-xl border" onclick="selectOption('situation', 'transfer')">
+                                <h4 class="font-semibold mb-2">I'm transferring from another institution</h4>
+                                <p class="text-sm text-gray-600">I have previous college experience</p>
+                            </div>
+                            <div class="diagnostic-card p-6 rounded-xl border" onclick="selectOption('situation', 'returning')">
+                                <h4 class="font-semibold mb-2">I'm returning after a break</h4>
+                                <p class="text-sm text-gray-600">I've attended BYU Pathway before</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            // Additional steps would be loaded here...
+        }
+
+        // Show diagnostic results
+        function showDiagnosticResults() {
+            const container = document.getElementById('diagnostic-steps-container');
+            container.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--sage);">
+                        <i class="fas fa-check text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4" style="color: var(--navy);">Diagnostic Complete!</h3>
+                    <p class="text-lg mb-8" style="color: var(--slate);">Based on your answers, here are the resources that will help you most:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <div class="bg-blue-50 p-6 rounded-xl">
+                            <h4 class="font-semibold mb-3" style="color: var(--navy);">Recommended Resources</h4>
+                            <ul class="text-left space-y-2">
+                                <li>• <a href="#timeline" class="text-blue-600 hover:underline">Registration Timeline</a></li>
+                                <li>• <a href="#faq" class="text-blue-600 hover:underline">Common Issues FAQ</a></li>
+                                <li>• <a href="how-to.html" class="text-blue-600 hover:underline">Video Tutorials</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-xl">
+                            <h4 class="font-semibold mb-3" style="color: var(--navy);">Next Steps</h4>
+                            <ul class="text-left space-y-2">
+                                <li>• Review the registration timeline</li>
+                                <li>• Check the FAQ for quick answers</li>
+                                <li>• Contact support if you need personalized help</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <button onclick="window.location.href='post-registration.html'" class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all mr-4">
+                            Continue to Setup Guide
+                        </button>
+                        <button onclick="startDiagnostic()" class="border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-gray-50" style="border-color: var(--navy); color: var(--navy);">
+                            Start Over
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Update progress to 100%
+            document.getElementById('progress-fill').style.width = '100%';
+            document.getElementById('current-step').textContent = '5';
+        }
+
+        // Toggle FAQ items
+        function toggleFAQ(id) {
+            const answer = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(el => {
+                    el.classList.remove('open');
+                });
+                document.querySelectorAll('[id^="faq-icon-"]').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+
+                // Open clicked FAQ
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Play video function
+        function playVideo(videoId) {
+            // In a real implementation, this would open a video modal or redirect to the video
+            alert(`Opening video: ${videoId}. In a real implementation, this would play the Loom video.`);
+        }
+
+        // Open chat function
+        function openChat() {
+            // In a real implementation, this would open a live chat widget
+            alert('Opening live chat. In a real implementation, this would connect you to a support agent.');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Setup fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Setup page-specific search
+            const pageSearch = document.getElementById('pageSearch');
+            if (pageSearch) {
+                pageSearch.addEventListener('input', function (e) {
+                    const query = e.target.value.toLowerCase();
+                    // In a real implementation, this would filter FAQ items and content
+                    console.log('Searching for:', query);
+                });
+            }
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>

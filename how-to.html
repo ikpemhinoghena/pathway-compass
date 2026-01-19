@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How-To Tutorials - BYU Pathway Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --sage: #10b981;
+            --cream: #fefce8;
+            --coral: #f97316;
+            --slate: #64748b;
+            --light-blue: #e0f2fe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        .font-display {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-card:hover {
+            border-color: var(--coral);
+            background-color: #fff7ed;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .filter-tag {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-tag.active {
+            background-color: var(--coral);
+            color: white;
+        }
+
+        .filter-tag:hover {
+            background-color: #fed7aa;
+        }
+
+        .bookmark-btn {
+            transition: all 0.3s ease;
+        }
+
+        .bookmark-btn.bookmarked {
+            color: #f59e0b;
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .search-highlight {
+            background-color: #fef3c7;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .rating-stars {
+            color: #fbbf24;
+        }
+
+        .difficulty-easy {
+            background-color: #ecfdf5;
+            color: var(--sage);
+        }
+
+        .difficulty-medium {
+            background-color: #fef3c7;
+            color: #f59e0b;
+        }
+
+        .difficulty-hard {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+
+        .video-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold" style="color: var(--navy);">
+                            <i class="fas fa-graduation-cap mr-2" style="color: var(--coral);"></i>
+                            BYU Pathway Support
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                        <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
+                        <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
+                        <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium text-orange-600">How-To Tutorials</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="tutorialSearch" placeholder="Search tutorials..."
+                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="font-display text-5xl font-semibold mb-6" style="color: var(--navy);">
+                        How-To Video Tutorials
+                    </h1>
+                    <p class="text-xl mb-8 leading-relaxed" style="color: var(--slate);">
+                        Master every aspect of your BYU Pathway experience with our comprehensive video library.
+                        From basic setup to advanced features, find exactly what you need to succeed.
+                    </p>
+                    <div class="flex items-center space-x-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold" style="color: var(--coral);">200+</div>
+                            <div class="text-sm" style="color: var(--slate);">Tutorials</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold" style="color: var(--sage);">24/7</div>
+                            <div class="text-sm" style="color: var(--slate);">Access</div>
+                        </div>
+                        <button onclick="scrollToSection('tutorials')"
+                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+                            <i class="fas fa-play mr-2"></i>
+                            Browse Tutorials
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="resources/hero-main.jpg" alt="BYU Pathway video tutorials"
+                        class="rounded-2xl shadow-2xl w-full h-auto">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center cursor-pointer"
+                            style="background-color: var(--coral);" onclick="playFeaturedVideo()">
+                            <i class="fas fa-play text-white text-2xl ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Search & Filters -->
+    <section id="tutorials" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Find Exactly What You Need
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Use our advanced search and filtering system to quickly find the tutorials that match your needs and
+                    skill level.
+                </p>
+            </div>
+
+            <!-- Search and Filter Controls -->
+            <div class="bg-gray-50 p-6 rounded-2xl mb-12 fade-in">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <!-- Search -->
+                    <div class="lg:col-span-2">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);">Search
+                            Tutorials</label>
+                        <div class="relative">
+                            <input type="text" id="searchInput"
+                                placeholder="Search by title, description, or keywords..."
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Sort -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);">Sort By</label>
+                        <select id="sortSelect"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="newest">Newest First</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="duration">Shortest Duration</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+
+                    <!-- View Mode -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);">View</label>
+                        <div class="flex space-x-2">
+                            <button id="gridView"
+                                class="flex-1 py-3 px-4 border border-gray-300 rounded-lg bg-blue-600 text-white">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button id="listView"
+                                class="flex-1 py-3 px-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Tags -->
+                <div class="border-t pt-4">
+                    <label class="block text-sm font-medium mb-3" style="color: var(--navy);">Filter by Category</label>
+                    <div class="flex flex-wrap gap-2" id="filterTags">
+                        <button class="filter-tag active px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="all">All</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="registration">Registration</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="canvas">Canvas</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="microsoft">Microsoft 365</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="portal">Portal</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="gathering">Gatherings</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="study-skills">Study Skills</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="time-management">Time Management</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="career">Career</button>
+                        <button class="filter-tag px-4 py-2 rounded-full text-sm font-medium"
+                            data-filter="english">English</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tutorial Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="tutorialGrid">
+                <!-- Tutorial 1 -->
+                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in"
+                    data-category="registration" data-duration="15" data-rating="4.8" data-views="1250">
+                    <div class="relative h-48">
+                        <img src="resources/registration-process.jpg" alt="Registration Process Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--coral);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bookmark-btn text-white text-xl"
+                                onclick="toggleBookmark(this, 'reg-process')">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">15 min</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs px-2 py-1 rounded difficulty-easy">Easy</span>
+                            <div class="flex items-center">
+                                <div class="rating-stars flex mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs" style="color: var(--slate);">4.8 (1,250)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Complete Registration Process
+                        </h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Step-by-step guide through the entire BYU
+                            Pathway registration process from start to finish.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded"
+                                style="background-color: var(--light-blue); color: var(--navy);">Registration</span>
+                            <button onclick="playVideo('registration-complete')"
+                                class="text-sm font-semibold hover:underline" style="color: var(--coral);">
+                                Watch Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial 2 -->
+                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" data-category="canvas"
+                    data-duration="25" data-rating="4.9" data-views="2100">
+                    <div class="relative h-48">
+                        <img src="resources/hero-main.jpg" alt="Canvas Navigation Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--sage);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bookmark-btn text-white text-xl"
+                                onclick="toggleBookmark(this, 'canvas-nav')">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">25 min</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs px-2 py-1 rounded difficulty-medium">Medium</span>
+                            <div class="flex items-center">
+                                <div class="rating-stars flex mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs" style="color: var(--slate);">4.9 (2,100)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Master Canvas Navigation</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Learn all the essential features of Canvas
+                            to succeed in your online courses.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded"
+                                style="background-color: #ecfdf5; color: var(--sage);">Canvas</span>
+                            <button onclick="playVideo('canvas-master')" class="text-sm font-semibold hover:underline"
+                                style="color: var(--coral);">
+                                Watch Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial 3 -->
+                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" data-category="microsoft"
+                    data-duration="12" data-rating="4.7" data-views="980">
+                    <div class="relative h-48">
+                        <img src="resources/microsoft365-setup.jpg" alt="Microsoft 365 Setup Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--navy);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bookmark-btn text-white text-xl"
+                                onclick="toggleBookmark(this, 'm365-setup')">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">12 min</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs px-2 py-1 rounded difficulty-easy">Easy</span>
+                            <div class="flex items-center">
+                                <div class="rating-stars flex mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs" style="color: var(--slate);">4.7 (980)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Microsoft 365 Setup</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Complete setup guide for Word, Excel,
+                            PowerPoint, and Teams with your student account.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded"
+                                style="background-color: #fef3c7; color: #f59e0b;">Microsoft 365</span>
+                            <button onclick="playVideo('m365-setup')" class="text-sm font-semibold hover:underline"
+                                style="color: var(--coral);">
+                                Watch Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial 4 -->
+                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" data-category="portal"
+                    data-duration="8" data-rating="4.6" data-views="750">
+                    <div class="relative h-48">
+                        <img src="resources/mentor-support.jpg" alt="Portal Navigation Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: #8b5cf6;">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bookmark-btn text-white text-xl"
+                                onclick="toggleBookmark(this, 'portal-nav')">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">8 min</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs px-2 py-1 rounded difficulty-easy">Easy</span>
+                            <div class="flex items-center">
+                                <div class="rating-stars flex mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs" style="color: var(--slate);">4.6 (750)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Portal Navigation</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Navigate the new BYU Pathway student portal
+                            like a pro with this comprehensive guide.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded"
+                                style="background-color: #ddd6fe; color: #8b5cf6;">Portal</span>
+                            <button onclick="playVideo('portal-nav')" class="text-sm font-semibold hover:underline"
+                                style="color: var(--coral);">
+                                Watch Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial 5 -->
+                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in"
+                    data-category="study-skills" data-duration="18" data-rating="4.8" data-views="1800">
+                    <div class="relative h-48">
+                        <img src="resources/student-journey.jpg" alt="Study Skills Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--coral);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bookmark-btn text-white text-xl"
+                                onclick="toggleBookmark(this, 'study-skills')">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">18 min</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs px-2 py-1 rounded difficulty-medium">Medium</span>
+                            <div class="flex items-center">
+                                <div class="rating-stars flex mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs" style="color: var(--slate);">4.8 (1,800)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Effective Study Skills</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Learn proven study techniques that will
+                            help you excel in your online courses.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded"
+                                style="background-color: #fce7f3; color: #ec4899;">Study Skills</span>
+                            <button onclick="playVideo('study-skills')" class="text-sm font-semibold hover:underline"
+                                style="color: var(--coral);">
+                                Watch Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial 6 -->
+                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in"
+                    data-category="time-management" data-duration="22" data-rating="4.9" data-views="1650">
+                    <div class="relative h-48">
+                        <img src="resources/career-success.jpg" alt="Time Management Tutorial"
+                            class="w-full h-full object-cover">
+                        <div class="play-overlay">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
+                                style="background-color: var(--sage);">
+                                <i class="fas fa-play text-white text-xl ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bookmark-btn text-white text-xl" onclick="toggleBookmark(this, 'time-mgmt')">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">22 min</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs px-2 py-1 rounded difficulty-medium">Medium</span>
+                            <div class="flex items-center">
+                                <div class="rating-stars flex mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs" style="color: var(--slate);">4.9 (1,650)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Time Management Mastery</h3>
+                        <p class="text-sm mb-4" style="color: var(--slate);">Master time management techniques
+                            specifically designed for online students.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2 py-1 rounded"
+                                style="background-color: #f3e8ff; color: #a855f7;">Time Management</span>
+                            <button onclick="playVideo('time-management')" class="text-sm font-semibold hover:underline"
+                                style="color: var(--coral);">
+                                Watch Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button onclick="loadMoreTutorials()"
+                    class="bg-white border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-gray-50"
+                    style="border-color: var(--navy); color: var(--navy);">
+                    <i class="fas fa-plus mr-2"></i>
+                    Load More Tutorials
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bookmarked Tutorials -->
+    <section class="py-20" style="background-color: var(--light-blue);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Your Bookmarked Tutorials
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Quickly access the tutorials you've bookmarked for later viewing.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="bookmarkedTutorials">
+                <div class="text-center py-12 col-span-full">
+                    <i class="fas fa-bookmark text-6xl mb-4" style="color: var(--slate);"></i>
+                    <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
+                    <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by
+                        clicking the bookmark icon on any video.</p>
+                    <button onclick="scrollToSection('tutorials')"
+                        class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Browse Tutorials
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <button class="video-close" onclick="closeVideoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="p-6">
+                <div class="text-center py-12">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                        style="background-color: var(--sage);">
+                        <i class="fas fa-play text-white text-2xl ml-1"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4" style="color: var(--navy);" id="videoTitle">Tutorial Video
+                    </h3>
+                    <p class="text-lg mb-8" style="color: var(--slate);" id="videoDescription">
+                        In a real implementation, this would play the Loom video tutorial.
+                        For this demo, we're showing the video interface.
+                    </p>
+                    <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                        <p class="text-sm" style="color: var(--slate);">
+                            <strong>Video Features:</strong><br>
+                            • HD quality playback<br>
+                            • Speed controls (0.5x - 2x)<br>
+                            • Closed captions<br>
+                            • Chapter navigation<br>
+                            • Download for offline viewing<br>
+                            • Progress tracking<br>
+                            • Note-taking tools
+                        </p>
+                    </div>
+                    <button onclick="closeVideoModal()"
+                        class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+                        Continue Learning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">
+                    © 2025 BYU Pathway Student Support Hub. Built with ❤️ for students worldwide.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tutorials page specific JavaScript
+        let bookmarkedTutorials = new Set();
+        let currentFilter = 'all';
+        let currentSort = 'newest';
+
+        // Initialize bookmarks from localStorage
+        function initializeBookmarks() {
+            const saved = localStorage.getItem('byu-tutorial-bookmarks');
+            if (saved) {
+                bookmarkedTutorials = new Set(JSON.parse(saved));
+                updateBookmarkedTutorials();
+            }
+        }
+
+        // Toggle bookmark
+        function toggleBookmark(button, tutorialId) {
+            const icon = button.querySelector('i');
+
+            if (bookmarkedTutorials.has(tutorialId)) {
+                bookmarkedTutorials.delete(tutorialId);
+                icon.className = 'far fa-bookmark';
+                button.classList.remove('bookmarked');
+            } else {
+                bookmarkedTutorials.add(tutorialId);
+                icon.className = 'fas fa-bookmark';
+                button.classList.add('bookmarked');
+
+                // Celebration animation
+                anime({
+                    targets: button,
+                    scale: [1, 1.3, 1],
+                    duration: 600,
+                    easing: 'easeOutElastic(1, .8)'
+                });
+            }
+
+            saveBookmarks();
+            updateBookmarkedTutorials();
+        }
+
+        // Save bookmarks to localStorage
+        function saveBookmarks() {
+            localStorage.setItem('byu-tutorial-bookmarks', JSON.stringify([...bookmarkedTutorials]));
+        }
+
+        // Update bookmarked tutorials display
+        function updateBookmarkedTutorials() {
+            const container = document.getElementById('bookmarkedTutorials');
+
+            if (bookmarkedTutorials.size === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 col-span-full">
+                        <i class="fas fa-bookmark text-6xl mb-4" style="color: var(--slate);"></i>
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
+                        <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by clicking the bookmark icon on any video.</p>
+                        <button onclick="scrollToSection('tutorials')" class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                            Browse Tutorials
+                        </button>
+                    </div>
+                `;
+            } else {
+                // In a real implementation, this would show the actual bookmarked tutorials
+                container.innerHTML = `
+                    <div class="text-center py-12 col-span-full">
+                        <i class="fas fa-bookmark text-4xl mb-4" style="color: var(--sage);"></i>
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Bookmarked Tutorials</h3>
+                        <p class="mb-6" style="color: var(--slate);">You have ${bookmarkedTutorials.size} bookmarked tutorial${bookmarkedTutorials.size > 1 ? 's' : ''}.</p>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${Array.from(bookmarkedTutorials).map(id => `
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold mb-2" style="color: var(--navy);">Tutorial: ${id}</h4>
+                                    <p class="text-sm mb-3" style="color: var(--slate);">Your bookmarked tutorial would appear here.</p>
+                                    <button onclick="playVideo('${id}')" class="text-sm font-semibold hover:underline" style="color: var(--coral);">
+                                        Watch Now
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize filter functionality
+        function initializeFilters() {
+            const filterTags = document.querySelectorAll('.filter-tag');
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function () {
+                    // Remove active class from all tags
+                    filterTags.forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tag
+                    this.classList.add('active');
+
+                    // Filter tutorials
+                    const filter = this.getAttribute('data-filter');
+                    filterTutorials(filter);
+                });
+            });
+        }
+
+        // Filter tutorials
+        function filterTutorials(filter) {
+            currentFilter = filter;
+            const tutorialCards = document.querySelectorAll('.video-card');
+
+            tutorialCards.forEach(card => {
+                const categories = card.getAttribute('data-category');
+
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.style.display = 'block';
+                    // Add animation
+                    anime({
+                        targets: card,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    });
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize search functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                let searchTimeout;
+
+                searchInput.addEventListener('input', function (e) {
+                    clearTimeout(searchTimeout);
+                    const query = e.target.value.toLowerCase().trim();
+
+                    searchTimeout = setTimeout(() => {
+                        searchTutorials(query);
+                    }, 300);
+                });
+            }
+        }
+
+        // Search tutorials
+        function searchTutorials(query) {
+            if (query.length < 2) {
+                // Show all tutorials if search is too short
+                filterTutorials(currentFilter);
+                return;
+            }
+
+            const tutorialCards = document.querySelectorAll('.video-card');
+
+            tutorialCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+
+                const matches = title.includes(query) || description.includes(query) || category.includes(query);
+
+                if (matches) {
+                    card.style.display = 'block';
+                    // Highlight search terms
+                    highlightSearchTerms(card, query);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Highlight search terms
+        function highlightSearchTerms(card, query) {
+            const title = card.querySelector('h3');
+            const description = card.querySelector('p');
+
+            [title, description].forEach(element => {
+                const text = element.textContent;
+                const regex = new RegExp(`(${query})`, 'gi');
+                const highlightedText = text.replace(regex, '<span class="search-highlight">$1</span>');
+                element.innerHTML = highlightedText;
+            });
+        }
+
+        // Play video function
+        function playVideo(videoId) {
+            const videoTitles = {
+                'registration-complete': 'Complete Registration Process',
+                'canvas-master': 'Master Canvas Navigation',
+                'm365-setup': 'Microsoft 365 Setup',
+                'portal-nav': 'Portal Navigation',
+                'study-skills': 'Effective Study Skills',
+                'time-management': 'Time Management Mastery'
+            };
+
+            const title = videoTitles[videoId] || 'Tutorial Video';
+            document.getElementById('videoTitle').textContent = title;
+            document.getElementById('videoModal').classList.add('active');
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Play featured video
+        function playFeaturedVideo() {
+            playVideo('featured-tutorial');
+        }
+
+        // Close video modal
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Load more tutorials
+        function loadMoreTutorials() {
+            // In a real implementation, this would load additional tutorials from an API
+            alert('Loading more tutorials... In a real implementation, this would fetch additional tutorial videos.');
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeBookmarks();
+            initializeFilters();
+            initializeSearch();
+
+            // Setup fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Setup tutorial search
+            const tutorialSearch = document.getElementById('tutorialSearch');
+            if (tutorialSearch) {
+                tutorialSearch.addEventListener('input', function (e) {
+                    const query = e.target.value.toLowerCase();
+                    // In a real implementation, this would filter tutorial content
+                    console.log('Searching tutorials for:', query);
+                });
+            }
+
+            // Close modal when clicking outside
+            document.getElementById('videoModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeVideoModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeVideoModal();
+                }
+            });
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>

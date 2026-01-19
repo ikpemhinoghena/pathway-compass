@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Resources & Jobs - BYU Pathway Support</title>
+    <meta name="description"
+        content="Find job opportunities, career resources, and connect with employers who value BYU Pathway students.">
+    <meta property="og:title" content="Career Resources & Jobs - BYU Pathway Support">
+    <meta property="og:description"
+        content="Find job opportunities, career resources, and connect with employers who value BYU Pathway students.">
+    <meta property="og:image" content="resources/career-success.jpg">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --sage: #10b981;
+            --cream: #fefce8;
+            --coral: #f97316;
+            --slate: #64748b;
+            --light-blue: #e0f2fe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        .font-display {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-card {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .job-card:hover {
+            border-color: var(--coral);
+            background-color: #fff7ed;
+        }
+
+        .filter-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background-color: var(--coral);
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background-color: #fed7aa;
+        }
+
+        .countdown-timer {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 1px solid #fca5a5;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mentor-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mentor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mentor-card:hover::before {
+            left: 100%;
+        }
+
+        .success-story {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .success-story::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background-color: var(--sage);
+            border-radius: 50%;
+        }
+
+        .success-story::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background-color: #d1fae5;
+        }
+
+        .success-story:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold" style="color: var(--navy);">
+                            <i class="fas fa-graduation-cap mr-2" style="color: var(--coral);"></i>
+                            BYU Pathway Support
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                        <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
+                        <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
+                        <a href="jobs.html" class="nav-link text-sm font-medium text-orange-600">Career Resources</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="jobSearch" placeholder="Search jobs & resources..."
+                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="font-display text-5xl font-semibold mb-6" style="color: var(--navy);">
+                        Career Resources & Job Opportunities
+                    </h1>
+                    <p class="text-xl mb-8 leading-relaxed" style="color: var(--slate);">
+                        Connect with employers who value your BYU Pathway education. Access job opportunities,
+                        career development resources, and build your professional network.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('job-board')"
+                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
+                            <i class="fas fa-briefcase mr-2"></i>
+                            Browse Jobs
+                        </button>
+                        <button onclick="scrollToSection('resources')"
+                            class="border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-white"
+                            style="border-color: var(--navy); color: var(--navy);">
+                            <i class="fas fa-tools mr-2"></i>
+                            Career Resources
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="resources/career-success.jpg" alt="Career success and job opportunities"
+                        class="rounded-2xl shadow-2xl w-full h-auto">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold" style="color: var(--sage);">13,500+</div>
+                            <div class="text-sm" style="color: var(--slate);">Students Connected to Jobs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search Strategy -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Your Job Search Strategy
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Follow this proven 4-step process to find meaningful employment that aligns with your skills and
+                    values.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                        style="background-color: var(--light-blue);">
+                        <span class="text-2xl font-bold" style="color: var(--navy);">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Prepare</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Build your resume, craft your elevator pitch, and identify your unique strengths and skills.
+                    </p>
+                    <ul class="text-sm space-y-2" style="color: var(--slate);">
+                        <li>• Resume building templates</li>
+                        <li>• Cover letter guidance</li>
+                        <li>• Skills assessment</li>
+                        <li>• LinkedIn optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                        style="background-color: #ecfdf5;">
+                        <span class="text-2xl font-bold" style="color: var(--sage);">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Network</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Connect with BYU Pathway alumni, join professional groups, and build meaningful relationships.
+                    </p>
+                    <ul class="text-sm space-y-2" style="color: var(--slate);">
+                        <li>• Alumni network access</li>
+                        <li>• Professional groups</li>
+                        <li>• Mentorship programs</li>
+                        <li>• Industry events</li>
+                    </ul>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                        style="background-color: #fef3c7;">
+                        <span class="text-2xl font-bold" style="color: #f59e0b;">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Apply</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Use our curated job board and partner connections to find opportunities that match your goals.
+                    </p>
+                    <ul class="text-sm space-y-2" style="color: var(--slate);">
+                        <li>• Curated job listings</li>
+                        <li>• Partner companies</li>
+                        <li>• Application tracking</li>
+                        <li>• Interview preparation</li>
+                    </ul>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                        style="background-color: #fef3c7;">
+                        <span class="text-2xl font-bold" style="color: var(--coral);">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Grow</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Continue developing skills, pursue certifications, and advance your career with ongoing support.
+                    </p>
+                    <ul class="text-sm space-y-2" style="color: var(--slate);">
+                        <li>• Professional development</li>
+                        <li>• Certification programs</li>
+                        <li>• Skill building courses</li>
+                        <li>• Career advancement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Board with Filters -->
+    <section id="job-board" class="py-20" style="background-color: var(--light-blue);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Featured Job Opportunities
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Discover remote and local opportunities from employers who specifically seek BYU Pathway students
+                    and graduates.
+                </p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+                <button class="filter-btn active px-6 py-3 rounded-lg font-medium" data-filter="all">All Jobs</button>
+                <button class="filter-btn px-6 py-3 rounded-lg font-medium" data-filter="remote">Remote</button>
+                <button class="filter-btn px-6 py-3 rounded-lg font-medium" data-filter="part-time">Part-Time</button>
+                <button class="filter-btn px-6 py-3 rounded-lg font-medium" data-filter="full-time">Full-Time</button>
+                <button class="filter-btn px-6 py-3 rounded-lg font-medium" data-filter="entry-level">Entry
+                    Level</button>
+                <button class="filter-btn px-6 py-3 rounded-lg font-medium" data-filter="tech">Technology</button>
+                <button class="filter-btn px-6 py-3 rounded-lg font-medium" data-filter="business">Business</button>
+            </div>
+
+            <!-- Job Listings -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="job-listings">
+                <!-- Job 1 -->
+                <div class="job-card bg-white p-6 rounded-2xl shadow-lg" data-category="remote tech entry-level">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3"
+                                style="background-color: var(--light-blue);">
+                                <i class="fas fa-code" style="color: var(--navy);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Junior Web Developer</h3>
+                                <p class="text-sm" style="color: var(--slate);">TechCorp Solutions</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded-full"
+                            style="background-color: #ecfdf5; color: var(--sage);">Remote</span>
+                    </div>
+                    <p class="text-sm mb-4" style="color: var(--slate);">
+                        Entry-level position for students with basic programming knowledge. Training provided.
+                        Work with modern web technologies and grow your skills.
+                    </p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm">
+                            <span class="font-semibold" style="color: var(--navy);">$45,000 - $55,000</span>
+                            <span style="color: var(--slate);"> / year</span>
+                        </div>
+                        <div class="countdown-timer px-3 py-1 rounded text-xs">
+                            <span class="font-semibold text-red-600">⏰ 5 days left</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: var(--light-blue); color: var(--navy);">JavaScript</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: var(--light-blue); color: var(--navy);">HTML/CSS</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: var(--light-blue); color: var(--navy);">React</span>
+                    </div>
+                    <button onclick="applyToJob('junior-web-dev')"
+                        class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card bg-white p-6 rounded-2xl shadow-lg" data-category="remote business part-time">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3"
+                                style="background-color: #ecfdf5;">
+                                <i class="fas fa-chart-line" style="color: var(--sage);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Marketing Assistant</h3>
+                                <p class="text-sm" style="color: var(--slate);">Growth Dynamics</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded-full"
+                            style="background-color: #ecfdf5; color: var(--sage);">Remote</span>
+                    </div>
+                    <p class="text-sm mb-4" style="color: var(--slate);">
+                        Support marketing campaigns, create content, and analyze data. Perfect for students
+                        studying business or communications.
+                    </p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm">
+                            <span class="font-semibold" style="color: var(--navy);">$20 - $25</span>
+                            <span style="color: var(--slate);"> / hour</span>
+                        </div>
+                        <div class="countdown-timer px-3 py-1 rounded text-xs">
+                            <span class="font-semibold text-red-600">⏰ 12 days left</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #ecfdf5; color: var(--sage);">Social Media</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #ecfdf5; color: var(--sage);">Analytics</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #ecfdf5; color: var(--sage);">Content</span>
+                    </div>
+                    <button onclick="applyToJob('marketing-assistant')"
+                        class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card bg-white p-6 rounded-2xl shadow-lg" data-category="full-time business entry-level">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3"
+                                style="background-color: #fef3c7;">
+                                <i class="fas fa-headset" style="color: #f59e0b;"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Customer Success Specialist</h3>
+                                <p class="text-sm" style="color: var(--slate);">ServiceFirst Inc</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded-full"
+                            style="background-color: #fef3c7; color: #f59e0b;">Hybrid</span>
+                    </div>
+                    <p class="text-sm mb-4" style="color: var(--slate);">
+                        Help customers succeed with our products. Great communication skills needed.
+                        Training provided on company systems and processes.
+                    </p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm">
+                            <span class="font-semibold" style="color: var(--navy);">$38,000 - $45,000</span>
+                            <span style="color: var(--slate);"> / year</span>
+                        </div>
+                        <div class="countdown-timer px-3 py-1 rounded text-xs">
+                            <span class="font-semibold text-red-600">⏰ 3 days left</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #fef3c7; color: #f59e0b;">Communication</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #fef3c7; color: #f59e0b;">Problem Solving</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #fef3c7; color: #f59e0b;">CRM</span>
+                    </div>
+                    <button onclick="applyToJob('customer-success')"
+                        class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="job-card bg-white p-6 rounded-2xl shadow-lg" data-category="remote tech full-time">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3"
+                                style="background-color: var(--light-blue);">
+                                <i class="fas fa-database" style="color: var(--navy);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Data Analyst</h3>
+                                <p class="text-sm" style="color: var(--slate);">DataDriven Solutions</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded-full"
+                            style="background-color: #ecfdf5; color: var(--sage);">Remote</span>
+                    </div>
+                    <p class="text-sm mb-4" style="color: var(--slate);">
+                        Analyze data to help businesses make better decisions. SQL and Excel skills preferred.
+                        Growth opportunities available.
+                    </p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm">
+                            <span class="font-semibold" style="color: var(--navy);">$55,000 - $70,000</span>
+                            <span style="color: var(--slate);"> / year</span>
+                        </div>
+                        <div class="countdown-timer px-3 py-1 rounded text-xs">
+                            <span class="font-semibold text-red-600">⏰ 8 days left</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: var(--light-blue); color: var(--navy);">SQL</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: var(--light-blue); color: var(--navy);">Excel</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: var(--light-blue); color: var(--navy);">Python</span>
+                    </div>
+                    <button onclick="applyToJob('data-analyst')"
+                        class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="job-card bg-white p-6 rounded-2xl shadow-lg" data-category="part-time business remote">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3"
+                                style="background-color: #ecfdf5;">
+                                <i class="fas fa-pen" style="color: var(--sage);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Content Writer</h3>
+                                <p class="text-sm" style="color: var(--slate);">Creative Content Co</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded-full"
+                            style="background-color: #ecfdf5; color: var(--sage);">Remote</span>
+                    </div>
+                    <p class="text-sm mb-4" style="color: var(--slate);">
+                        Create engaging content for blogs, websites, and social media. Flexible hours,
+                        perfect for students. Portfolio helpful but not required.
+                    </p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm">
+                            <span class="font-semibold" style="color: var(--navy);">$18 - $22</span>
+                            <span style="color: var(--slate);"> / hour</span>
+                        </div>
+                        <div class="countdown-timer px-3 py-1 rounded text-xs">
+                            <span class="font-semibold text-red-600">⏰ 15 days left</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #ecfdf5; color: var(--sage);">Writing</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #ecfdf5; color: var(--sage);">SEO</span>
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #ecfdf5; color: var(--sage);">Research</span>
+                    </div>
+                    <button onclick="applyToJob('content-writer')"
+                        class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job 6 -->
+                <div class="job-card bg-white p-6 rounded-2xl shadow-lg" data-category="full-time tech entry-level">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3"
+                                style="background-color: #fef3c7;">
+                                <i class="fas fa-mobile-alt" style="color: #f59e0b;"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">UI/UX Designer</h3>
+                                <p class="text-sm" style="color: var(--slate);">DesignForward Studio</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded-full"
+                            style="background-color: #ecfdf5; color: var(--sage);">Remote</span>
+                    </div>
+                    <p class="text-sm mb-4" style="color: var(--slate);">
+                        Design user-friendly interfaces for web and mobile applications. Junior position with
+                        mentorship from senior designers. Portfolio required.
+                    </p>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-sm">
+                            <span class="font-semibold" style="color: var(--navy);">$50,000 - $65,000</span>
+                            <span style="color: var(--slate);"> / year</span>
+                        </div>
+                        <div class="countdown-timer px-3 py-1 rounded text-xs">
+                            <span class="font-semibold text-red-600">⏰ 10 days left</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 rounded"
+                            style="background-color: #fef3c7; color: #f59e0b;">Figma</span>
+                        <span class="text-xs px-2 py-1 rounded" style="background-color: #fef3c7; color: #f59e0b;">Adobe
+                            XD</span>
+                        <span class="text-xs px-2 py-1 rounded" style="background-color: #fef3c7; color: #f59e0b;">User
+                            Research</span>
+                    </div>
+                    <button onclick="applyToJob('ui-ux-designer')"
+                        class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button onclick="loadMoreJobs()"
+                    class="bg-white border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-gray-50"
+                    style="border-color: var(--navy); color: var(--navy);">
+                    <i class="fas fa-plus mr-2"></i>
+                    Load More Jobs
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third-Party Resources -->
+    <section id="resources" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Additional Career Resources
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Access valuable resources from BYU Pathway's trusted partners and career development organizations.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Resource 1 -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: var(--light-blue);">
+                        <i class="fas fa-handshake text-2xl" style="color: var(--navy);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">BYU-Pathway Career Center</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Official career services including resume reviews, interview prep, and job search strategies.
+                    </p>
+                    <a href="https://www.byupathway.edu/career-services" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Visit Career Center
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 2 -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ecfdf5;">
+                        <i class="fas fa-users text-2xl" style="color: var(--sage);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">LinkedIn Networking</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Connect with BYU Pathway alumni and professionals in your field of interest.
+                    </p>
+                    <a href="https://www.linkedin.com" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Join Network
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 3 -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fef3c7;">
+                        <i class="fas fa-certificate text-2xl" style="color: #f59e0b;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Professional Certifications</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Earn industry-recognized certifications to boost your resume and demonstrate your skills.
+                    </p>
+                    <button onclick="showCertificationInfo()"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View Certifications
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Resource 4 -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: var(--light-blue);">
+                        <i class="fas fa-chalkboard-teacher text-2xl" style="color: var(--navy);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Interview Preparation</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Practice common interview questions and learn effective communication strategies.
+                    </p>
+                    <button onclick="startInterviewPrep()"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Start Practice
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Resource 5 -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ecfdf5;">
+                        <i class="fas fa-chart-bar text-2xl" style="color: var(--sage);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Salary Research</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Research market rates for your role and location to ensure fair compensation.
+                    </p>
+                    <button onclick="openSalaryTool()" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Research Salaries
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Resource 6 -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fef3c7;">
+                        <i class="fas fa-rocket text-2xl" style="color: #f59e0b;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Freelance Platform</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Find freelance and contract work to build experience while completing your studies.
+                    </p>
+                    <button onclick="exploreFreelance()"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Explore Freelancing
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Timeline -->
+    <section class="py-20" style="background-color: var(--cream);">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Success Stories
+                </h2>
+                <p class="text-xl" style="color: var(--slate);">
+                    Real career journeys from BYU Pathway students and graduates who found meaningful employment.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="success-story fade-in">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="resources/mentor-support.jpg" alt="Success story"
+                                class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy">
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Maria Rodriguez</h3>
+                                <p class="text-sm" style="color: var(--slate);">Certificate in Web Development → Full
+                                    Stack Developer</p>
+                            </div>
+                        </div>
+                        <p class="italic mb-4" style="color: var(--slate);">
+                            "After completing my web development certificate, I connected with a tech company through
+                            the BYU Pathway job board.
+                            Within 3 months, I landed a remote position that doubled my previous income. The career
+                            resources and resume
+                            guidance were invaluable!"
+                        </p>
+                        <div class="flex items-center text-sm" style="color: var(--sage);">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Remote Position, $65,000/year
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-story fade-in">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="resources/career-success.jpg" alt="Success story"
+                                class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy">
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">James Chen</h3>
+                                <p class="text-sm" style="color: var(--slate);">Business Management Certificate →
+                                    Project Manager</p>
+                            </div>
+                        </div>
+                        <p class="italic mb-4" style="color: var(--slate);">
+                            "The networking events and LinkedIn strategies I learned through BYU Pathway helped me
+                            connect with the right people.
+                            I now manage projects for a Fortune 500 company and mentor other students."
+                        </p>
+                        <div class="flex items-center text-sm" style="color: var(--sage);">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Hybrid Position, $78,000/year
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-story fade-in">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="resources/microsoft365-setup.jpg" alt="Success story"
+                                class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy">
+                            <div>
+                                <h3 class="font-semibold" style="color: var(--navy);">Sarah Johnson</h3>
+                                <p class="text-sm" style="color: var(--slate);">Data Analytics Certificate → Data
+                                    Analyst</p>
+                            </div>
+                        </div>
+                        <p class="italic mb-4" style="color: var(--slate);">
+                            "The skills I gained in my data analytics certificate program were exactly what employers
+                            were looking for.
+                            The career center helped me prepare for interviews, and I received three job offers within a
+                            month of graduating."
+                        </p>
+                        <div class="flex items-center text-sm" style="color: var(--sage);">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Remote Position, $72,000/year
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">
+                    © 2025 BYU Pathway Student Support Hub. Built with ❤️ for students worldwide.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
