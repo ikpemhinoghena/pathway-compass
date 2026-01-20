@@ -6,14 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYU Pathway Student Support Hub</title>
     <meta name="description"
-        content="Your comprehensive support hub for BYU Pathway students. Find tutorials, registration help, career resources, and connect with mentors.">
+        content="Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials, registration help, career resources, and connect with mentors.">
     <meta name="keywords" content="BYU Pathway, student support, tutorials, registration, career resources">
     <meta name="author" content="BYU Pathway Support Team">
-    <meta property="og:title" content="BYU Pathway Student Support Hub">
-    <meta property="og:description"
-        content="Your comprehensive support hub for BYU Pathway students. Find tutorials, registration help, career resources, and connect with mentors.">
-    <meta property="og:image" content="resources/hero-main.jpg">
-    <meta property="og:type" content="website">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -43,7 +38,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="responsive.css">
     <style>
         :root {
             --navy: #1e3a8a;
@@ -200,6 +194,44 @@
             outline: 2px solid var(--coral);
             outline-offset: 2px;
         }
+
+        /* Custom button styles for the hero section */
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            width: 100%;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-new {
+            background: linear-gradient(135deg, var(--coral) 0%, #ea580c 100%);
+        }
+
+        .btn-howtos {
+            background: linear-gradient(135deg, var(--sage) 0%, #059669 100%);
+        }
+
+        .btn-job {
+            background: linear-gradient(135deg, var(--navy) 0%, #1d4ed8 100%);
+        }
+
+        .btn-icon {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
     </style>
 </head>
 
@@ -229,6 +261,7 @@
                         <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
                         <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
                         <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                        <a href="scholarships.html" class="nav-link text-sm font-medium">Scholarships</a>
                     </div>
                 </div>
 
@@ -238,23 +271,20 @@
                             class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
                     </div>
-
-                    <!-- Hamburger Menu Button -->
                     <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <i class="fas fa-bars text-xl text-gray-600"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Navigation Menu -->
             <div class="mobile-nav-menu md:hidden" id="mobileNavMenu">
-                <a href="index.html">Home</a>
+                <a href="#home">Home</a>
                 <a href="registration.html">Registration Help</a>
                 <a href="post-registration.html">Setup Guide</a>
                 <a href="jobs.html">Career Resources</a>
                 <a href="how-to.html">How-To Tutorials</a>
+                <a href="scholarships.html">Scholarships</a>
             </div>
         </div>
     </nav>
@@ -273,18 +303,19 @@
                             Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials,
                             registration help, career resources, and connect with mentors who understand your journey.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button onclick="scrollToSection('resources')"
-                                class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg">
-                                <i class="fas fa-rocket mr-2"></i>
-                                Get Started
-                            </button>
-                            <button onclick="window.location.href='how-to.html'"
-                                class="border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-white"
-                                style="border-color: var(--navy); color: var(--navy);">
-                                <i class="fas fa-play mr-2"></i>
-                                Watch Tutorials
-                            </button>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                            <a href="registration.html" class="hero-btn btn-new w-full text-center justify-center">
+                                <i class="fas fa-user-plus btn-icon"></i>
+                                I'm New
+                            </a>
+                            <a href="how-to.html" class="hero-btn btn-howtos w-full text-center justify-center">
+                                <i class="fas fa-question-circle btn-icon"></i>
+                                How-Tos
+                            </a>
+                            <a href="jobs.html" class="hero-btn btn-job w-full text-center justify-center">
+                                <i class="fas fa-briefcase btn-icon"></i>
+                                I Need a Job
+                            </a>
                         </div>
                     </div>
                     <div class="relative">
@@ -416,7 +447,7 @@
 
                 <div class="relative">
                     <img src="resources/student-journey.jpg" alt="BYU Pathway student journey pathway"
-                        class="w-full h-auto rounded-2xl shadow-lg fade-in" loading="lazy">
+                        class="w-full h-auto rounded-2xl shadow-lg fade-in">
 
                     <!-- Journey Steps Overlay -->
                     <div class="absolute inset-0 flex items-center justify-center">
@@ -486,7 +517,7 @@
                                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mx-4">
                                     <div class="flex items-center mb-6">
                                         <img src="resources/mentor-support.jpg" alt="Student testimonial"
-                                            class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy">
+                                            class="w-16 h-16 rounded-full object-cover mr-4">
                                         <div>
                                             <h4 class="font-semibold" style="color: var(--navy);">Sarah M.</h4>
                                             <p class="text-sm" style="color: var(--slate);">PathwayConnect Graduate</p>
@@ -512,7 +543,7 @@
                                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mx-4">
                                     <div class="flex items-center mb-6">
                                         <img src="resources/career-success.jpg" alt="Student testimonial"
-                                            class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy">
+                                            class="w-16 h-16 rounded-full object-cover mr-4">
                                         <div>
                                             <h4 class="font-semibold" style="color: var(--navy);">Carlos R.</h4>
                                             <p class="text-sm" style="color: var(--slate);">Online Degree Student</p>
@@ -537,7 +568,7 @@
                                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mx-4">
                                     <div class="flex items-center mb-6">
                                         <img src="resources/microsoft365-setup.jpg" alt="Student testimonial"
-                                            class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy">
+                                            class="w-16 h-16 rounded-full object-cover mr-4">
                                         <div>
                                             <h4 class="font-semibold" style="color: var(--navy);">Maria L.</h4>
                                             <p class="text-sm" style="color: var(--slate);">Certificate Student</p>

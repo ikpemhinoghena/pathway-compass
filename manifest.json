@@ -1,6 +1,6 @@
 {
-  "name": "BYU Pathway Student Support Hub",
-  "short_name": "BYU Pathway Support",
+  "name": "PathwayCompass - Student Support Hub",
+  "short_name": "PathwayCompass",
   "description": "Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials, registration help, career resources, and connect with mentors.",
   "start_url": "/index.html",
   "display": "standalone",

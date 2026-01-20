@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarships & Financial Aid | PathwayCompass</title>
+    <meta name="description"
+        content="Guide to financial aid options for BYU-Pathway students, including laptop scholarships (HSEF, Lord's Hands) and tuition grants (Heber J. Grant, Hall Foundation).">
+    <meta name="keywords"
+        content="BYU Pathway, scholarships, financial aid, laptop grants, Heber J. Grant, HSEF, Hall Foundation">
+    <meta name="author" content="PathwayCompass Team">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/scholarships.html">
+    <meta property="og:title" content="Scholarships & Financial Aid | PathwayCompass">
+    <meta property="og:description"
+        content="Guide to financial aid options for BYU-Pathway students, including laptop scholarships and tuition grants.">
+    <meta property="og:image" content="https://yourdomain.com/resources/hero-main.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/scholarships.html">
+    <meta property="twitter:title" content="Scholarships & Financial Aid | PathwayCompass">
+    <meta property="twitter:description"
+        content="Guide to financial aid options for BYU-Pathway students, including laptop scholarships and tuition grants.">
+    <meta property="twitter:image" content="https://yourdomain.com/resources/hero-main.jpg">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --sage: #10b981;
+            --cream: #fefce8;
+            --coral: #f97316;
+            --slate: #64748b;
+            --light-blue: #e0f2fe;
+            --gold: #eab308;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        .font-display {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(234, 179, 8, 0.1) 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coral) 0%, #ea580c 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scroll padding for fixed header */
+        html {
+            scroll-padding-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-gray-900">Skip
+        to main content</a>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
+                        <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
+                            <i class="fas fa-compass text-yellow-500 text-2xl"></i>
+                            <span style="color: var(--navy);">Pathway<span class="text-yellow-500">Compass</span></span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                        <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
+                        <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
+                        <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                        <a href="scholarships.html"
+                            class="nav-link text-sm font-medium text-orange-600">Scholarships</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" id="scholarshipSearch" placeholder="Search aid..."
+                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <i class="fas fa-bars text-xl text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav-menu md:hidden" id="mobileNavMenu">
+                <a href="index.html">Home</a>
+                <a href="registration.html">Registration Help</a>
+                <a href="post-registration.html">Setup Guide</a>
+                <a href="jobs.html">Career Resources</a>
+                <a href="how-to.html">How-To Tutorials</a>
+                <a href="scholarships.html">Scholarships</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-[60vh] flex items-center pt-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+                <h1 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: var(--navy);">
+                    Financial Aid & Scholarships
+                </h1>
+                <p class="text-xl mb-10 max-w-3xl mx-auto" style="color: var(--slate);">
+                    Don't let financial barriers stop your education. Explore opportunities for tuition assistance and
+                    laptop grants designed specifically for BYU-Pathway students.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="#laptop"
+                        class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-white transition-all transform hover:-translate-y-1 shadow-lg"
+                        style="background: linear-gradient(135deg, var(--navy) 0%, #1d4ed8 100%);">
+                        <i class="fas fa-laptop mr-3"></i>
+                        Laptop Scholarships
+                    </a>
+                    <a href="#tuition"
+                        class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-white transition-all transform hover:-translate-y-1 shadow-lg"
+                        style="background: linear-gradient(135deg, var(--sage) 0%, #059669 100%);">
+                        <i class="fas fa-graduation-cap mr-3"></i>
+                        Tuition Assistance
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laptop Scholarships Section -->
+        <section id="laptop" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-white"
+                        style="background-color: var(--navy);">
+                        <i class="fas fa-laptop text-xl"></i>
+                    </div>
+                    <h2 class="font-display text-3xl font-bold" style="color: var(--navy);">Laptop Scholarships</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- HSEF Card -->
+                    <div class="card-hover bg-slate-50 p-8 rounded-2xl border border-slate-200 fade-in">
+                        <span
+                            class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase mb-4">Technology
+                            Grant</span>
+                        <h3 class="text-2xl font-bold mb-4">HSEF</h3>
+                        <div class="space-y-4 mb-8">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Program Overview:</h4>
+                                <p class="text-sm">A non-profit dedicated to bridging the digital divide. They provide
+                                    <strong>refurbished high-quality laptops</strong> to students in developing regions
+                                    (Africa, Philippines, Pacific Islands), empowering them to pursue online education.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Requirements:</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                    <li>Have completed PC 101</li>
+                                    <li>Currently registered with BYU-Pathway</li>
+                                    <li>Looking for a job</li>
+                                    <li>Willing to attend the weekly career chats</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">How to Apply (Choose one):</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                    <li><a href="https://forms.office.com/r/Rgy0eS8Ypg?origin=QRCode" target="_blank"
+                                            class="text-blue-600 hover:underline font-semibold">Fill out this request
+                                            form</a></li>
+                                    <li>Meet with your local ecclesiastical leader</li>
+                                    <li>Contact your BYU-Pathway mentor</li>
+                                </ul>
+                                <p class="text-xs text-slate-500 mt-2">Expect a response after your application is
+                                    reviewed.</p>
+                            </div>
+                        </div>
+                        <a href="https://helpstart.org/how-it-works/" target="_blank"
+                            class="w-full block text-center bg-white border-2 border-slate-200 text-slate-700 font-bold py-3 rounded-xl hover:border-blue-600 hover:text-blue-600 transition-colors">
+                            Learn More <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-center">
+                            <p class="text-xs text-slate-400 mb-1">Click for a video explanation</p>
+                            <a href="how-to.html#tutorials"
+                                class="text-sm font-medium flex items-center justify-center text-slate-500 hover:text-orange-600 transition-colors">
+                                <i class="fas fa-play-circle mr-2"></i> Watch Application Guide
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- The Lord's Hands Card -->
+                    <div class="card-hover bg-slate-50 p-8 rounded-2xl border border-slate-200 fade-in">
+                        <span
+                            class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-bold uppercase mb-4">Equipment
+                            Aid</span>
+                        <h3 class="text-2xl font-bold mb-4">The Lord's Hands</h3>
+                        <div class="space-y-4 mb-8">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Program Overview:</h4>
+                                <p class="text-sm">A charitable focus on lifting African students out of poverty. They
+                                    grant
+                                    <strong>free laptops</strong> to dedicated BYU-Pathway learners who lack the
+                                    technology
+                                    needed to complete their degree programs.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Requirements:</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                    <li>Must be a student in Africa</li>
+                                    <li>Demonstrated financial need</li>
+                                    <li>Competitive application via Student Dashboard</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">How to Apply:</h4>
+                                <ol class="list-decimal list-inside text-sm text-slate-600 space-y-1">
+                                    <li>Visit site & create an account</li>
+                                    <li>Fill out the form</li>
+                                    <li><strong>Important:</strong> Have your Student ID ready (<a href="how-to.html"
+                                            class="text-indigo-600 hover:underline">learn to get your school ID</a>)
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <a href="https://thelordshands-ov2k2.ondigitalocean.app/" target="_blank"
+                            class="w-full block text-center bg-white border-2 border-slate-200 text-slate-700 font-bold py-3 rounded-xl hover:border-indigo-600 hover:text-indigo-600 transition-colors">
+                            Visit Website <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-center">
+                            <p class="text-xs text-slate-400 mb-1">Click for a video explanation</p>
+                            <a href="how-to.html#tutorials"
+                                class="text-sm font-medium flex items-center justify-center text-slate-500 hover:text-orange-600 transition-colors">
+                                <i class="fas fa-play-circle mr-2"></i> Watch Application Guide
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tuition Assistance Section -->
+        <section id="tuition" class="py-20" style="background-color: var(--light-blue);">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-white"
+                        style="background-color: var(--sage);">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <h2 class="font-display text-3xl font-bold" style="color: var(--navy);">Tuition Scholarships</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Heber J. Grant Card -->
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-sm fade-in">
+                        <span
+                            class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase mb-4">Tuition
+                            Grant</span>
+                        <h3 class="text-2xl font-bold mb-4">Heber J. Grant (HJG)</h3>
+                        <div class="space-y-4 mb-8">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Overview:</h4>
+                                <p class="text-sm">BYU-Pathway's primary financial aid program, designed to help
+                                    students
+                                    start debt-free. It provides <strong>tuition discounts (10-50%)</strong> to
+                                    PathwayConnect and Online Degree students based on financial need.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Prerequisites:</h4>
+                                <div class="mb-2">
+                                    <p class="text-xs font-bold text-gray-700 uppercase">PathwayConnect:</p>
+                                    <ul class="list-disc list-inside text-sm text-slate-600">
+                                        <li>Register for courses</li>
+                                        <li>Complete self-reliance lesson in portal</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700 uppercase">Online Degree:</p>
+                                    <ul class="list-disc list-inside text-sm text-slate-600">
+                                        <li>Apply at program start (reapply every 2 years)</li>
+                                        <li>Register 3 days before semester starts</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">How to Apply:</h4>
+                                <div class="mb-3">
+                                    <p class="text-xs font-bold text-gray-700 uppercase mb-1">PathwayConnect Students:
+                                    </p>
+                                    <ol class="list-decimal list-inside text-sm text-slate-600 space-y-1">
+                                        <li>Log in to your Student Portal</li>
+                                        <li>Click on <strong>Finances</strong> menu</li>
+                                        <li>Select <strong>Heber J. Grant Scholarship</strong></li>
+                                        <li>Complete the interactive lesson</li>
+                                    </ol>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700 uppercase mb-1">Degree Students:</p>
+                                    <ol class="list-decimal list-inside text-sm text-slate-600 space-y-1">
+                                        <li>Log in to your Student Portal</li>
+                                        <li>Click on <strong>Finances</strong> menu</li>
+                                        <li>Select <strong>Heber J. Grant Scholarship</strong></li>
+                                        <li>Fill out and submit the application form</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.byupathway.org/admissions/costs/scholarships" target="_blank"
+                            class="w-full block text-center btn-primary text-white font-bold py-3 rounded-xl">
+                            Apply Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-center">
+                            <p class="text-xs text-slate-400 mb-1">Click for a video explanation</p>
+                            <a href="how-to.html#tutorials"
+                                class="text-sm font-medium flex items-center justify-center text-slate-500 hover:text-orange-600 transition-colors">
+                                <i class="fas fa-play-circle mr-2"></i> Watch Video Guide
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hall Foundation Card -->
+                    <div class="card-hover bg-white p-8 rounded-2xl shadow-sm fade-in">
+                        <span
+                            class="inline-block px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold uppercase mb-4">External
+                            Foundation</span>
+                        <h3 class="text-2xl font-bold mb-4">Hall Foundation</h3>
+                        <div class="space-y-4 mb-8">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Overview:</h4>
+                                <p class="text-sm">A philanthropic initiative by Brad Hall Companies to foster
+                                    self-reliance. They offer <strong>supplementary tuition grants</strong> for
+                                    students living <strong>outside</strong> the USA to help cover degree costs.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Prerequisites:</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                    <li>Must reside <strong>outside</strong> the United States</li>
+                                    <li>Completed PathwayConnect</li>
+                                    <li>Enrolled in an Online Degree program</li>
+                                    <li>Maintain a major GPA of 2.0 or higher</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">How to Apply:</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                                    <li>Check website for open enrollment periods</li>
+                                    <li>Apply online via the portal (when open)</li>
+                                    <li>Submit required transcripts/documents</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="https://hall-foundation.org/" target="_blank"
+                            class="w-full block text-center bg-teal-600 text-white font-bold py-3 rounded-xl hover:bg-teal-700 transition-colors">
+                            Learn More <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                        <div class="mt-4 pt-4 border-t border-gray-100 text-center">
+                            <p class="text-xs text-slate-400 mb-1">Click for a video explanation</p>
+                            <a href="how-to.html#tutorials"
+                                class="text-sm font-medium flex items-center justify-center text-slate-500 hover:text-orange-600 transition-colors">
+                                <i class="fas fa-play-circle mr-2"></i> Watch Video Guide
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-compass text-yellow-500 text-2xl"></i>
+                        <span class="text-xl font-bold" style="color: var(--navy);">Pathway<span
+                                class="text-yellow-500">Compass</span></span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">
+                        Navigating your journey to success in BYU-Pathway Worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-blue-600 transition-colors"><i
+                                class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
+                                class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-pink-600 transition-colors"><i
+                                class="fab fa-instagram text-lg"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Resources</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="index.html" class="hover:text-blue-600 transition-colors">Home</a></li>
+                        <li><a href="registration.html" class="hover:text-blue-600 transition-colors">Registration
+                                Help</a></li>
+                        <li><a href="post-registration.html" class="hover:text-blue-600 transition-colors">Setup
+                                Guide</a></li>
+                        <li><a href="scholarships.html" class="hover:text-blue-600 transition-colors">Scholarships</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="how-to.html" class="hover:text-blue-600 transition-colors">Tutorials Library</a>
+                        </li>
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">Contact Mentors</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Newsletter</h4>
+                    <p class="text-sm text-slate-500 mb-4">Get the latest tips and updates.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email address"
+                            class="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-500">
+                        <button type="submit"
+                            class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors">
+                            Go
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">
+                    &copy; 2024 PathwayCompass. Not an official BYU-Pathway Worldwide site.
+                </p>
+                <div class="flex gap-6 text-xs text-slate-400">
+                    <a href="#" class="hover:text-slate-600">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-600">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

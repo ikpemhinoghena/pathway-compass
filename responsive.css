@@ -1,5 +1,6 @@
 /* Pathway Compass - Responsive Styles
  * Complete mobile and tablet optimizations with working hamburger menu
+ * Updated to prevent broken animations on small screens
  */
 
 /* ============================================
@@ -115,6 +116,15 @@
         padding-top: 3rem !important;
         padding-bottom: 3rem !important;
     }
+
+    /* Disable complex animations on tablets */
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+    }
 }
 
 /* ============================================
@@ -135,9 +145,42 @@
         display: none !important;
     }
 
+    /* DISABLE ANIMATIONS ON MOBILE */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* Keep only essential transitions */
+    .mobile-menu-button span,
+    .mobile-nav-menu {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.3s !important;
+    }
+
     /* Base font adjustments */
     body {
         font-size: 0.9375rem;
+    }
+
+    /* Fix search input on mobile */
+    nav input[type="text"] {
+        width: 180px !important;
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem 0.5rem 2rem !important;
+    }
+
+    nav input[type="text"]::placeholder {
+        font-size: 0.75rem;
+    }
+
+    nav .relative .fa-search {
+        left: 0.5rem !important;
+        top: 0.625rem !important;
+        font-size: 0.875rem;
     }
 
     /* Hero Section */
@@ -201,9 +244,11 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Card adjustments */
+    /* Card adjustments - prevent overflow */
     .card-hover {
         padding: 1.5rem;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     /* Images */
@@ -233,7 +278,8 @@
         gap: 0.5rem;
     }
 
-    .filter-btn {
+    .filter-btn,
+    .filter-tag {
         padding: 0.625rem 1rem;
         font-size: 0.875rem;
         flex: 1 1 auto;
@@ -242,13 +288,12 @@
 
     /* Search input - full width */
     input[type="text"],
-    input[type="search"] {
+    input[type="search"],
+    select,
+    textarea {
         width: 100% !important;
         max-width: 100% !important;
-    }
-
-    nav .relative {
-        width: 100%;
+        box-sizing: border-box;
     }
 
     /* Timeline adjustments */
@@ -294,13 +339,6 @@
         padding-right: 1rem !important;
     }
 
-    /* Form controls */
-    select,
-    textarea {
-        width: 100%;
-        font-size: 1rem;
-    }
-
     /* Diagnostic cards */
     .diagnostic-card {
         margin-bottom: 1rem;
@@ -319,6 +357,14 @@
     /* Video cards */
     .video-card {
         margin-bottom: 1.5rem;
+    }
+
+    /* Prevent box overflow */
+    div,
+    section,
+    article {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
 
@@ -379,17 +425,23 @@
         height: 2.5rem !important;
     }
 
-    /* Filter buttons - full width when too cramped */
+    /* Filter buttons - smaller on cramped screens */
     .filter-tag,
     .filter-btn {
-        width: calc(50% - 0.25rem);
-        text-align: center;
+        font-size: 0.8125rem;
+        padding: 0.5rem 0.75rem;
     }
 
     /* Navigation links in mobile menu */
     .mobile-nav-menu a {
         padding: 0.875rem 1rem;
         font-size: 0.9375rem;
+    }
+
+    /* Search even more compact */
+    nav input[type="text"] {
+        width: 140px !important;
+        padding: 0.375rem 0.5rem 0.375rem 1.75rem !important;
     }
 }
 
@@ -486,11 +538,6 @@
     .space-x-4>* {
         margin-left: 0 !important;
         margin-right: 0 !important;
-    }
-
-    /* Search containers */
-    .relative input[type="text"] {
-        width: 100%;
     }
 
     /* Stat counters */

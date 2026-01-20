@@ -1,4 +1,4 @@
-// BYU Pathway Student Support Hub - Main JavaScript
+// PathwayCompass - Main JavaScript
 // Comprehensive interactive functionality with psychological design principles
 
 class BYUPathwayApp {
@@ -433,11 +433,12 @@ class BYUPathwayApp {
         mobileMenu.className = 'mobile-menu md:hidden bg-white border-t border-gray-200';
         mobileMenu.innerHTML = `
             <div class="px-4 py-2 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Home</a>
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Home</a>
                 <a href="registration.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Registration Help</a>
                 <a href="post-registration.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Setup Guide</a>
                 <a href="jobs.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Career Resources</a>
                 <a href="how-to.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">How-To Tutorials</a>
+                <a href="scholarships.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Scholarships</a>
             </div>
         `;
         nav.appendChild(mobileMenu);
