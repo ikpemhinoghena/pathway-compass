@@ -1,52 +1,20 @@
 {
-  "name": "PathwayCompass - Student Support Hub",
-  "short_name": "PathwayCompass",
-  "description": "Your comprehensive support hub for navigating BYU Pathway. Find step-by-step tutorials, registration help, career resources, and connect with mentors.",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#fefce8",
-  "theme_color": "#1e3a8a",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "resources/icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "resources/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+    "short_name": "Pathway Compass",
+    "name": "BYU Pathway Student Support Hub",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "theme_color": "#1e3a8a",
+    "background_color": "#fefce8"
 }

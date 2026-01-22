@@ -6,6 +6,7 @@ const urlsToCache = [
   '/post-registration.html',
   '/jobs.html',
   '/how-to.html',
+  '/tutorials-data.js',
   '/main.js',
   '/styles.css', // assuming you might split styles later
   'https://cdn.tailwindcss.com',

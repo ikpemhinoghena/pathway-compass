@@ -194,6 +194,22 @@
             cursor: pointer;
             z-index: 10;
         }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -264,7 +280,7 @@
                     </p>
                     <div class="flex items-center space-x-6">
                         <div class="text-center">
-                            <div class="text-2xl font-bold" style="color: var(--coral);">200+</div>
+                            <div class="text-2xl font-bold" style="color: var(--coral);">100+</div>
                             <div class="text-sm" style="color: var(--slate);">Tutorials</div>
                         </div>
                         <div class="text-center">
@@ -348,6 +364,28 @@
                     </div>
                 </div>
 
+                <!-- Device Toggle -->
+                <div class="border-t pt-4 mb-4">
+                    <label class="block text-sm font-medium mb-3" style="color: var(--navy);">Device Type</label>
+                    <div class="flex gap-2" id="deviceToggle">
+                        <button
+                            class="device-toggle active px-6 py-2 rounded-full text-sm font-medium flex items-center gap-2 border-2 transition-all"
+                            data-device="all" style="border-color: var(--coral); background-color: #fff7ed;">
+                            <i class="fas fa-globe"></i> All Devices
+                        </button>
+                        <button
+                            class="device-toggle px-6 py-2 rounded-full text-sm font-medium flex items-center gap-2 border-2 border-gray-300 transition-all hover:bg-gray-50"
+                            data-device="pc">
+                            <i class="fas fa-desktop"></i> For PC Users
+                        </button>
+                        <button
+                            class="device-toggle px-6 py-2 rounded-full text-sm font-medium flex items-center gap-2 border-2 border-gray-300 transition-all hover:bg-gray-50"
+                            data-device="mobile">
+                            <i class="fas fa-mobile-alt"></i> For Mobile Users
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Filter Tags -->
                 <div class="border-t pt-4">
                     <label class="block text-sm font-medium mb-3" style="color: var(--navy);">Filter by Category</label>
@@ -378,310 +416,20 @@
 
             <!-- Tutorial Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="tutorialGrid">
-                <!-- Tutorial 1 -->
-                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in"
-                    data-category="registration" data-duration="15" data-rating="4.8" data-views="1250">
-                    <div class="relative h-48">
-                        <img src="resources/registration-process.jpg" alt="Registration Process Tutorial"
-                            class="w-full h-full object-cover">
-                        <div class="play-overlay">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
-                                style="background-color: var(--coral);">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <button class="bookmark-btn text-white text-xl"
-                                onclick="toggleBookmark(this, 'reg-process')">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">15 min</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs px-2 py-1 rounded difficulty-easy">Easy</span>
-                            <div class="flex items-center">
-                                <div class="rating-stars flex mr-2">
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                </div>
-                                <span class="text-xs" style="color: var(--slate);">4.8 (1,250)</span>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Complete Registration Process
-                        </h3>
-                        <p class="text-sm mb-4" style="color: var(--slate);">Step-by-step guide through the entire BYU
-                            Pathway registration process from start to finish.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs px-2 py-1 rounded"
-                                style="background-color: var(--light-blue); color: var(--navy);">Registration</span>
-                            <button onclick="playVideo('registration-complete')"
-                                class="text-sm font-semibold hover:underline" style="color: var(--coral);">
-                                Watch Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Tutorials will be loaded dynamically -->
+            </div>
 
-                <!-- Tutorial 2 -->
-                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" data-category="canvas"
-                    data-duration="25" data-rating="4.9" data-views="2100">
-                    <div class="relative h-48">
-                        <img src="resources/hero-main.jpg" alt="Canvas Navigation Tutorial"
-                            class="w-full h-full object-cover">
-                        <div class="play-overlay">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
-                                style="background-color: var(--sage);">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <button class="bookmark-btn text-white text-xl"
-                                onclick="toggleBookmark(this, 'canvas-nav')">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">25 min</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs px-2 py-1 rounded difficulty-medium">Medium</span>
-                            <div class="flex items-center">
-                                <div class="rating-stars flex mr-2">
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                </div>
-                                <span class="text-xs" style="color: var(--slate);">4.9 (2,100)</span>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Master Canvas Navigation</h3>
-                        <p class="text-sm mb-4" style="color: var(--slate);">Learn all the essential features of Canvas
-                            to succeed in your online courses.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs px-2 py-1 rounded"
-                                style="background-color: #ecfdf5; color: var(--sage);">Canvas</span>
-                            <button onclick="playVideo('canvas-master')" class="text-sm font-semibold hover:underline"
-                                style="color: var(--coral);">
-                                Watch Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tutorial 3 -->
-                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" data-category="microsoft"
-                    data-duration="12" data-rating="4.7" data-views="980">
-                    <div class="relative h-48">
-                        <img src="resources/microsoft365-setup.jpg" alt="Microsoft 365 Setup Tutorial"
-                            class="w-full h-full object-cover">
-                        <div class="play-overlay">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
-                                style="background-color: var(--navy);">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <button class="bookmark-btn text-white text-xl"
-                                onclick="toggleBookmark(this, 'm365-setup')">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">12 min</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs px-2 py-1 rounded difficulty-easy">Easy</span>
-                            <div class="flex items-center">
-                                <div class="rating-stars flex mr-2">
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                </div>
-                                <span class="text-xs" style="color: var(--slate);">4.7 (980)</span>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Microsoft 365 Setup</h3>
-                        <p class="text-sm mb-4" style="color: var(--slate);">Complete setup guide for Word, Excel,
-                            PowerPoint, and Teams with your student account.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs px-2 py-1 rounded"
-                                style="background-color: #fef3c7; color: #f59e0b;">Microsoft 365</span>
-                            <button onclick="playVideo('m365-setup')" class="text-sm font-semibold hover:underline"
-                                style="color: var(--coral);">
-                                Watch Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tutorial 4 -->
-                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in" data-category="portal"
-                    data-duration="8" data-rating="4.6" data-views="750">
-                    <div class="relative h-48">
-                        <img src="resources/mentor-support.jpg" alt="Portal Navigation Tutorial"
-                            class="w-full h-full object-cover">
-                        <div class="play-overlay">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
-                                style="background-color: #8b5cf6;">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <button class="bookmark-btn text-white text-xl"
-                                onclick="toggleBookmark(this, 'portal-nav')">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">8 min</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs px-2 py-1 rounded difficulty-easy">Easy</span>
-                            <div class="flex items-center">
-                                <div class="rating-stars flex mr-2">
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                </div>
-                                <span class="text-xs" style="color: var(--slate);">4.6 (750)</span>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Portal Navigation</h3>
-                        <p class="text-sm mb-4" style="color: var(--slate);">Navigate the new BYU Pathway student portal
-                            like a pro with this comprehensive guide.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs px-2 py-1 rounded"
-                                style="background-color: #ddd6fe; color: #8b5cf6;">Portal</span>
-                            <button onclick="playVideo('portal-nav')" class="text-sm font-semibold hover:underline"
-                                style="color: var(--coral);">
-                                Watch Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tutorial 5 -->
-                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in"
-                    data-category="study-skills" data-duration="18" data-rating="4.8" data-views="1800">
-                    <div class="relative h-48">
-                        <img src="resources/student-journey.jpg" alt="Study Skills Tutorial"
-                            class="w-full h-full object-cover">
-                        <div class="play-overlay">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
-                                style="background-color: var(--coral);">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <button class="bookmark-btn text-white text-xl"
-                                onclick="toggleBookmark(this, 'study-skills')">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">18 min</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs px-2 py-1 rounded difficulty-medium">Medium</span>
-                            <div class="flex items-center">
-                                <div class="rating-stars flex mr-2">
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                </div>
-                                <span class="text-xs" style="color: var(--slate);">4.8 (1,800)</span>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Effective Study Skills</h3>
-                        <p class="text-sm mb-4" style="color: var(--slate);">Learn proven study techniques that will
-                            help you excel in your online courses.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs px-2 py-1 rounded"
-                                style="background-color: #fce7f3; color: #ec4899;">Study Skills</span>
-                            <button onclick="playVideo('study-skills')" class="text-sm font-semibold hover:underline"
-                                style="color: var(--coral);">
-                                Watch Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tutorial 6 -->
-                <div class="video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in"
-                    data-category="time-management" data-duration="22" data-rating="4.9" data-views="1650">
-                    <div class="relative h-48">
-                        <img src="resources/career-success.jpg" alt="Time Management Tutorial"
-                            class="w-full h-full object-cover">
-                        <div class="play-overlay">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center"
-                                style="background-color: var(--sage);">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <button class="bookmark-btn text-white text-xl" onclick="toggleBookmark(this, 'time-mgmt')">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">22 min</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs px-2 py-1 rounded difficulty-medium">Medium</span>
-                            <div class="flex items-center">
-                                <div class="rating-stars flex mr-2">
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                    <i class="fas fa-star text-xs"></i>
-                                </div>
-                                <span class="text-xs" style="color: var(--slate);">4.9 (1,650)</span>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Time Management Mastery</h3>
-                        <p class="text-sm mb-4" style="color: var(--slate);">Master time management techniques
-                            specifically designed for online students.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs px-2 py-1 rounded"
-                                style="background-color: #f3e8ff; color: #a855f7;">Time Management</span>
-                            <button onclick="playVideo('time-management')" class="text-sm font-semibold hover:underline"
-                                style="color: var(--coral);">
-                                Watch Now
-                            </button>
-                        </div>
-                    </div>
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" class="hidden text-center py-8">
+                <div class="inline-block">
+                    <div class="loading-spinner"></div>
+                    <p class="mt-2" style="color: var(--navy);">Loading more tutorials...</p>
                 </div>
             </div>
 
             <!-- Load More Button -->
             <div class="text-center mt-12">
-                <button onclick="loadMoreTutorials()"
+                <button id="loadMoreBtn"
                     class="bg-white border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-gray-50"
                     style="border-color: var(--navy); color: var(--navy);">
                     <i class="fas fa-plus mr-2"></i>
@@ -720,37 +468,28 @@
 
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">
-        <div class="video-container">
+        <div class="video-container" style="max-width: 900px; width: 95%;">
             <button class="video-close" onclick="closeVideoModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="p-6">
-                <div class="text-center py-12">
-                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                        style="background-color: var(--sage);">
-                        <i class="fas fa-play text-white text-2xl ml-1"></i>
+            <div class="p-4">
+                <h3 class="text-xl font-semibold mb-4 text-center" style="color: var(--navy);" id="videoTitle">Tutorial
+                    Video</h3>
+                <div class="aspect-video bg-black rounded-lg overflow-hidden mb-4 flex items-center justify-center">
+                    <iframe id="videoFrame" width="100%" height="100%" src="" title="YouTube Video" frameborder="0"
+                        referrerpolicy="no-referrer"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen style="display: none;">
+                    </iframe>
+                    <div id="videoPlaceholder" class="text-center text-white">
+                        <i class="fas fa-play-circle text-6xl mb-4" style="color: var(--coral);"></i>
+                        <p>Loading tutorial video...</p>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4" style="color: var(--navy);" id="videoTitle">Tutorial Video
-                    </h3>
-                    <p class="text-lg mb-8" style="color: var(--slate);" id="videoDescription">
-                        In a real implementation, this would play the Loom video tutorial.
-                        For this demo, we're showing the video interface.
-                    </p>
-                    <div class="bg-gray-100 rounded-lg p-6 mb-6">
-                        <p class="text-sm" style="color: var(--slate);">
-                            <strong>Video Features:</strong><br>
-                            • HD quality playback<br>
-                            • Speed controls (0.5x - 2x)<br>
-                            • Closed captions<br>
-                            • Chapter navigation<br>
-                            • Download for offline viewing<br>
-                            • Progress tracking<br>
-                            • Note-taking tools
-                        </p>
-                    </div>
+                </div>
+                <div class="flex justify-center">
                     <button onclick="closeVideoModal()"
-                        class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all">
-                        Continue Learning
+                        class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                        Close Video
                     </button>
                 </div>
             </div>
@@ -778,89 +517,39 @@
 
     <script>
         // Tutorials page specific JavaScript
-        let bookmarkedTutorials = new Set();
+        // Current filter state
         let currentFilter = 'all';
-        let currentSort = 'newest';
+        let currentDevice = 'all';
+        let tutorialsToShow = 6; // Number of tutorials to show initially and per load
+        let currentSort = 'newest'; // Default sort order
 
-        // Initialize bookmarks from localStorage
-        function initializeBookmarks() {
-            const saved = localStorage.getItem('byu-tutorial-bookmarks');
-            if (saved) {
-                bookmarkedTutorials = new Set(JSON.parse(saved));
-                updateBookmarkedTutorials();
-            }
-        }
+        // Initialize device toggle
+        function initializeDeviceToggle() {
+            const deviceToggle = document.querySelectorAll('.device-toggle');
+            deviceToggle.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove active styling from all buttons
+                    deviceToggle.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.borderColor = '#d1d5db';
+                        b.style.backgroundColor = 'white';
+                    });
 
-        // Toggle bookmark
-        function toggleBookmark(button, tutorialId) {
-            const icon = button.querySelector('i');
+                    // Add active styling to clicked button
+                    this.classList.add('active');
+                    this.style.borderColor = 'var(--coral)';
+                    this.style.backgroundColor = '#fff7ed';
 
-            if (bookmarkedTutorials.has(tutorialId)) {
-                bookmarkedTutorials.delete(tutorialId);
-                icon.className = 'far fa-bookmark';
-                button.classList.remove('bookmarked');
-            } else {
-                bookmarkedTutorials.add(tutorialId);
-                icon.className = 'fas fa-bookmark';
-                button.classList.add('bookmarked');
+                    // Update current device filter
+                    currentDevice = this.getAttribute('data-device');
 
-                // Celebration animation
-                anime({
-                    targets: button,
-                    scale: [1, 1.3, 1],
-                    duration: 600,
-                    easing: 'easeOutElastic(1, .8)'
+                    // Apply combined filters
+                    applyAllFilters();
                 });
-            }
-
-            saveBookmarks();
-            updateBookmarkedTutorials();
+            });
         }
 
-        // Save bookmarks to localStorage
-        function saveBookmarks() {
-            localStorage.setItem('byu-tutorial-bookmarks', JSON.stringify([...bookmarkedTutorials]));
-        }
-
-        // Update bookmarked tutorials display
-        function updateBookmarkedTutorials() {
-            const container = document.getElementById('bookmarkedTutorials');
-
-            if (bookmarkedTutorials.size === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 col-span-full">
-                        <i class="fas fa-bookmark text-6xl mb-4" style="color: var(--slate);"></i>
-                        <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
-                        <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by clicking the bookmark icon on any video.</p>
-                        <button onclick="scrollToSection('tutorials')" class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
-                            Browse Tutorials
-                        </button>
-                    </div>
-                `;
-            } else {
-                // In a real implementation, this would show the actual bookmarked tutorials
-                container.innerHTML = `
-                    <div class="text-center py-12 col-span-full">
-                        <i class="fas fa-bookmark text-4xl mb-4" style="color: var(--sage);"></i>
-                        <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Bookmarked Tutorials</h3>
-                        <p class="mb-6" style="color: var(--slate);">You have ${bookmarkedTutorials.size} bookmarked tutorial${bookmarkedTutorials.size > 1 ? 's' : ''}.</p>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            ${Array.from(bookmarkedTutorials).map(id => `
-                                <div class="bg-white p-4 rounded-lg shadow-sm">
-                                    <h4 class="font-semibold mb-2" style="color: var(--navy);">Tutorial: ${id}</h4>
-                                    <p class="text-sm mb-3" style="color: var(--slate);">Your bookmarked tutorial would appear here.</p>
-                                    <button onclick="playVideo('${id}')" class="text-sm font-semibold hover:underline" style="color: var(--coral);">
-                                        Watch Now
-                                    </button>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-        }
-
-        // Initialize filter functionality
+        // Initialize category filters
         function initializeFilters() {
             const filterTags = document.querySelectorAll('.filter-tag');
             filterTags.forEach(tag => {
@@ -871,34 +560,200 @@
                     // Add active class to clicked tag
                     this.classList.add('active');
 
-                    // Filter tutorials
-                    const filter = this.getAttribute('data-filter');
-                    filterTutorials(filter);
+                    // Update current filter
+                    currentFilter = this.getAttribute('data-filter');
+
+                    // Apply combined filters
+                    applyAllFilters();
                 });
             });
         }
 
-        // Filter tutorials
-        function filterTutorials(filter) {
-            currentFilter = filter;
+        // Apply all filters (category + device + search)
+        function applyAllFilters() {
             const tutorialCards = document.querySelectorAll('.video-card');
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
 
             tutorialCards.forEach(card => {
-                const categories = card.getAttribute('data-category');
+                const cardCategory = card.getAttribute('data-category');
+                const cardDevice = card.getAttribute('data-device');
 
-                if (filter === 'all' || categories.includes(filter)) {
+                // Check category filter
+                const passesCategory = currentFilter === 'all' || cardCategory === currentFilter;
+
+                // Check device filter
+                const passesDevice = currentDevice === 'all' || cardDevice === currentDevice;
+
+                // Check search filter
+                let passesSearch = true;
+                if (searchQuery.length >= 2) {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    passesSearch = title.includes(searchQuery) || description.includes(searchQuery) || cardCategory.includes(searchQuery);
+                }
+
+                // Show/hide based on all filters
+                if (passesCategory && passesDevice && passesSearch) {
                     card.style.display = 'block';
-                    // Add animation
-                    anime({
-                        targets: card,
-                        opacity: [0, 1],
-                        translateY: [20, 0],
-                        duration: 300,
-                        easing: 'easeOutQuart'
-                    });
+                    if (searchQuery.length >= 2) {
+                        highlightSearchTerms(card, searchQuery);
+                    }
                 } else {
                     card.style.display = 'none';
                 }
+            });
+        }
+
+        // Filter tutorials by category (legacy support)
+        function filterTutorials(category) {
+            currentFilter = category;
+            applyAllFilters();
+        }
+
+        // Initialize bookmark functionality
+        function initializeBookmarks() {
+            // Load bookmarks from localStorage
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+
+            // Update UI for bookmarked items
+            document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                const tutorialId = btn.getAttribute('data-tutorial-id');
+                if (tutorialId && bookmarks.includes(tutorialId)) {
+                    btn.classList.add('bookmarked');
+                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                }
+            });
+
+            // Initial update of bookmarked tutorials section
+            updateBookmarkedTutorials();
+        }
+
+        // Toggle bookmark
+        function toggleBookmark(btn, tutorialId) {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const index = bookmarks.indexOf(tutorialId);
+
+            if (index > -1) {
+                // Remove from bookmarks
+                bookmarks.splice(index, 1);
+                btn.classList.remove('bookmarked');
+                btn.innerHTML = '<i class="far fa-bookmark"></i>';
+            } else {
+                // Add to bookmarks
+                bookmarks.push(tutorialId);
+                btn.classList.add('bookmarked');
+                btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+            }
+
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+            // Update bookmark display
+            updateBookmarkedTutorials();
+        }
+
+        // Update bookmarked tutorials display
+        function updateBookmarkedTutorials() {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const bookmarkedContainer = document.getElementById('bookmarkedTutorials');
+
+            if (!bookmarks.length) {
+                bookmarkedContainer.innerHTML = `
+                    <div class="text-center py-12 col-span-full">
+                        <i class="fas fa-bookmark text-6xl mb-4" style="color: var(--slate);"></i>
+                        <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
+                        <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by
+                            clicking the bookmark icon on any video.</p>
+                        <button onclick="scrollToSection('tutorials')"
+                            class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                            Browse Tutorials
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            // Clear existing content
+            bookmarkedContainer.innerHTML = '';
+
+            // Get tutorial data and create cards for bookmarks
+            const bookmarkedTutorials = tutorialData.filter(tutorial =>
+                bookmarks.includes(tutorial.id)
+            );
+
+            bookmarkedTutorials.forEach(tutorial => {
+                const card = createTutorialCard(tutorial);
+
+                // Add remove button to bookmarked items
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'absolute top-4 right-4 bg-white rounded-full p-2 shadow-md';
+                removeBtn.style.zIndex = '10';
+                removeBtn.innerHTML = '<i class="fas fa-times text-gray-600"></i>';
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    toggleBookmarkFromBookmarked(tutorial.id);
+                    card.remove();
+                };
+
+                // Create a wrapper div to hold the card and remove button
+                const wrapper = document.createElement('div');
+                wrapper.className = 'relative';
+                wrapper.appendChild(card);
+                wrapper.appendChild(removeBtn);
+
+                bookmarkedContainer.appendChild(wrapper);
+            });
+        }
+
+        // Remove bookmark from bookmarked section
+        function toggleBookmarkFromBookmarked(tutorialId) {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const index = bookmarks.indexOf(tutorialId);
+
+            if (index > -1) {
+                bookmarks.splice(index, 1);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+                // Update all bookmark buttons in the tutorials section
+                document.querySelectorAll(`.bookmark-btn[data-tutorial-id="${tutorialId}"]`).forEach(btn => {
+                    btn.classList.remove('bookmarked');
+                    btn.innerHTML = '<i class="far fa-bookmark"></i>';
+                });
+            }
+        }
+
+        // Initialize bookmark functionality
+        function initializeBookmarks() {
+            // Load bookmarks from localStorage
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+
+            // Update UI for bookmarked items
+            document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                const tutorialId = btn.getAttribute('data-tutorial-id');
+                if (bookmarks.includes(tutorialId)) {
+                    btn.classList.add('bookmarked');
+                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                }
+            });
+
+            // Initial update of bookmarked tutorials section
+            updateBookmarkedTutorials();
+        }
+
+        // Initialize video card click handlers
+        function initializeVideoCards() {
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    // Don't trigger if clicking bookmark button
+                    if (e.target.closest('.bookmark-btn')) return;
+
+                    const videoUrl = this.getAttribute('data-video-url');
+                    const title = this.querySelector('h3').textContent.trim();
+
+                    if (videoUrl) {
+                        playVideo(null, videoUrl, title);
+                    }
+                });
             });
         }
 
@@ -913,7 +768,7 @@
                     const query = e.target.value.toLowerCase().trim();
 
                     searchTimeout = setTimeout(() => {
-                        searchTutorials(query);
+                        applyAllFilters();
                     }, 300);
                 });
             }
@@ -923,7 +778,7 @@
         function searchTutorials(query) {
             if (query.length < 2) {
                 // Show all tutorials if search is too short
-                filterTutorials(currentFilter);
+                applyAllFilters();
                 return;
             }
 
@@ -936,7 +791,11 @@
 
                 const matches = title.includes(query) || description.includes(query) || category.includes(query);
 
-                if (matches) {
+                // Only show if matches AND passes current filter
+                const cardCategory = card.getAttribute('data-category');
+                const passesFilter = currentFilter === 'all' || cardCategory === currentFilter;
+
+                if (matches && passesFilter) {
                     card.style.display = 'block';
                     // Highlight search terms
                     highlightSearchTerms(card, query);
@@ -952,47 +811,264 @@
             const description = card.querySelector('p');
 
             [title, description].forEach(element => {
-                const text = element.textContent;
+                if (!element) return;
+
+                const originalText = element.getAttribute('data-original-text') || element.textContent;
+                element.setAttribute('data-original-text', originalText);
+
                 const regex = new RegExp(`(${query})`, 'gi');
-                const highlightedText = text.replace(regex, '<span class="search-highlight">$1</span>');
+                const highlightedText = originalText.replace(regex, '<span class="search-highlight">$1</span>');
                 element.innerHTML = highlightedText;
             });
         }
 
-        // Play video function
-        function playVideo(videoId) {
+        // Reset search highlights
+        function resetSearchHighlights() {
+            document.querySelectorAll('.search-highlight').forEach(highlight => {
+                // Restore original text
+                const parent = highlight.parentElement;
+                const originalText = parent.getAttribute('data-original-text');
+                if (originalText) {
+                    parent.textContent = originalText;
+                }
+            });
+        }
+
+        // Play video function - Simplified to fix Error 153
+        function playVideo(videoId, videoUrl, title) {
             const videoTitles = {
                 'registration-complete': 'Complete Registration Process',
                 'canvas-master': 'Master Canvas Navigation',
                 'm365-setup': 'Microsoft 365 Setup',
                 'portal-nav': 'Portal Navigation',
                 'study-skills': 'Effective Study Skills',
-                'time-management': 'Time Management Mastery'
+                'time-management': 'Time Management Mastery',
+                'featured-tutorial': 'Welcome to BYU Pathway'
             };
 
-            const title = videoTitles[videoId] || 'Tutorial Video';
-            document.getElementById('videoTitle').textContent = title;
-            document.getElementById('videoModal').classList.add('active');
+            const displayTitle = title || videoTitles[videoId] || 'Tutorial Video';
+            document.getElementById('videoTitle').textContent = displayTitle;
 
-            // Prevent body scroll
+            const iframe = document.getElementById('videoFrame');
+            const placeholder = document.getElementById('videoPlaceholder');
+
+            // Extract ID or use default
+            let id = 'tgbNymZ7vqY'; // Default working ID
+
+            if (videoUrl) {
+                const regExp = /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\?v=|&v=)([^#&?]*).*/;
+                const match = videoUrl.match(regExp);
+                if (match && match[1]) id = match[1].split('?')[0];
+            } else if (videoId) {
+                const youtubeVideoMap = {
+                    'registration-complete': 'tgbNymZ7vqY',
+                    'canvas-master': 'tgbNymZ7vqY',
+                    'm365-setup': 'tgbNymZ7vqY',
+                    'portal-nav': 'tgbNymZ7vqY',
+                    'study-skills': 'tgbNymZ7vqY',
+                    'time-management': 'tgbNymZ7vqY',
+                    'featured-tutorial': 'tgbNymZ7vqY'
+                };
+                id = youtubeVideoMap[videoId] || 'tgbNymZ7vqY';
+            }
+
+            // Set simple iframe src with mute=1 for autoplay compatibility
+            // User specifically asked for youtube.com/embed format
+            iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&rel=0`;
+
+            // Toggle visibility
+            iframe.style.display = 'block';
+            placeholder.style.display = 'none';
+
+            document.getElementById('videoModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         // Play featured video
         function playFeaturedVideo() {
-            playVideo('featured-tutorial');
+            // Using the example YouTube video ID from the user request
+            playVideo('featured-tutorial', 'https://www.youtube.com/watch?v=tgbNymZ7vqY', 'Welcome to BYU Pathway Tutorials');
+        }
+
+        // Safe stub for YouTube API loader - prevents runtime errors if not needed
+        function loadYouTubeAPI() {
+            // Intentionally a no-op for sites that only use simple iframe embeds.
+            // If you later need the full YouTube IFrame API, load it here.
+            return;
         }
 
         // Close video modal
         function closeVideoModal() {
+            // Stop video by clearing iframe src
+            const iframe = document.getElementById('videoFrame');
+            iframe.src = ''; // This stops the video playback
+
+            // Show placeholder again
+            document.getElementById('videoPlaceholder').style.display = 'block';
+            iframe.style.display = 'none';
+
             document.getElementById('videoModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
         // Load more tutorials
         function loadMoreTutorials() {
-            // In a real implementation, this would load additional tutorials from an API
-            alert('Loading more tutorials... In a real implementation, this would fetch additional tutorial videos.');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            // Show loading indicator and disable button temporarily
+            loadingIndicator.classList.remove('hidden');
+            loadMoreBtn.disabled = true;
+
+            // Simulate loading delay for better UX
+            setTimeout(() => {
+                // Get currently displayed tutorials count
+                const currentTutorials = document.querySelectorAll('#tutorialGrid .video-card');
+                const startIndex = currentTutorials.length;
+
+                // Load next batch of tutorials (6 more)
+                const endIndex = Math.min(startIndex + tutorialsToShow, tutorialData.length);
+
+                // If we've reached the end, disable the button
+                if (startIndex >= tutorialData.length) {
+                    loadMoreBtn.disabled = true;
+                    loadMoreBtn.style.display = 'none';
+                    loadingIndicator.classList.add('hidden');
+                    return;
+                }
+
+                // Add new tutorials to the grid
+                for (let i = startIndex; i < endIndex; i++) {
+                    if (i < tutorialData.length) {
+                        const tutorial = tutorialData[i];
+                        const tutorialCard = createTutorialCard(tutorial);
+                        document.getElementById('tutorialGrid').appendChild(tutorialCard);
+                    }
+                }
+
+                // Reinitialize event listeners for new cards
+                initializeVideoCards();
+
+                // Apply current filters to all cards to ensure proper visibility
+                applyAllFilters();
+
+                // Make sure fade-in animation works for new cards
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                // Observe all new fade-in elements
+                const allFadeInElements = document.querySelectorAll('#tutorialGrid .video-card');
+                allFadeInElements.forEach(el => {
+                    if (!el.classList.contains('observed')) {
+                        el.classList.add('observed');
+                        observer.observe(el);
+                    }
+                });
+
+                // Hide loading indicator and re-enable button
+                loadingIndicator.classList.add('hidden');
+                loadMoreBtn.disabled = false;
+
+                // If we've reached the end, hide the button
+                if (endIndex >= tutorialData.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }, 800); // Simulated loading time
+        }
+
+        // Create a tutorial card element
+        function createTutorialCard(tutorial) {
+            const card = document.createElement('div');
+            card.className = 'video-card bg-white rounded-2xl shadow-lg overflow-hidden fade-in';
+            card.setAttribute('data-category', tutorial.category);
+            card.setAttribute('data-duration', tutorial.duration);
+            card.setAttribute('data-rating', tutorial.rating);
+            card.setAttribute('data-views', tutorial.views);
+            card.setAttribute('data-device', tutorial.device);
+            card.setAttribute('data-video-url', tutorial.videoUrl);
+
+            // Difficulty badge class
+            let difficultyClass = 'difficulty-easy';
+            if (tutorial.difficulty === 'medium') difficultyClass = 'difficulty-medium';
+            if (tutorial.difficulty === 'hard') difficultyClass = 'difficulty-hard';
+
+            // Device badge
+            let deviceBadge = `<span class="text-xs px-2 py-1 rounded text-white bg-blue-600 flex items-center gap-1">
+                <i class="fas fa-desktop"></i> PC
+            </span>`;
+            if (tutorial.device === 'mobile') {
+                deviceBadge = `<span class="text-xs px-2 py-1 rounded text-white bg-green-600 flex items-center gap-1">
+                    <i class="fas fa-mobile-alt"></i> Mobile
+                </span>`;
+            }
+
+            // Category badge color
+            let categoryColor = 'bg-blue-100 text-blue-800';
+            if (tutorial.category === 'canvas') categoryColor = 'bg-green-100 text-green-800';
+            if (tutorial.category === 'microsoft') categoryColor = 'bg-yellow-100 text-yellow-800';
+            if (tutorial.category === 'portal') categoryColor = 'bg-purple-100 text-purple-800';
+            if (tutorial.category === 'gathering') categoryColor = 'bg-pink-100 text-pink-800';
+            if (tutorial.category === 'study-skills') categoryColor = 'bg-rose-100 text-rose-800';
+            if (tutorial.category === 'time-management') categoryColor = 'bg-indigo-100 text-indigo-800';
+            if (tutorial.category === 'career') categoryColor = 'bg-teal-100 text-teal-800';
+            if (tutorial.category === 'english') categoryColor = 'bg-amber-100 text-amber-800';
+            if (tutorial.category === 'registration') categoryColor = 'bg-sky-100 text-sky-800';
+
+            card.innerHTML = `
+                <div class="relative h-48">
+                    <img src="${tutorial.image}" alt="${tutorial.title}" class="w-full h-full object-cover">
+                    <div class="play-overlay">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center" 
+                             style="background-color: var(--${tutorial.device === 'mobile' ? 'sage' : 'coral'});">
+                            <i class="fas fa-play text-white text-xl ml-1"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        ${deviceBadge}
+                    </div>
+                    <div class="absolute top-4 right-4">
+                        <button class="bookmark-btn text-white text-xl" 
+                                data-tutorial-id="${tutorial.id}"
+                                onclick="event.stopPropagation(); toggleBookmark(this, '${tutorial.id}')">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="text-xs px-2 py-1 rounded text-white bg-black bg-opacity-70">${tutorial.duration} min</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs px-2 py-1 rounded ${difficultyClass}">${tutorial.difficulty.charAt(0).toUpperCase() + tutorial.difficulty.slice(1)}</span>
+                        <div class="flex items-center">
+                            <div class="rating-stars flex mr-2">
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                            </div>
+                            <span class="text-xs" style="color: var(--slate);">${tutorial.rating} (${tutorial.views.toLocaleString()})</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">${tutorial.title}</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">${tutorial.description}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs px-2 py-1 rounded ${categoryColor}">${tutorial.category.replace('-', ' ')}</span>
+                        <button onclick="playVideo('${tutorial.id}', '${tutorial.videoUrl}', '${tutorial.title}')" 
+                                class="text-sm font-semibold hover:underline" style="color: var(--coral);">
+                            Watch Now
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            return card;
         }
 
         // Scroll to section
@@ -1008,9 +1084,20 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function () {
+            // Load initial tutorials (first 6)
+            for (let i = 0; i < Math.min(tutorialsToShow, tutorialData.length); i++) {
+                const tutorial = tutorialData[i];
+                const tutorialCard = createTutorialCard(tutorial);
+                document.getElementById('tutorialGrid').appendChild(tutorialCard);
+            }
+
+            // Initialize bookmark functionality
             initializeBookmarks();
             initializeFilters();
+            initializeDeviceToggle();
             initializeSearch();
+            initializeVideoCards();
+            loadYouTubeAPI();
 
             // Setup fade-in animations
             const observer = new IntersectionObserver((entries) => {
@@ -1048,8 +1135,147 @@
                     closeVideoModal();
                 }
             });
+
+            // Setup sort functionality
+            const sortSelect = document.getElementById('sortSelect');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function () {
+                    currentSort = this.value;
+                    sortTutorials(this.value);
+                });
+            }
+
+            // Setup view mode toggles
+            const gridViewBtn = document.getElementById('gridView');
+            const listViewBtn = document.getElementById('listView');
+
+            if (gridViewBtn && listViewBtn) {
+                gridViewBtn.addEventListener('click', function () {
+                    document.getElementById('tutorialGrid').className =
+                        document.getElementById('tutorialGrid').className.replace(/grid-cols-\d/, 'grid-cols-3');
+                    gridViewBtn.classList.add('bg-blue-600', 'text-white');
+                    listViewBtn.classList.remove('bg-blue-600', 'text-white');
+                    listViewBtn.classList.add('hover:bg-gray-50');
+                });
+
+                listViewBtn.addEventListener('click', function () {
+                    document.getElementById('tutorialGrid').className =
+                        document.getElementById('tutorialGrid').className.replace(/grid-cols-\d/, 'grid-cols-1');
+                    listViewBtn.classList.add('bg-blue-600', 'text-white');
+                    gridViewBtn.classList.remove('bg-blue-600', 'text-white');
+                    gridViewBtn.classList.add('hover:bg-gray-50');
+                });
+            }
+
+            // Setup load more button
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.addEventListener('click', loadMoreTutorials);
         });
+
+        // Sort tutorials based on selected option
+        function sortTutorials(sortBy) {
+            const tutorialGrid = document.getElementById('tutorialGrid');
+            const tutorials = Array.from(tutorialGrid.querySelectorAll('.video-card'));
+
+            tutorials.sort((a, b) => {
+                switch (sortBy) {
+                    case 'newest':
+                        // Since we don't have date data, we'll just reverse the current order
+                        return 0; // Placeholder
+                    case 'popular':
+                        return parseInt(b.getAttribute('data-views')) - parseInt(a.getAttribute('data-views'));
+                    case 'duration':
+                        return parseInt(a.getAttribute('data-duration')) - parseInt(b.getAttribute('data-duration'));
+                    case 'rating':
+                        return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+                    default:
+                        return 0;
+                }
+            });
+
+            // Clear the grid and re-add sorted tutorials
+            while (tutorialGrid.firstChild) {
+                tutorialGrid.removeChild(tutorialGrid.firstChild);
+            }
+
+            tutorials.forEach(tutorial => {
+                tutorialGrid.appendChild(tutorial);
+            });
+        }
     </script>
+    <script src="tutorials-data.js"></script>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-compass text-yellow-500 text-2xl"></i>
+                        <span class="text-xl font-bold" style="color: var(--navy);">Pathway<span
+                                class="text-yellow-500">Compass</span></span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">
+                        Navigating your journey to success in BYU-Pathway Worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-blue-600 transition-colors"><i
+                                class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
+                                class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-pink-600 transition-colors"><i
+                                class="fab fa-instagram text-lg"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Resources</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="index.html" class="hover:text-blue-600 transition-colors">Home</a></li>
+                        <li><a href="registration.html" class="hover:text-blue-600 transition-colors">Registration
+                                Help</a></li>
+                        <li><a href="post-registration.html" class="hover:text-blue-600 transition-colors">Setup
+                                Guide</a></li>
+                        <li><a href="scholarships.html" class="hover:text-blue-600 transition-colors">Scholarships</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="how-to.html" class="hover:text-blue-600 transition-colors">Tutorials Library</a>
+                        </li>
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">Contact Mentors</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Newsletter</h4>
+                    <p class="text-sm text-slate-500 mb-4">Get the latest tips and updates.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email address"
+                            class="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-500">
+                        <button type="submit"
+                            class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-colors">
+                            Go
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">
+                    &copy; 2025 BYU Pathway Student Support Hub. Not an official BYU-Pathway Worldwide site.
+                </p>
+                <div class="flex gap-6 text-xs text-slate-400">
+                    <a href="#" class="hover:text-slate-600">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-600">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="main.js"></script>
 </body>
 
