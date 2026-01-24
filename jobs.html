@@ -162,6 +162,90 @@
         .success-story:last-child::after {
             display: none;
         }
+
+        /* Partner Section Enhancements */
+        .partner-card {
+            background: white;
+            border: 1px solid rgba(30, 58, 138, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--coral);
+        }
+
+        .partner-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            background: var(--light-blue);
+            color: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .partner-icon-wrapper {
+            background: var(--navy);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .partner-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-official {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-remote {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .badge-tech {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .partner-link {
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .partner-link:hover {
+            letter-spacing: 0.5px;
+        }
+
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(225deg, var(--light-blue) 0%, transparent 70%);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .partner-card:hover::before {
+            opacity: 0.8;
+        }
     </style>
 </head>
 
@@ -640,6 +724,233 @@
                     <i class="fas fa-plus mr-2"></i>
                     Load More Jobs
                 </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Strategic Career Partners -->
+    <section id="strategic-partners" class="py-24 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <div
+                    class="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-orange-600 uppercase bg-orange-100 rounded-full">
+                    Global Network
+                </div>
+                <h2 class="font-display text-5xl font-semibold mb-6" style="color: var(--navy);">
+                    Strategic Career Partners
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: var(--slate);">
+                    We've collaborated with industry leaders and specialized organizations to fast-track your path to
+                    <strong>meaningful, high-impact employment</strong>.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Bloom Card -->
+                <div class="partner-card p-10 rounded-3xl fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper">
+                            <i class="fas fa-seedling text-3xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge badge-official">Official Partner</span>
+                            <span class="partner-badge badge-remote">Remote Specialist</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--navy);">Bloom</h3>
+                    <p class="text-lg mb-8 leading-relaxed" style="color: var(--slate);">
+                        A social-impact staffing giant connecting BYU-Pathway talent with global firms.
+                    </p>
+
+                    <div class="space-y-6 mb-10">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-orange-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Premium Remote Roles</h4>
+                                <p class="text-sm text-gray-600">Access roles in Customer Success, Sales, and Operations
+                                    typically reserved for US-based talent.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-orange-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Income Acceleration</h4>
+                                <p class="text-sm text-gray-600">Historically, students see their income <strong>double
+                                        or triple</strong> through Bloom placements.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-orange-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Holistic Support</h4>
+                                <p class="text-sm text-gray-600">Includes interview coaching, technical onboarding, and
+                                    career mentorship.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.hirebloom.com/" target="_blank"
+                        class="partner-link w-full inline-flex items-center justify-center gap-2 bg-navy text-white px-8 py-4 rounded-2xl font-bold hover:bg-opacity-90 transition-all"
+                        style="background-color: var(--navy);">
+                        Apply via Bloom <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Handshake Card -->
+                <div class="partner-card p-10 rounded-3xl fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper" style="background-color: #fef2f2; color: #dc2626;">
+                            <i class="fas fa-handshake text-3xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge" style="background: #fee2e2; color: #991b1b;">Student
+                                Portal</span>
+                            <span class="partner-badge badge-official">Primary Platform</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--navy);">Handshake</h3>
+                    <p class="text-lg mb-8 leading-relaxed" style="color: var(--slate);">
+                        The #1 way college students find jobs. BYU-Pathway students get exclusive access.
+                    </p>
+
+                    <div class="space-y-6 mb-10">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-red-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Direct Employer Messaging</h4>
+                                <p class="text-sm text-gray-600">Skip the line and talk directly to recruiters at
+                                    Fortune 500 companies.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-red-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Pathway Specific Filters</h4>
+                                <p class="text-sm text-gray-600">Find employers specifically looking for <strong>Pathway
+                                        Worldwide</strong> graduates.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-red-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Virtual Career Fairs</h4>
+                                <p class="text-sm text-gray-600">Attend global hiring events from the comfort of your
+                                    home.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://joinhandshake.com/" target="_blank"
+                        class="partner-link w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold border-2 border-red-600 text-red-600 hover:bg-red-50 transition-all">
+                        Launch Handshake <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Springboard Card -->
+                <div class="partner-card p-10 rounded-3xl fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper" style="background-color: #f0fdf4; color: #16a34a;">
+                            <i class="fas fa-rocket text-3xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge badge-tech">Tech Accelarator</span>
+                            <span class="partner-badge" style="background: #dcfce7; color: #15803d;">Job
+                                Guarantee</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--navy);">Springboard</h3>
+                    <p class="text-lg mb-8 leading-relaxed" style="color: var(--slate);">
+                        Intensive tech bootcamps with 1-on-1 mentorship for high-demand digital careers.
+                    </p>
+
+                    <div class="space-y-6 mb-10">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Industry Mentors</h4>
+                                <p class="text-sm text-gray-600">Weekly calls with experts from companies like Google,
+                                    Meta, and Airbnb.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Project-Based Learning</h4>
+                                <p class="text-sm text-gray-600">Build a professional portfolio that proves your skills
+                                    to employers.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Pathway Discount</h4>
+                                <p class="text-sm text-gray-600">Special tuition rates for BYU-Pathway students pursuing
+                                    tech careers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.springboard.com/" target="_blank"
+                        class="partner-link w-full inline-flex items-center justify-center gap-2 border-2 border-green-600 text-green-700 font-bold py-4 rounded-2xl hover:bg-green-50 transition-all">
+                        Explore Courses <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Church Employment Services Card -->
+                <div class="partner-card p-10 rounded-3xl fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper" style="background-color: #fffbeb; color: #d97706;">
+                            <i class="fas fa-church text-3xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge" style="background: #fef3c7; color: #92400e;">Local
+                                Support</span>
+                            <span class="partner-badge" style="background: #fff7ed; color: #c2410c;">Spiritual
+                                Growth</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--navy);">Church Employment</h3>
+                    <p class="text-lg mb-8 leading-relaxed" style="color: var(--slate);">
+                        Personalized career coaching and resources aligned with gospel principles.
+                    </p>
+
+                    <div class="space-y-6 mb-10">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-amber-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Self-Reliance Groups</h4>
+                                <p class="text-sm text-gray-600">Join a local or virtual group to master job search
+                                    skills with peers.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-amber-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">1-on-1 Coaching</h4>
+                                <p class="text-sm text-gray-600">Work with employment specialists to refine your resume
+                                    and interview skills.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-amber-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Local Opportunities</h4>
+                                <p class="text-sm text-gray-600">Access to job postings from local businesses that value
+                                    the Church community.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.churchofjesuschrist.org/self-reliance/employment" target="_blank"
+                        class="partner-link w-full inline-flex items-center justify-center gap-2 border-2 border-amber-500 text-amber-700 font-bold py-4 rounded-2xl hover:bg-amber-50 transition-all">
+                        Find Local Support <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

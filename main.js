@@ -383,11 +383,10 @@ class BYUPathwayApp {
             if (current >= target) {
                 current = target;
                 clearInterval(timer);
+                element.textContent = Math.floor(current).toLocaleString();
+            } else {
+                element.textContent = Math.floor(current);
             }
-
-            // Format large numbers with commas
-            const formatted = Math.floor(current).toLocaleString();
-            element.textContent = target > 1000 ? formatted : Math.floor(current);
         }, stepTime);
     }
 

@@ -275,8 +275,9 @@
                         How-To Video Tutorials
                     </h1>
                     <p class="text-xl mb-8 leading-relaxed" style="color: var(--slate);">
-                        Master every aspect of your BYU Pathway experience with our comprehensive video library.
-                        From basic setup to advanced features, find exactly what you need to succeed.
+                        Master <em>every aspect</em> of your BYU Pathway experience with our comprehensive video
+                        library. From <strong>basic setup</strong> to <strong>advanced features</strong>, find exactly
+                        what you need to succeed.
                     </p>
                     <div class="flex items-center space-x-6">
                         <div class="text-center">
@@ -313,11 +314,11 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
-                    Find Exactly What You Need
+                    <i class="fas fa-search-plus mr-3 text-green-500"></i> Find Exactly What You Need
                 </h2>
                 <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
-                    Use our advanced search and filtering system to quickly find the tutorials that match your needs and
-                    skill level.
+                    Use our <strong>advanced search</strong> and <strong>filtering system</strong> to quickly find the
+                    tutorials that match your needs and skill level.
                 </p>
             </div>
 
@@ -326,8 +327,8 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <!-- Search -->
                     <div class="lg:col-span-2">
-                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);">Search
-                            Tutorials</label>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);"><i
+                                class="fas fa-keyboard mr-2"></i>Search Tutorials</label>
                         <div class="relative">
                             <input type="text" id="searchInput"
                                 placeholder="Search by title, description, or keywords..."
@@ -338,7 +339,8 @@
 
                     <!-- Sort -->
                     <div>
-                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);">Sort By</label>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);"><i
+                                class="fas fa-sort-amount-down mr-2"></i>Sort By</label>
                         <select id="sortSelect"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option value="newest">Newest First</option>
@@ -350,7 +352,8 @@
 
                     <!-- View Mode -->
                     <div>
-                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);">View</label>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--navy);"><i
+                                class="fas fa-eye mr-2"></i>View</label>
                         <div class="flex space-x-2">
                             <button id="gridView"
                                 class="flex-1 py-3 px-4 border border-gray-300 rounded-lg bg-blue-600 text-white">
@@ -366,7 +369,8 @@
 
                 <!-- Device Toggle -->
                 <div class="border-t pt-4 mb-4">
-                    <label class="block text-sm font-medium mb-3" style="color: var(--navy);">Device Type</label>
+                    <label class="block text-sm font-medium mb-3" style="color: var(--navy);"><i
+                            class="fas fa-laptop-house mr-2"></i>Device Type</label>
                     <div class="flex gap-2" id="deviceToggle">
                         <button
                             class="device-toggle active px-6 py-2 rounded-full text-sm font-medium flex items-center gap-2 border-2 transition-all"
@@ -388,7 +392,8 @@
 
                 <!-- Filter Tags -->
                 <div class="border-t pt-4">
-                    <label class="block text-sm font-medium mb-3" style="color: var(--navy);">Filter by Category</label>
+                    <label class="block text-sm font-medium mb-3" style="color: var(--navy);"><i
+                            class="fas fa-tags mr-2"></i>Filter by Category</label>
                     <div class="flex flex-wrap gap-2" id="filterTags">
                         <button class="filter-tag active px-4 py-2 rounded-full text-sm font-medium"
                             data-filter="all">All</button>
@@ -444,19 +449,19 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
-                    Your Bookmarked Tutorials
+                    <i class="fas fa-bookmark mr-3 text-yellow-500"></i> Your Bookmarked Tutorials
                 </h2>
                 <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
-                    Quickly access the tutorials you've bookmarked for later viewing.
+                    Quickly access the tutorials you've <strong>bookmarked</strong> for later viewing.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="bookmarkedTutorials">
-                <div class="text-center py-12 col-span-full">
-                    <i class="fas fa-bookmark text-6xl mb-4" style="color: var(--slate);"></i>
+                <div class="text-center py-12 col-span-full bg-white rounded-2xl shadow-inner">
+                    <i class="fas fa-inbox text-6xl mb-4 text-gray-300"></i>
                     <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
                     <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by
-                        clicking the bookmark icon on any video.</p>
+                        clicking the <i class="fas fa-bookmark text-yellow-500"></i> icon on any video.</p>
                     <button onclick="scrollToSection('tutorials')"
                         class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
                         Browse Tutorials
@@ -477,7 +482,6 @@
                     Video</h3>
                 <div class="aspect-video bg-black rounded-lg overflow-hidden mb-4 flex items-center justify-center">
                     <iframe id="videoFrame" width="100%" height="100%" src="" title="YouTube Video" frameborder="0"
-                        referrerpolicy="no-referrer"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen style="display: none;">
                     </iframe>
@@ -834,7 +838,7 @@
             });
         }
 
-        // Play video function - Simplified to fix Error 153
+        // Play video function - Using the same YouTube embed URL for all videos
         function playVideo(videoId, videoUrl, title) {
             const videoTitles = {
                 'registration-complete': 'Complete Registration Process',
@@ -852,29 +856,8 @@
             const iframe = document.getElementById('videoFrame');
             const placeholder = document.getElementById('videoPlaceholder');
 
-            // Extract ID or use default
-            let id = 'tgbNymZ7vqY'; // Default working ID
-
-            if (videoUrl) {
-                const regExp = /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\?v=|&v=)([^#&?]*).*/;
-                const match = videoUrl.match(regExp);
-                if (match && match[1]) id = match[1].split('?')[0];
-            } else if (videoId) {
-                const youtubeVideoMap = {
-                    'registration-complete': 'tgbNymZ7vqY',
-                    'canvas-master': 'tgbNymZ7vqY',
-                    'm365-setup': 'tgbNymZ7vqY',
-                    'portal-nav': 'tgbNymZ7vqY',
-                    'study-skills': 'tgbNymZ7vqY',
-                    'time-management': 'tgbNymZ7vqY',
-                    'featured-tutorial': 'tgbNymZ7vqY'
-                };
-                id = youtubeVideoMap[videoId] || 'tgbNymZ7vqY';
-            }
-
-            // Set simple iframe src with mute=1 for autoplay compatibility
-            // User specifically asked for youtube.com/embed format
-            iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&rel=0`;
+            // Use the same YouTube embed URL for all videos as requested
+            iframe.src = 'https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1';
 
             // Toggle visibility
             iframe.style.display = 'block';
