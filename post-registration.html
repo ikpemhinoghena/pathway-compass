@@ -167,6 +167,57 @@
         .system-tour-hotspot:hover+.tooltip {
             opacity: 1;
         }
+
+        /* Success Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--navy) 0%, var(--sage) 50%, var(--coral) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.75rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: white;
+            border: 4px solid var(--navy);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .quick-link-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--coral);
+            background-color: white;
+        }
+
+        .pro-tip {
+            border-left: 4px solid var(--sage);
+            background-color: #f0fdf4;
+            padding: 1rem;
+            border-radius: 0 0.75rem 0.75rem 0;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 
@@ -316,7 +367,11 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: var(--light-blue); color: var(--navy);">5 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">View Tutorial</button>
+                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Watch Tutorial</a>
+                                <a href="https://portal.byupathway.edu" target="_blank"
+                                    class="text-green-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Go to Portal →</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -338,7 +393,8 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: #fef3c7; color: #f59e0b;">Varies</span>
-                                <button class="text-blue-600 hover:underline font-medium">Learn More</button>
+                                <a href="registration.html#faq" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">View Hold Types</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -360,7 +416,9 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: #ecfdf5; color: var(--sage);">20 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">Degree Guide</button>
+                                <a href="https://www.byupathway.edu/degrees" target="_blank"
+                                    class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Explore Degrees</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -382,7 +440,8 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: #fef3c7; color: #f59e0b;">10 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">Find Gatherings</button>
+                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Watch Tutorial</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -403,7 +462,8 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: var(--light-blue); color: var(--navy);">15 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">Registration Guide</button>
+                                <a href="registration.html" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Registration Help</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -424,7 +484,11 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: #ecfdf5; color: var(--sage);">10 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">Setup Guide</button>
+                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Watch Tutorial</a>
+                                <a href="https://office.com" target="_blank"
+                                    class="text-green-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Go to Office.com →</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -445,7 +509,11 @@
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: #fef3c7; color: #f59e0b;">25 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">Canvas Tutorial</button>
+                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Watch Tutorial</a>
+                                <a href="https://byupw.instructure.com" target="_blank"
+                                    class="text-green-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">Go to Canvas →</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -463,11 +531,12 @@
                             <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Apply for Tuition
                                 Discounts</h3>
                             <p class="mb-3" style="color: var(--slate);">Apply for the Heber J. Grant Tuition Discount
-                                (10-50% off) and other available discounts.</p>
+                                (10-50% off) by completing the self-reliance lesson in your Portal.</p>
                             <div class="flex items-center space-x-4 text-sm">
                                 <span class="px-3 py-1 rounded-full"
                                     style="background-color: var(--light-blue); color: var(--navy);">5 minutes</span>
-                                <button class="text-blue-600 hover:underline font-medium">Discount Info</button>
+                                <a href="scholarships.html" class="text-blue-600 hover:underline font-medium"
+                                    onclick="event.stopPropagation();">View Scholarships</a>
                             </div>
                         </div>
                         <i class="fas fa-chevron-right text-gray-400"></i>
@@ -526,6 +595,12 @@
                             Access student resources
                         </li>
                     </ul>
+                    <div class="pro-tip">
+                        <p class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-lightbulb mr-1"></i>
+                            Pro Tip</p>
+                        <p class="text-xs text-green-800">Check your Portal every Monday for new "Holds" or financial
+                            updates to keep your account current.</p>
+                    </div>
                 </div>
 
                 <!-- Canvas -->
@@ -557,6 +632,12 @@
                             Communicate with instructors
                         </li>
                     </ul>
+                    <div class="pro-tip">
+                        <p class="text-xs font-bold text-green-700 uppercase mb-1"><i
+                                class="fas fa-mobile-alt mr-1"></i> Pro Tip</p>
+                        <p class="text-xs text-green-800">Download the "Canvas Student" app. It's the best way to get
+                            instant notifications for grades and messages.</p>
+                    </div>
                 </div>
 
                 <!-- Microsoft 365 -->
@@ -587,6 +668,12 @@
                             Join Teams meetings
                         </li>
                     </ul>
+                    <div class="pro-tip">
+                        <p class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-envelope mr-1"></i>
+                            Pro Tip</p>
+                        <p class="text-xs text-green-800">Your school email is <strong>{NetID}@byupathway.edu</strong>.
+                            This is your key to all student discounts!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -768,16 +855,6 @@
                                 <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold text-white"
                                     style="background-color: var(--navy);">3</div>
                                 <div>
-                                    <h4 class="font-semibold mb-1">Sign in with your byupathway.edu email</h4>
-                                    <p class="text-sm" style="color: var(--slate);">Use your full byupathway.edu email
-                                        address</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold text-white"
-                                    style="background-color: #8b5cf6;">4</div>
-                                <div>
                                     <h4 class="font-semibold mb-1">Install desktop applications</h4>
                                     <p class="text-sm" style="color: var(--slate);">Download Word, Excel, PowerPoint,
                                         and Teams</p>
@@ -841,74 +918,191 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <i class="fas fa-compass text-yellow-500 text-2xl"></i>
-                        <span class="text-xl font-bold" style="color: var(--navy);">Pathway<span
-                                class="text-yellow-500">Compass</span></span>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-6">
-                        Navigating your journey to success in BYU-Pathway Worldwide.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-blue-600 transition-colors"><i
-                                class="fab fa-facebook-f text-lg"></i></a>
-                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
-                                class="fab fa-twitter text-lg"></i></a>
-                        <a href="#" class="text-slate-400 hover:text-pink-600 transition-colors"><i
-                                class="fab fa-instagram text-lg"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4" style="color: var(--navy);">Resources</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="index.html" class="hover:text-blue-600 transition-colors">Home</a></li>
-                        <li><a href="registration.html" class="hover:text-blue-600 transition-colors">Registration
-                                Help</a></li>
-                        <li><a href="post-registration.html" class="hover:text-blue-600 transition-colors">Setup
-                                Guide</a></li>
-                        <li><a href="scholarships.html" class="hover:text-blue-600 transition-colors">Scholarships</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4" style="color: var(--navy);">Support</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="how-to.html" class="hover:text-blue-600 transition-colors">Tutorials Library</a>
-                        </li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Contact Mentors</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4" style="color: var(--navy);">BYU Pathway</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="https://www.byupathway.edu/" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">BYU Pathway Home</a></li>
-                        <li><a href="https://www.byupathway.edu/career-services" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">Career Services</a></li>
-                        <li><a href="https://www.byupathway.edu/employment/job-openings" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">Job Openings</a></li>
-                        <li><a href="https://www.byupathway.edu/about" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">About Us</a></li>
-                    </ul>
-                </div>
+    <!-- Student Success Timeline (Commented out as requested)
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Your First Month: Road to Success
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Follow this timeline to navigate your first few weeks with confidence.
+                </p>
             </div>
 
-            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-slate-400">
-                    &copy; 2025 BYU Pathway Student Support Hub. Not an official BYU-Pathway Worldwide site.
-                </p>
-                <div class="flex gap-6 text-xs text-slate-400">
-                    <a href="#" class="hover:text-slate-600">Privacy Policy</a>
-                    <a href="#" class="hover:text-slate-600">Terms of Service</a>
+            <div class="timeline-container fade-in">
+                <!- - Week 1 - ->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--navy);">Week 1: Orientation & Discovery</h3>
+                    <p style="color: var(--slate);">Log in to the Portal and Microsoft 365. Familiarize yourself with
+                        the "Academic" and "Financial" tabs. Open Canvas and look through your course modules.</p>
+                </div>
+
+                <!- - Week 2 - ->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color: var(--sage);"></div>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--navy);">Week 2: The First Gathering</h3>
+                    <p style="color: var(--slate);">Attend your first weekly gathering! Whether in-person or virtual,
+                        this is where you'll meet your peers and mentor. Introduce yourself in the Canvas discussion
+                        board.</p>
+                </div>
+
+                <!- - Week 3 - ->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color: var(--sage);"></div>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--navy);">Week 3: Finding Your Rhythm</h3>
+                    <p style="color: var(--slate);">By now, you should be submitting your first major assignments.
+                        Establish a study schedule that works for you. Check your grades and feedback.</p>
+                </div>
+
+                <!- - Week 4 - ->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color: var(--coral);"></div>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--navy);">Week 4: Reflection & Mastery</h3>
+                    <p style="color: var(--slate);">Review what worked and what didn't. If you're struggling, reach out
+                        to your instructor or mentor. You're officially a BYU-Pathway student!</p>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
+    -->
+
+    <!-- Beyond the Basics: Quick Links -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-orange-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">Beyond the Basics</h2>
+                <p class="text-xl" style="color: var(--slate);">Other essential resources to accelerate your journey.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Laptop Funding -->
+                <a href="scholarships.html#laptop"
+                    class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2" style="color: var(--navy);">Laptop Funding</h4>
+                    <p class="text-xs" style="color: var(--slate);">Explore grants from HSEF and The Lord's Hands.</p>
+                </a>
+
+                <!-- Career Launchpad -->
+                <a href="jobs.html" class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
+                    <div
+                        class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2" style="color: var(--navy);">Job Search</h4>
+                    <p class="text-xs" style="color: var(--slate);">Access internships and career resources.</p>
+                </a>
+
+                <!-- Mastery Tutorials -->
+                <a href="how-to.html" class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
+                    <div
+                        class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-play-circle text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2" style="color: var(--navy);">Mastery Tutorials</h4>
+                    <p class="text-xs" style="color: var(--slate);">Master complex portal and Canvas features.</p>
+                </a>
+
+                <!-- Help Center -->
+                <a href="registration.html"
+                    class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
+                    <div
+                        class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2" style="color: var(--navy);">Help Center</h4>
+                    <p class="text-xs" style="color: var(--slate);">Find answers to registration blocks & FAQs.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Support -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="font-display text-4xl font-semibold mb-6" style="color: var(--navy);">You're Never Alone
+                    </h2>
+                    <p class="text-lg mb-8" style="color: var(--slate);">
+                        BYU-Pathway is more than just courses; it's a global community. Connect with others who are on
+                        the same journey as you.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold" style="color: var(--navy);">Official Facebook Groups</h4>
+                                <p class="text-sm" style="color: var(--slate);">Join thousands of students in regional
+                                    and global groups to share tips and encouragement.</p>
+                                <a href="https://www.facebook.com/groups/byupathwayworldwide/" target="_blank"
+                                    class="text-blue-600 text-xs font-semibold hover:underline">Join Global Group →</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-orange-500 text-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-user-friends text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold" style="color: var(--navy);">Peer Mentors</h4>
+                                <p class="text-sm" style="color: var(--slate);">Your mentor is a fellow student who has
+                                    been where you are. They are your first point of contact for support.</p>
+                                <a href="registration.html"
+                                    class="text-orange-600 text-xs font-semibold hover:underline">Learn About Mentors
+                                    →</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 text-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0"
+                                style="background-color: var(--sage);">
+                                <i class="fas fa-pray text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold" style="color: var(--navy);">Institute & Religion</h4>
+                                <p class="text-sm" style="color: var(--slate);">Your religion courses provide spiritual
+                                    strength alongside your academic growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in relative">
+                    <div class="bg-gradient-to-tr rounded-3xl p-10 text-white shadow-2xl overflow-hidden relative"
+                        style="background: linear-gradient(135deg, var(--navy) 0%, #1e40af 100%);">
+                        <i class="fas fa-quote-left absolute top-4 left-4 text-white/10 text-8xl"></i>
+                        <div class="relative z-10">
+                            <p class="text-xl italic mb-6 leading-relaxed">
+                                "BYU-Pathway changed my life not just through my degree, but through the friends I made
+                                in my gathering who supported me every step of the way."
+                            </p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-user text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Maria S.</p>
+                                    <p class="text-sm text-white/70">Applied Business Management Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
         // Setup-specific JavaScript
@@ -920,6 +1114,19 @@
             const saved = localStorage.getItem('byu-setup-progress');
             if (saved) {
                 completedTasks = new Set(JSON.parse(saved));
+
+                // Restore visual state for each completed task
+                completedTasks.forEach(taskId => {
+                    const taskElement = document.querySelector(`[data-task="${taskId}"]`);
+                    if (taskElement) {
+                        taskElement.classList.add('completed');
+                        const checkbox = taskElement.querySelector('.checkbox');
+                        if (checkbox) {
+                            checkbox.innerHTML = '<i class="fas fa-check text-sm"></i>';
+                        }
+                    }
+                });
+
                 updateProgress();
             }
         }
@@ -1052,7 +1259,7 @@
                         Navigating your journey to success in BYU-Pathway Worldwide.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-blue-600 transition-colors"><i
+                        <a href="#" class="text-slate-400 hover:text-orange-500 transition-colors"><i
                                 class="fab fa-facebook-f text-lg"></i></a>
                         <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
                                 class="fab fa-twitter text-lg"></i></a>
@@ -1064,12 +1271,16 @@
                 <div>
                     <h4 class="font-bold mb-4" style="color: var(--navy);">Resources</h4>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="index.html" class="hover:text-blue-600 transition-colors">Home</a></li>
-                        <li><a href="registration.html" class="hover:text-blue-600 transition-colors">Registration
+                        <li><a href="index.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Home</a></li>
+                        <li><a href="registration.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Registration
                                 Help</a></li>
-                        <li><a href="post-registration.html" class="hover:text-blue-600 transition-colors">Setup
+                        <li><a href="post-registration.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Setup
                                 Guide</a></li>
-                        <li><a href="scholarships.html" class="hover:text-blue-600 transition-colors">Scholarships</a>
+                        <li><a href="scholarships.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Scholarships</a>
                         </li>
                     </ul>
                 </div>
@@ -1077,10 +1288,12 @@
                 <div>
                     <h4 class="font-bold mb-4" style="color: var(--navy);">Support</h4>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="how-to.html" class="hover:text-blue-600 transition-colors">Tutorials Library</a>
+                        <li><a href="how-to.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
                         </li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Contact Mentors</a></li>
+                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                                Mentors</a></li>
                     </ul>
                 </div>
 
@@ -1099,10 +1312,24 @@
                 <div>
                     <h4 class="font-bold mb-4" style="color: var(--navy);">BYU Pathway</h4>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="https://www.byupathway.edu/" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">BYU Pathway Home</a></li>
-                        <li><a href="https://www.byupathway.edu/career-services" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">Career Services</a></li>
-                        <li><a href="https://www.byupathway.edu/employment/job-openings" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">Job Openings</a></li>
-                        <li><a href="https://www.byupathway.edu/about" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">About Us</a></li>
+                        <li><a href="https://www.byupathway.edu/"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">BYU Pathway Home</a></li>
+                        <li><a href="https://www.byupathway.edu/career-services"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Career Services</a></li>
+                        <li><a href="https://www.byupathway.edu/career-services/whatsapp-groups"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Career Chat WA Groups</a></li>
+                        <li><a href="https://www.byupathway.edu/employment/job-openings"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Job Openings</a></li>
+                        <li><a href="https://www.byupathway.edu/degrees/program-list"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Degree List</a></li>
+                        <li><a href="https://www.byupathway.edu/about"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">About Us</a></li>
                     </ul>
                 </div>
             </div>

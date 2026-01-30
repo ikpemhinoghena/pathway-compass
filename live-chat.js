@@ -1,8 +1,20 @@
 /**
  * PathwayCompass Live Chat Module
  * Creative animated chat launcher for Tawk.to integration
- * Only for use on registration.html
+ * 
+ * ========== TAWK.TO SETUP ==========
+ * 1. Go to https://tawk.to and create a free account
+ * 2. Get your Property ID and Widget ID from Dashboard > Administration > Chat Widget
+ * 3. Replace TAWK_PROPERTY_ID and TAWK_WIDGET_ID below with your IDs
+ * ====================================
  */
+
+// ==========================================
+// CONFIGURE YOUR TAWK.TO IDs HERE:
+// ==========================================
+const TAWK_PROPERTY_ID = 'YOUR_PROPERTY_ID';  // Replace with your Property ID
+const TAWK_WIDGET_ID = 'YOUR_WIDGET_ID';      // Replace with your Widget ID
+// ==========================================
 
 class PathwayLiveChat {
     constructor() {
@@ -392,7 +404,7 @@ class PathwayLiveChat {
             var s1 = document.createElement("script");
             var s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
-            s1.src = 'https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+            s1.src = `https://embed.tawk.to/${TAWK_PROPERTY_ID}/${TAWK_WIDGET_ID}`;
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);

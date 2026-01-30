@@ -232,6 +232,11 @@
             margin-right: 0.75rem;
             font-size: 1.25rem;
         }
+
+        /* Prevent icon animation when hovering the action button */
+        .journey-step:has(.action-btn:hover) .journey-icon {
+            transform: scale(1) !important;
+        }
     </style>
 </head>
 
@@ -447,51 +452,214 @@
                 </div>
 
                 <div class="relative">
-                    <img src="resources/student-journey.jpg" alt="BYU Pathway student journey pathway"
-                        class="w-full h-auto rounded-2xl shadow-lg fade-in">
+                    <!-- <img src="resources/student-journey.jpg" alt="BYU Pathway student journey pathway"
+                        class="w-full h-auto rounded-2xl shadow-lg fade-in"> -->
 
-                    <!-- Journey Steps Overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                            <div
-                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-1">
-                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
-                                    style="background-color: var(--navy);">
-                                    <span class="text-white font-bold">1</span>
-                                </div>
-                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Register</h3>
-                                <p class="text-sm" style="color: var(--slate);">Complete application and get endorsed
+                    <!-- Journey Steps -->
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-center items-stretch">
+                        <!-- Step 1 -->
+                        <div
+                            class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-1 flex flex-col h-full card-hover border border-white/50 group">
+                            <div class="journey-icon w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 duration-300"
+                                style="background-color: var(--navy);">
+                                <i class="fas fa-user-plus text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2 text-lg" style="color: var(--navy);">1. Join PathwayConnect
+                            </h3>
+                            <p class="text-sm mb-6 flex-grow leading-relaxed" style="color: var(--slate);">Start your
+                                educational journey with foundational courses that build confidence and skills.</p>
+                            <a href="registration.html"
+                                class="action-btn mt-auto inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:shadow-md active:scale-95 w-full bg-blue-50 text-blue-700 hover:bg-blue-100">
+                                Registration Help <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div
+                            class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-2 flex flex-col h-full card-hover border border-white/50 group">
+                            <div class="journey-icon w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 duration-300"
+                                style="background-color: var(--sage);">
+                                <i class="fas fa-tools text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2 text-lg" style="color: var(--navy);">2. Setup Tools & Support
+                            </h3>
+                            <p class="text-sm mb-6 flex-grow leading-relaxed" style="color: var(--slate);">Set up your
+                                computer, access your student portal, and connect with your support team.</p>
+                            <a href="post-registration.html"
+                                class="action-btn mt-auto inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:shadow-md active:scale-95 w-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100">
+                                Setup Guide <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div
+                            class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-3 flex flex-col h-full card-hover border border-white/50 group">
+                            <div class="journey-icon w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 duration-300"
+                                style="background-color: var(--coral);">
+                                <i class="fas fa-laptop-code text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2 text-lg" style="color: var(--navy);">3. Learn & Thrive</h3>
+                            <p class="text-sm mb-6 flex-grow leading-relaxed" style="color: var(--slate);">Master your
+                                courses, attend gatherings, and explore job opportunities while you learn.</p>
+                            <a href="jobs.html"
+                                class="action-btn mt-auto inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:shadow-md active:scale-95 w-full bg-orange-50 text-orange-700 hover:bg-orange-100">
+                                Job Resources <i class="fas fa-briefcase ml-2 text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div
+                            class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-4 flex flex-col h-full card-hover border border-white/50 group">
+                            <div class="journey-icon w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 duration-300"
+                                style="background-color: #8b5cf6;">
+                                <i class="fas fa-university text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2 text-lg" style="color: var(--navy);">4. Earn Your Degree</h3>
+                            <p class="text-sm mb-6 flex-grow leading-relaxed" style="color: var(--slate);">Transition
+                                seamlessly to an online certificate or degree program after PathwayConnect.</p>
+                            <div class="mt-auto w-full">
+                                <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="action-btn inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:shadow-md active:scale-95 w-full bg-violet-50 text-violet-700 hover:bg-violet-100 mb-2">
+                                    See Degrees list <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                                </a>
+                                <p class="text-xs text-slate-400">
+                                    <a href="how-to.html" target="_blank"
+                                        class="hover:text-blue-600 hover:underline transition-colors">Need help in
+                                        Choosing?</a>
                                 </p>
                             </div>
+                        </div>
 
-                            <div
-                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-2">
-                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
-                                    style="background-color: var(--sage);">
-                                    <span class="text-white font-bold">2</span>
-                                </div>
-                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Setup</h3>
-                                <p class="text-sm" style="color: var(--slate);">Configure systems and learn tools</p>
+                        <!-- Step 5 -->
+                        <div
+                            class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-5 flex flex-col h-full card-hover border border-white/50 group">
+                            <div class="journey-icon w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 duration-300"
+                                style="background-color: #10b981;">
+                                <i class="fas fa-chart-line text-white text-2xl"></i>
                             </div>
+                            <h3 class="font-semibold mb-2 text-lg" style="color: var(--navy);">5. Advance & Grow</h3>
+                            <p class="text-sm mb-6 flex-grow leading-relaxed" style="color: var(--slate);">Leverage your
+                                education to get promoted, increase your income, and continue growing.</p>
+                            <a href="https://www.byupathway.edu/degrees" target="_blank" rel="noopener noreferrer"
+                                class="action-btn mt-auto inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:shadow-md active:scale-95 w-full bg-green-50 text-green-700 hover:bg-green-100">
+                                See Degrees and Certificates <i class="fas fa-certificate ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
 
-                            <div
-                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-3">
-                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
-                                    style="background-color: var(--coral);">
-                                    <span class="text-white font-bold">3</span>
-                                </div>
-                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Learn</h3>
-                                <p class="text-sm" style="color: var(--slate);">Complete courses and build skills</p>
+                    <!-- New CTA Section -->
+                    <div class="mt-12 text-center border-t border-slate-200/20 pt-8 fade-in">
+                        <p
+                            class="text-lg text-slate-700 font-medium flex flex-col md:flex-row justify-center gap-4 md:gap-8 items-center">
+                            <span class="inline-flex items-center">
+                                Want to register? <a href="registration.html"
+                                    class="text-blue-600 hover:text-blue-700 font-bold hover:underline ml-2 flex items-center">Get
+                                    Started <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </span>
+                            <span class="hidden md:inline text-slate-300">|</span>
+                            <span class="inline-flex items-center">
+                                Student looking for a job? <a href="jobs.html"
+                                    class="text-blue-600 hover:text-blue-700 font-bold hover:underline ml-2 flex items-center">Find
+                                    Work <i class="fas fa-briefcase text-xs ml-1"></i></a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="py-20 relative overflow-hidden bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="font-display text-4xl lg:text-5xl font-semibold mb-4" style="color: var(--navy);">
+                        Making a Global Difference
+                    </h2>
+                    <p class="text-xl max-w-3xl mx-auto mb-2" style="color: var(--slate);">
+                        Join a thriving community of students worldwide who are transforming their lives through BYU
+                        Pathway.
+                    </p>
+                    <p class="text-sm italic" style="color: #94a3b8;">
+                        <i class="fas fa-info-circle mr-1"></i> Data sourced from official BYU-Pathway Worldwide reports
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- Students Supported -->
+                    <div
+                        class="fade-in bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200 group hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: var(--navy);">
+                            <i class="fas fa-users text-white text-xl"></i>
+                        </div>
+                        <div class="text-4xl font-bold mb-2" style="color: var(--navy);">
+                            <span class="stats-counter" data-target="75000">0</span>+
+                        </div>
+                        <p class="font-medium" style="color: var(--slate);">Students Served Globally</p>
+                    </div>
+
+                    <!-- Countries -->
+                    <div
+                        class="fade-in stagger-delay-1 bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-2xl border border-emerald-200 group hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: var(--sage);">
+                            <i class="fas fa-globe text-white text-xl"></i>
+                        </div>
+                        <div class="text-4xl font-bold mb-2" style="color: var(--navy);">
+                            <span class="stats-counter" data-target="180">0</span>+
+                        </div>
+                        <p class="font-medium" style="color: var(--slate);">Countries & Territories</p>
+                    </div>
+
+                    <!-- Remote Jobs -->
+                    <div
+                        class="fade-in stagger-delay-2 bg-gradient-to-br from-amber-50 to-amber-100 p-8 rounded-2xl border border-amber-200 group hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: #f59e0b;">
+                            <i class="fas fa-laptop-house text-white text-xl"></i>
+                        </div>
+                        <div class="text-4xl font-bold mb-2" style="color: var(--navy);">
+                            <span class="stats-counter" data-target="9000">0</span>+
+                        </div>
+                        <p class="font-medium" style="color: var(--slate);">Remote Jobs Placed</p>
+                    </div>
+
+                    <!-- Employment -->
+                    <div
+                        class="fade-in stagger-delay-3 bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200 group hover:shadow-lg transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                            style="background-color: var(--coral);">
+                            <i class="fas fa-briefcase text-white text-xl"></i>
+                        </div>
+                        <div class="text-4xl font-bold mb-2" style="color: var(--navy);">
+                            <span class="stats-counter" data-target="84">0</span>%
+                        </div>
+                        <p class="font-medium" style="color: var(--slate);">Employed at Graduation</p>
+                    </div>
+                </div>
+
+                <!-- Key Highlights -->
+                <div class="fade-in bg-gradient-to-r from-blue-50 to-emerald-50 p-8 rounded-2xl border border-gray-200">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4" style="color: var(--navy);">Revolutionizing Higher
+                                Education</h3>
+                            <p class="mb-6 leading-relaxed" style="color: var(--slate);">
+                                BYU-Pathway Worldwide offers a unique model that reduces the time and cost to earn a
+                                degree, making education accessible to everyone.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <div class="text-2xl font-bold mb-1" style="color: var(--navy);">73,000+</div>
+                                <div class="text-xs font-medium uppercase tracking-wider" style="color: var(--slate);">
+                                    Tuition Discounts</div>
                             </div>
-
-                            <div
-                                class="journey-step bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg fade-in stagger-delay-4">
-                                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"
-                                    style="background-color: #8b5cf6;">
-                                    <span class="text-white font-bold">4</span>
-                                </div>
-                                <h3 class="font-semibold mb-2" style="color: var(--navy);">Succeed</h3>
-                                <p class="text-sm" style="color: var(--slate);">Graduate and advance your career</p>
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <div class="text-2xl font-bold mb-1" style="color: var(--navy);">95%</div>
+                                <div class="text-xs font-medium uppercase tracking-wider" style="color: var(--slate);">
+                                    Student Satisfaction</div>
                             </div>
                         </div>
                     </div>
@@ -593,120 +761,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Statistics -->
-        <section class="py-24 relative overflow-hidden"
-            style="background: linear-gradient(135deg, var(--navy) 0%, #1e40af 100%);">
-            <!-- Decorative Background Elements -->
-            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
-            </div>
-
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="font-display text-4xl lg:text-5xl font-semibold text-white mb-4">
-                        Making a Global Difference
-                    </h2>
-                    <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-                        Join a thriving community of students worldwide who are transforming their lives through BYU
-                        Pathway.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Students Supported -->
-                    <div
-                        class="fade-in bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition-all duration-300 group">
-                        <div
-                            class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-users text-white text-xl"></i>
-                        </div>
-                        <div class="text-4xl font-bold text-white mb-2">
-                            <span class="stats-counter" data-target="75000">0</span>+
-                        </div>
-                        <p class="text-blue-100 font-medium">Students Served Globally</p>
-                    </div>
-
-                    <!-- Countries -->
-                    <div
-                        class="fade-in stagger-delay-1 bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition-all duration-300 group">
-                        <div
-                            class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-globe text-white text-xl"></i>
-                        </div>
-                        <div class="text-4xl font-bold text-white mb-2">
-                            <span class="stats-counter" data-target="180">0</span>+
-                        </div>
-                        <p class="text-blue-100 font-medium">Countries & Territories</p>
-                    </div>
-
-                    <!-- Tutorials -->
-                    <div
-                        class="fade-in stagger-delay-2 bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition-all duration-300 group">
-                        <div
-                            class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-graduation-cap text-white text-xl"></i>
-                        </div>
-                        <div class="text-4xl font-bold text-white mb-2">
-                            <span class="stats-counter" data-target="100">0</span>+
-                        </div>
-                        <p class="text-blue-100 font-medium">Step-by-Step Tutorials</p>
-                    </div>
-
-                    <!-- Employment -->
-                    <div
-                        class="fade-in stagger-delay-3 bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl hover:bg-white/15 transition-all duration-300 group">
-                        <div
-                            class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-briefcase text-white text-xl"></i>
-                        </div>
-                        <div class="text-4xl font-bold text-white mb-2">
-                            <span class="stats-counter" data-target="70">0</span>%
-                        </div>
-                        <p class="text-blue-100 font-medium">Improved Employment</p>
-                    </div>
-                </div>
-
-                <!-- Secondary Stats / Impact -->
-                <div class="mt-16 pt-16 border-t border-white/10 grid md:grid-cols-2 gap-12 items-center fade-in">
-                    <div>
-                        <h3 class="text-2xl font-semibold text-white mb-4">Revolutionizing Higher Education</h3>
-                        <p class="text-blue-100 mb-6 leading-relaxed">
-                            BYU-Pathway Worldwide offers a unique model that reduces the time and cost to earn a degree,
-                            making education accessible to everyone, regardless of their circumstances.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <div
-                                class="bg-white/5 px-4 py-2 rounded-full border border-white/10 text-sm text-blue-100 flex items-center gap-2">
-                                <i class="fas fa-check-circle text-emerald-400"></i>
-                                50% Reduced Tuition
-                            </div>
-                            <div
-                                class="bg-white/5 px-4 py-2 rounded-full border border-white/10 text-sm text-blue-100 flex items-center gap-2">
-                                <i class="fas fa-check-circle text-emerald-400"></i>
-                                Professional Certificates First
-                            </div>
-                            <div
-                                class="bg-white/5 px-4 py-2 rounded-full border border-white/10 text-sm text-blue-100 flex items-center gap-2">
-                                <i class="fas fa-check-circle text-emerald-400"></i>
-                                Spiritual Foundation
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/5 p-6 rounded-xl border border-white/10">
-                            <div class="text-3xl font-bold text-white mb-1">73k+</div>
-                            <div class="text-sm text-blue-200 uppercase tracking-wider">Tuition Discounts</div>
-                        </div>
-                        <div class="bg-white/5 p-6 rounded-xl border border-white/10">
-                            <div class="text-3xl font-bold text-white mb-1">9,500+</div>
-                            <div class="text-sm text-blue-200 uppercase tracking-wider">Remote Jobs Placed</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
@@ -723,7 +777,7 @@
                         Navigating your journey to success in BYU-Pathway Worldwide.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-blue-600 transition-colors"><i
+                        <a href="#" class="text-slate-400 hover:text-orange-500 transition-colors"><i
                                 class="fab fa-facebook-f text-lg"></i></a>
                         <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
                                 class="fab fa-twitter text-lg"></i></a>
@@ -735,12 +789,16 @@
                 <div>
                     <h4 class="font-bold mb-4" style="color: var(--navy);">Resources</h4>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="index.html" class="hover:text-blue-600 transition-colors">Home</a></li>
-                        <li><a href="registration.html" class="hover:text-blue-600 transition-colors">Registration
+                        <li><a href="index.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Home</a></li>
+                        <li><a href="registration.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Registration
                                 Help</a></li>
-                        <li><a href="post-registration.html" class="hover:text-blue-600 transition-colors">Setup
+                        <li><a href="post-registration.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Setup
                                 Guide</a></li>
-                        <li><a href="scholarships.html" class="hover:text-blue-600 transition-colors">Scholarships</a>
+                        <li><a href="scholarships.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Scholarships</a>
                         </li>
                     </ul>
                 </div>
@@ -748,10 +806,12 @@
                 <div>
                     <h4 class="font-bold mb-4" style="color: var(--navy);">Support</h4>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="how-to.html" class="hover:text-blue-600 transition-colors">Tutorials Library</a>
+                        <li><a href="how-to.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
                         </li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Contact Mentors</a></li>
+                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                                Mentors</a></li>
                     </ul>
                 </div>
 
@@ -770,10 +830,24 @@
                 <div>
                     <h4 class="font-bold mb-4" style="color: var(--navy);">BYU Pathway</h4>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="https://www.byupathway.edu/" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">BYU Pathway Home</a></li>
-                        <li><a href="https://www.byupathway.edu/career-services" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">Career Services</a></li>
-                        <li><a href="https://www.byupathway.edu/employment/job-openings" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">Job Openings</a></li>
-                        <li><a href="https://www.byupathway.edu/about" class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">About Us</a></li>
+                        <li><a href="https://www.byupathway.edu/"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">BYU Pathway Home</a></li>
+                        <li><a href="https://www.byupathway.edu/career-services"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Career Services</a></li>
+                        <li><a href="https://www.byupathway.edu/career-services/whatsapp-groups"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Career Chat WA Groups</a></li>
+                        <li><a href="https://www.byupathway.edu/employment/job-openings"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Job Openings</a></li>
+                        <li><a href="https://www.byupathway.edu/degrees/program-list"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Degree List</a></li>
+                        <li><a href="https://www.byupathway.edu/about"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">About Us</a></li>
                     </ul>
                 </div>
             </div>
