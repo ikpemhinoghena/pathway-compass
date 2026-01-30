@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is BYU Pathway? - Your Path to Affordable, Spiritually-Based Education</title>
+    <meta name="description"
+        content="Discover BYU-Pathway Worldwide: affordable online degrees, global community, and spiritually-based education for students in 180+ countries.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="resources/pathwaycompass-2-logo-ico.ico">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        :root {
+            --navy: #1e3a8a;
+            --sage: #10b981;
+            --cream: #fefce8;
+            --coral: #f97316;
+            --slate: #64748b;
+            --light-blue: #e0f2fe;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--slate);
+        }
+
+        .font-display {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #10b981 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-animation-delay {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        /* Glassmorphism cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Feature card hover */
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Timeline styles */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--navy), var(--sage), var(--coral));
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--navy);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* Stat counter animation */
+        .stat-number {
+            background: linear-gradient(135deg, var(--navy), var(--sage));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse animation for CTA */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7);
+            }
+
+            50% {
+                box-shadow: 0 0 20px 10px rgba(249, 115, 22, 0);
+            }
+        }
+
+        .pulse-cta {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--coral);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Degree card grid */
+        .degree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Quote decoration */
+        .quote-mark {
+            font-size: 8rem;
+            line-height: 1;
+            opacity: 0.1;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
+                        <h1 class="text-xl font-bold tracking-tight flex items-center gap-2">
+                            <i class="fas fa-compass text-yellow-500 text-2xl"></i>
+                            <span style="color: var(--navy);">Pathway<span class="text-yellow-500">Compass</span></span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                        <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
+                        <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
+                        <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                        <a href="scholarships.html" class="nav-link text-sm font-medium">Scholarships</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Hamburger Menu Button -->
+                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-nav-menu md:hidden" id="mobileNavMenu">
+                <a href="index.html">Home</a>
+                <a href="registration.html">Registration Help</a>
+                <a href="post-registration.html">Setup Guide</a>
+                <a href="jobs.html">Career Resources</a>
+                <a href="how-to.html">How-To Tutorials</a>
+                <a href="scholarships.html">Scholarships</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center pt-16 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-6">
+                        <i class="fas fa-globe-americas mr-2"></i>
+                        75,000+ Students in 180+ Countries
+                    </div>
+                    <h1
+                        class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold mb-6 text-white leading-tight">
+                        What is <span class="text-yellow-400">BYU-Pathway</span> Worldwide?
+                    </h1>
+                    <p class="text-lg sm:text-xl mb-8 leading-relaxed text-blue-100">
+                        BYU-Pathway Worldwide is a revolutionary higher education organization that provides
+                        <strong class="text-white">affordable, spiritually-based online degrees</strong> to students
+                        around the world, regardless of where they live.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://apply.byupathway.edu" target="_blank" rel="noopener noreferrer"
+                            class="pulse-cta inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-lg hover:shadow-2xl transition-all">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Apply for Free
+                        </a>
+                        <a href="#how-it-works"
+                            class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/20 backdrop-blur-sm text-white font-semibold text-lg border border-white/30 hover:bg-white/30 transition-all">
+                            <i class="fas fa-play-circle mr-2"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="relative hidden lg:block">
+                    <!-- Floating elements -->
+                    <div
+                        class="float-animation absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-3xl text-white"></i>
+                    </div>
+                    <div
+                        class="float-animation-delay absolute bottom-20 left-10 w-16 h-16 bg-yellow-400/20 rounded-xl backdrop-blur-sm flex items-center justify-center">
+                        <i class="fas fa-laptop text-2xl text-yellow-300"></i>
+                    </div>
+                    <div
+                        class="float-animation absolute top-40 left-0 w-14 h-14 bg-green-400/20 rounded-lg backdrop-blur-sm flex items-center justify-center">
+                        <i class="fas fa-globe text-xl text-green-300"></i>
+                    </div>
+
+                    <!-- Main image card -->
+                    <div class="glass-card rounded-3xl p-6 shadow-2xl">
+                        <img src="resources/hero-main.jpg" alt="BYU Pathway students from around the world"
+                            class="rounded-2xl w-full h-auto">
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex -space-x-2">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">
+                                        A</div>
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">
+                                        M</div>
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-xs font-bold">
+                                        S</div>
+                                </div>
+                                <span class="ml-3 text-sm text-slate-600">Students Worldwide</span>
+                            </div>
+                            <div class="flex items-center text-green-600">
+                                <i class="fas fa-check-circle mr-1"></i>
+                                <span class="text-sm font-medium">Accredited</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave divider -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+                    fill="#fefce8" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- What Makes It Special -->
+    <section class="py-20 bg-cream" style="background-color: var(--cream);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Why BYU-Pathway is Different
+                </h2>
+                <p class="text-lg sm:text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Unlike traditional universities, BYU-Pathway was designed from the ground up for online students,
+                    making quality education accessible to everyone.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1: Affordable -->
+                <div class="feature-card glass-card p-8 rounded-2xl shadow-lg fade-in">
+                    <div
+                        class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-green-400 to-green-600">
+                        <i class="fas fa-piggy-bank text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Incredibly Affordable</h3>
+                    <p class="mb-4" style="color: var(--slate);">
+                        Tuition costs significantly less than other universities. Plus, most students qualify for a
+                        <strong>10-50% tuition discount</strong> through the Heber J. Grant Scholarship.
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-xl">
+                        <div class="text-2xl font-bold text-green-600">~$75/credit</div>
+                        <div class="text-sm text-green-700">Average tuition with discounts</div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Fully Online -->
+                <div class="feature-card glass-card p-8 rounded-2xl shadow-lg fade-in">
+                    <div
+                        class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-blue-400 to-blue-600">
+                        <i class="fas fa-laptop-house text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">100% Online</h3>
+                    <p class="mb-4" style="color: var(--slate);">
+                        Complete your entire degree from anywhere in the world. Study on your schedule while balancing
+                        work, family, and other responsibilities.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-xl">
+                        <div class="text-2xl font-bold text-blue-600">180+</div>
+                        <div class="text-sm text-blue-700">Countries with students enrolled</div>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Spiritually Based -->
+                <div class="feature-card glass-card p-8 rounded-2xl shadow-lg fade-in">
+                    <div
+                        class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-purple-400 to-purple-600">
+                        <i class="fas fa-heart text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Spiritually Focused</h3>
+                    <p class="mb-4" style="color: var(--slate);">
+                        Every course integrates gospel principles. Build spiritual confidence alongside your academic
+                        and professional growth.
+                    </p>
+                    <div class="bg-purple-50 p-4 rounded-xl">
+                        <div class="text-2xl font-bold text-purple-600">95%</div>
+                        <div class="text-sm text-purple-700">Student satisfaction rate</div>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Certificate-First -->
+                <div class="feature-card glass-card p-8 rounded-2xl shadow-lg fade-in">
+                    <div
+                        class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-orange-400 to-orange-600">
+                        <i class="fas fa-award text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Certificate-First Model</h3>
+                    <p class="mb-4" style="color: var(--slate);">
+                        Earn job-ready certificates in under a year, then stack them into a full degree. Start
+                        improving your career immediately, not years from now.
+                    </p>
+                    <div class="bg-orange-50 p-4 rounded-xl">
+                        <div class="text-2xl font-bold text-orange-600">3</div>
+                        <div class="text-sm text-orange-700">Certificates = 1 Bachelor's Degree</div>
+                    </div>
+                </div>
+
+                <!-- Feature 5: Global Community -->
+                <div class="feature-card glass-card p-8 rounded-2xl shadow-lg fade-in">
+                    <div
+                        class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-teal-400 to-teal-600">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Weekly Gatherings</h3>
+                    <p class="mb-4" style="color: var(--slate);">
+                        You're never alone. Join weekly virtual or in-person gatherings with fellow students and
+                        mentors who support you every step of the way.
+                    </p>
+                    <div class="bg-teal-50 p-4 rounded-xl">
+                        <div class="text-2xl font-bold text-teal-600">1,000+</div>
+                        <div class="text-sm text-teal-700">Gathering locations worldwide</div>
+                    </div>
+                </div>
+
+                <!-- Feature 6: Real Degrees -->
+                <div class="feature-card glass-card p-8 rounded-2xl shadow-lg fade-in">
+                    <div
+                        class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-indigo-400 to-indigo-600">
+                        <i class="fas fa-university text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Accredited Degrees</h3>
+                    <p class="mb-4" style="color: var(--slate);">
+                        Degrees are awarded by BYU-Idaho and Ensign College — fully accredited institutions
+                        recognized worldwide by employers.
+                    </p>
+                    <div class="bg-indigo-50 p-4 rounded-xl">
+                        <div class="text-2xl font-bold text-indigo-600">84%</div>
+                        <div class="text-sm text-indigo-700">Employed at graduation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    How BYU-Pathway Works
+                </h2>
+                <p class="text-lg sm:text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Your journey from application to degree in clear, achievable steps.
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline line for desktop -->
+                <div class="hidden md:block timeline-line"></div>
+
+                <div class="space-y-12 md:space-y-0">
+                    <!-- Step 1 -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center fade-in">
+                        <div class="md:text-right md:pr-12">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-xl mb-4">
+                                1</div>
+                            <h3 class="text-2xl font-bold mb-3" style="color: var(--navy);">Apply (It's Free!)</h3>
+                            <p class="text-lg" style="color: var(--slate);">
+                                Submit your free application online. There's no SAT, ACT, or previous college experience
+                                required. BYU-Pathway is designed for <strong>everyone</strong>.
+                            </p>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="timeline-dot" style="top: 50%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center fade-in">
+                        <div class="md:col-start-2 md:pl-12">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-600 text-white font-bold text-xl mb-4">
+                                2</div>
+                            <h3 class="text-2xl font-bold mb-3" style="color: var(--navy);">Start PathwayConnect</h3>
+                            <p class="text-lg" style="color: var(--slate);">
+                                Begin with PathwayConnect — a one-year program that builds essential academic,
+                                professional, and spiritual skills while earning college credits.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center fade-in">
+                        <div class="md:text-right md:pr-12">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-orange-600 text-white font-bold text-xl mb-4">
+                                3</div>
+                            <h3 class="text-2xl font-bold mb-3" style="color: var(--navy);">Earn Certificates</h3>
+                            <p class="text-lg" style="color: var(--slate);">
+                                Complete job-ready certificates in areas like Business, IT, Healthcare, and more.
+                                Each certificate can be finished in about one year.
+                            </p>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative md:grid md:grid-cols-2 md:gap-8 items-center fade-in">
+                        <div class="md:col-start-2 md:pl-12">
+                            <div
+                                class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-600 text-white font-bold text-xl mb-4">
+                                4</div>
+                            <h3 class="text-2xl font-bold mb-3" style="color: var(--navy);">Complete Your Degree</h3>
+                            <p class="text-lg" style="color: var(--slate);">
+                                Stack three certificates to earn your Bachelor's degree — in as little as
+                                <strong>3 years total</strong>. Graduate with real skills and zero campus visits
+                                required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Degrees Available -->
+    <section class="py-20" style="background-color: var(--light-blue);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    Degrees & Certificates Available
+                </h2>
+                <p class="text-lg sm:text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    Choose from a variety of in-demand programs designed for today's job market.
+                </p>
+            </div>
+
+            <div class="degree-grid">
+                <!-- Business -->
+                <div class="glass-card p-6 rounded-2xl shadow-lg fade-in hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: var(--navy);">Business Management</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">Marketing, Finance, Entrepreneurship, Applied
+                        Business Management</p>
+                    <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                        class="text-blue-600 text-sm font-semibold hover:underline">
+                        View Programs →
+                    </a>
+                </div>
+
+                <!-- Technology -->
+                <div class="glass-card p-6 rounded-2xl shadow-lg fade-in hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: var(--navy);">Technology</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">Software Development, Web Development, IT
+                        Support, Data Science</p>
+                    <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                        class="text-green-600 text-sm font-semibold hover:underline">
+                        View Programs →
+                    </a>
+                </div>
+
+                <!-- Healthcare -->
+                <div class="glass-card p-6 rounded-2xl shadow-lg fade-in hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: var(--navy);">Healthcare</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">Healthcare Administration, Public Health,
+                        Health Information</p>
+                    <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                        class="text-red-600 text-sm font-semibold hover:underline">
+                        View Programs →
+                    </a>
+                </div>
+
+                <!-- Communications -->
+                <div class="glass-card p-6 rounded-2xl shadow-lg fade-in hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-bullhorn text-xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: var(--navy);">Communications</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">Professional Communication, Digital Media,
+                        Public Relations</p>
+                    <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                        class="text-purple-600 text-sm font-semibold hover:underline">
+                        View Programs →
+                    </a>
+                </div>
+
+                <!-- Family Sciences -->
+                <div class="glass-card p-6 rounded-2xl shadow-lg fade-in hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: var(--navy);">Family Sciences</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">Marriage & Family Studies, Child Development
+                    </p>
+                    <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                        class="text-orange-600 text-sm font-semibold hover:underline">
+                        View Programs →
+                    </a>
+                </div>
+
+                <!-- Applied Sciences -->
+                <div class="glass-card p-6 rounded-2xl shadow-lg fade-in hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-flask text-xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" style="color: var(--navy);">Applied Sciences</h3>
+                    <p class="text-sm mb-4" style="color: var(--slate);">Project Management, Professional Studies, and
+                        more</p>
+                    <a href="https://www.byupathway.edu/degrees/program-list" target="_blank"
+                        class="text-teal-600 text-sm font-semibold hover:underline">
+                        View Programs →
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <a href="https://www.byupathway.edu/degrees/program-list" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-lg hover:shadow-lg transition-all">
+                    <i class="fas fa-list-ul mr-2"></i>
+                    View All 40+ Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Quote -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative glass-card rounded-3xl p-8 sm:p-12 shadow-2xl fade-in"
+                style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);">
+                <span class="quote-mark text-white">"</span>
+                <div class="relative z-10">
+                    <p class="text-xl sm:text-2xl italic mb-8 leading-relaxed text-white">
+                        For those who are wondering if BYU-Pathway is really for you, I urge you: please begin.
+                        Just do it!... To those wondering if they can make it through the program, I say stay
+                        with it... You can do this. You are not alone. I pray you will embrace this rare
+                        opportunity and begin the journey to discover your marvelous destiny. Your dreams can
+                        become a reality as you trust the Lord and allow BYU-Pathway to guide and help you.
+                        Each of you is a child of God, and Heavenly Father wants you to become your best self
+                        during this life and into the eternities. Remember, He loves you. As you move forward
+                        and upward, you will bless your own life and the lives of countless others in turn.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-lg">Elder Dieter F. Uchtdorf</p>
+                            <p class="text-blue-200">Quorum of the Twelve Apostles, The Church of Jesus Christ of
+                                Latter-day Saints
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The History -->
+    <section class="py-20" style="background-color: var(--cream);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--navy);">
+                    The Story Behind BYU-Pathway
+                </h2>
+                <p class="text-lg sm:text-xl max-w-3xl mx-auto" style="color: var(--slate);">
+                    From 50 students in 2009 to a global movement serving tens of thousands.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-blue-600">2009</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1" style="color: var(--navy);">Pathway Begins</h4>
+                                <p style="color: var(--slate);">BYU-Idaho launches Pathway with just 50 students in the
+                                    United States.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-16 h-16 rounded-xl bg-green-100 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-green-600">2016</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1" style="color: var(--navy);">Rapid Growth</h4>
+                                <p style="color: var(--slate);">Pathway grows to serve 14,000+ students in over 60
+                                    countries.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-16 h-16 rounded-xl bg-orange-100 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-orange-600">2017</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1" style="color: var(--navy);">BYU-Pathway Worldwide
+                                    Created</h4>
+                                <p style="color: var(--slate);">The First Presidency announces the creation of
+                                    BYU-Pathway Worldwide as a separate organization.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 w-16 h-16 rounded-xl bg-purple-100 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-purple-600">Now</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1" style="color: var(--navy);">Global Impact</h4>
+                                <p style="color: var(--slate);">75,000+ students in 180+ countries with affordable,
+                                    accessible education.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <img src="resources/mentor-support.jpg" alt="BYU Pathway students at a gathering"
+                        class="rounded-2xl shadow-2xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-r from-blue-900 to-blue-700 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-40 h-40 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-60 h-60 bg-yellow-400 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 fade-in">
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold mb-6 text-white">
+                Ready to Start Your Journey?
+            </h2>
+            <p class="text-lg sm:text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+                Join 75,000+ students worldwide who are transforming their lives through affordable,
+                spiritually-based education. Apply for free today.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://apply.byupathway.edu" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center px-10 py-5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-xl hover:shadow-2xl transition-all pulse-cta">
+                    <i class="fas fa-rocket mr-3"></i>
+                    Apply for Free
+                </a>
+                <a href="index.html"
+                    class="inline-flex items-center justify-center px-10 py-5 rounded-xl bg-white/20 backdrop-blur-sm text-white font-bold text-xl border border-white/30 hover:bg-white/30 transition-all">
+                    <i class="fas fa-compass mr-3"></i>
+                    Back to Support Hub
+                </a>
+            </div>
+            <div class="mt-8 text-center fade-in delay-200">
+                <a href="registration.html"
+                    class="inline-flex items-center text-blue-100 hover:text-white font-medium hover:underline transition-colors text-lg">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Need help applying? Get the Registration Guide
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-compass text-yellow-500 text-2xl"></i>
+                        <span class="text-xl font-bold" style="color: var(--navy);">Pathway<span
+                                class="text-yellow-500">Compass</span></span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-6">
+                        Navigating your journey to success in BYU-Pathway Worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-orange-500 transition-colors"><i
+                                class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors"><i
+                                class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-pink-600 transition-colors"><i
+                                class="fab fa-instagram text-lg"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Resources</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="index.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Home</a></li>
+                        <li><a href="registration.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Registration
+                                Help</a></li>
+                        <li><a href="post-registration.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Setup
+                                Guide</a></li>
+                        <li><a href="scholarships.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Scholarships</a>
+                        </li>
+                        <li><a href="what-is-byu-pathway.html" target="_blank"
+                                class="text-coral-500 hover:text-coral-600 hover:underline transition-colors font-medium"
+                                style="color: #f97316;">What is BYU Pathway?</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">Support</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="how-to.html"
+                                class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
+                        </li>
+                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                                Mentors</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--navy);">BYU Pathway</h4>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li><a href="https://www.byupathway.edu/"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">BYU Pathway Home</a></li>
+                        <li><a href="https://www.byupathway.edu/career-services"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Career Services</a></li>
+                        <li><a href="https://www.byupathway.edu/career-services/whatsapp-groups"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Career Chat WA Groups</a></li>
+                        <li><a href="https://www.byupathway.edu/employment/job-openings"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Job Openings</a></li>
+                        <li><a href="https://www.byupathway.edu/degrees/program-list"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">Degree List</a></li>
+                        <li><a href="https://www.byupathway.edu/about"
+                                class="hover:text-orange-500 hover:underline transition-colors" target="_blank"
+                                rel="noopener noreferrer">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">
+                    &copy; 2025 BYU Pathway Student Support Hub. Not an official BYU-Pathway Worldwide site.
+                </p>
+                <div class="flex gap-6 text-xs text-slate-400">
+                    <a href="#" class="hover:text-slate-600">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-600">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animations on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+            if (mobileMenuBtn && mobileNavMenu) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    mobileMenuBtn.classList.toggle('active');
+                    mobileNavMenu.classList.toggle('active');
+                });
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
