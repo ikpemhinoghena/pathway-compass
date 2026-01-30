@@ -7,6 +7,7 @@
     <title>Post-Registration Setup Guide - BYU Pathway Support</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,600;1,400&display=swap"
@@ -218,6 +219,71 @@
             border-radius: 0 0.75rem 0.75rem 0;
             margin-top: 1rem;
         }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #1f2937;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast i {
+            color: var(--sage);
+        }
+
+        /* Celebration Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -343,7 +409,7 @@
                     </svg>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="text-center">
-                            <div class="text-2xl font-bold" style="color: var(--navy);" id="progress-text">0/8</div>
+                            <div class="text-2xl font-bold" style="color: var(--navy);" id="progress-text">0/7</div>
                             <div class="text-xs" style="color: var(--slate);">Completed</div>
                         </div>
                     </div>
@@ -353,7 +419,7 @@
             <!-- Checklist Items -->
             <div class="space-y-4">
                 <!-- Item 1: Portal Login -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="portal-login"
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm" data-task="portal-login"
                     onclick="toggleTask('portal-login')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
@@ -365,21 +431,20 @@
                             <p class="mb-3" style="color: var(--slate);">Access the new BYU Pathway portal using your
                                 byupathway.edu credentials.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: var(--light-blue); color: var(--navy);">5 minutes</span>
-                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="how-to.html" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
                                 <a href="https://portal.byupathway.edu" target="_blank"
                                     class="text-green-600 hover:underline font-medium"
                                     onclick="event.stopPropagation();">Go to Portal →</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
 
                 <!-- Item 2: Clear Holds -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="clear-holds"
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm" data-task="clear-holds"
                     onclick="toggleTask('clear-holds')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
@@ -391,43 +456,20 @@
                             <p class="mb-3" style="color: var(--slate);">Check for and resolve any holds that might
                                 prevent course registration.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: #fef3c7; color: #f59e0b;">Varies</span>
-                                <a href="registration.html#faq" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="registration.html#holds-faq" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">View Hold Types</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
 
-                <!-- Item 3: Plan Degree -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="plan-degree"
-                    onclick="toggleTask('plan-degree')">
-                    <div class="flex items-center">
-                        <div class="checkbox mr-4">
-                            <i class="fas fa-check text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">Plan Your Degree Path
-                            </h3>
-                            <p class="mb-3" style="color: var(--slate);">Select your career focus and choose the degree
-                                and certificates that match your goals.</p>
-                            <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: #ecfdf5; color: var(--sage);">20 minutes</span>
-                                <a href="https://www.byupathway.edu/degrees" target="_blank"
-                                    class="text-blue-600 hover:underline font-medium"
-                                    onclick="event.stopPropagation();">Explore Degrees</a>
-                            </div>
-                        </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
-                    </div>
-                </div>
+
 
                 <!-- Item 4: Choose Gatherings -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="choose-gatherings"
-                    onclick="toggleTask('choose-gatherings')">
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm"
+                    data-task="choose-gatherings" onclick="toggleTask('choose-gatherings')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
                             <i class="fas fa-check text-sm"></i>
@@ -439,18 +481,17 @@
                                 your
                                 academic meetings and religion course.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: #fef3c7; color: #f59e0b;">10 minutes</span>
-                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="how-to.html" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
 
                 <!-- Item 5: Register for Courses -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="register-courses"
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm" data-task="register-courses"
                     onclick="toggleTask('register-courses')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
@@ -461,18 +502,17 @@
                             <p class="mb-3" style="color: var(--slate);">Complete your course registration to secure
                                 your spot for the upcoming semester.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: var(--light-blue); color: var(--navy);">15 minutes</span>
-                                <a href="registration.html" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="registration.html" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Registration Help</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
 
                 <!-- Item 6: Setup Microsoft 365 -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="setup-m365"
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm" data-task="setup-m365"
                     onclick="toggleTask('setup-m365')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
@@ -483,21 +523,20 @@
                             <p class="mb-3" style="color: var(--slate);">Set up your free Microsoft 365 account
                                 including Word, Excel, PowerPoint, and Teams.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: #ecfdf5; color: var(--sage);">10 minutes</span>
-                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="how-to.html" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
-                                <a href="https://office.com" target="_blank"
+                                <a href="https://m365.cloud.microsoft/" target="_blank"
                                     class="text-green-600 hover:underline font-medium"
-                                    onclick="event.stopPropagation();">Go to Office.com →</a>
+                                    onclick="event.stopPropagation();">Go to Microsoft 365 →</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
 
                 <!-- Item 7: Learn Canvas -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="learn-canvas"
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm" data-task="learn-canvas"
                     onclick="toggleTask('learn-canvas')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
@@ -508,21 +547,20 @@
                             <p class="mb-3" style="color: var(--slate);">Understand how to navigate Canvas, submit
                                 assignments, and participate in discussions.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: #fef3c7; color: #f59e0b;">25 minutes</span>
-                                <a href="how-to.html" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="how-to.html" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
                                 <a href="https://byupw.instructure.com" target="_blank"
                                     class="text-green-600 hover:underline font-medium"
                                     onclick="event.stopPropagation();">Go to Canvas →</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
 
                 <!-- Item 8: Apply for Discounts -->
-                <div class="checklist-item p-6 rounded-xl border border-gray-200" data-task="apply-discounts"
+                <div class="checklist-item p-6 rounded-xl border border-gray-400 shadow-sm" data-task="apply-discounts"
                     onclick="toggleTask('apply-discounts')">
                     <div class="flex items-center">
                         <div class="checkbox mr-4">
@@ -534,13 +572,12 @@
                             <p class="mb-3" style="color: var(--slate);">Apply for the Heber J. Grant Tuition Discount
                                 (10-50% off) by completing the self-reliance lesson in your Portal.</p>
                             <div class="flex items-center space-x-4 text-sm">
-                                <span class="px-3 py-1 rounded-full"
-                                    style="background-color: var(--light-blue); color: var(--navy);">5 minutes</span>
-                                <a href="scholarships.html" class="text-blue-600 hover:underline font-medium"
+
+                                <a href="scholarships.html" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">View Scholarships</a>
                             </div>
                         </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
+
                     </div>
                 </div>
             </div>
@@ -866,9 +903,10 @@
                                 <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold text-white"
                                     style="background-color: var(--coral);">1</div>
                                 <div>
-                                    <h4 class="font-semibold mb-1">Go to portal.byupathway.edu</h4>
-                                    <p class="text-sm" style="color: var(--slate);">Sign in with your byupathway.edu
-                                        credentials</p>
+                                    <h4 class="font-semibold mb-1">Go to m365.cloud.microsoft</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Use the direct portal link: <a
+                                            href="https://m365.cloud.microsoft/" target="_blank"
+                                            class="text-blue-600 hover:underline">m365.cloud.microsoft</a></p>
                                 </div>
                             </div>
 
@@ -876,8 +914,9 @@
                                 <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold text-white"
                                     style="background-color: var(--sage);">2</div>
                                 <div>
-                                    <h4 class="font-semibold mb-1">Click "Resources" then "Student Software"</h4>
-                                    <p class="text-sm" style="color: var(--slate);">Find the Microsoft 365 access link
+                                    <h4 class="font-semibold mb-1">Sign in with school email</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Use your full
+                                        <strong>@byupathway.edu</strong> email address
                                     </p>
                                 </div>
                             </div>
@@ -886,9 +925,9 @@
                                 <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold text-white"
                                     style="background-color: var(--navy);">3</div>
                                 <div>
-                                    <h4 class="font-semibold mb-1">Sign in with your byupathway.edu email</h4>
-                                    <p class="text-sm" style="color: var(--slate);">Use your full byupathway.edu email
-                                        address</p>
+                                    <h4 class="font-semibold mb-1">Authenticate account</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Sign in with your Church Account
+                                        credentials if prompted</p>
                                 </div>
                             </div>
 
@@ -896,22 +935,33 @@
                                 <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold text-white"
                                     style="background-color: #8b5cf6;">4</div>
                                 <div>
-                                    <h4 class="font-semibold mb-1">Install desktop applications</h4>
-                                    <p class="text-sm" style="color: var(--slate);">Download Word, Excel, PowerPoint,
-                                        and Teams</p>
+                                    <h4 class="font-semibold mb-1">Access your tools</h4>
+                                    <p class="text-sm" style="color: var(--slate);">Use M365 apps directly
+                                        for your school work</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-8 p-4 bg-blue-50 rounded-lg">
-                            <h4 class="font-semibold mb-2" style="color: var(--navy);">What You Get:</h4>
-                            <ul class="text-sm space-y-1" style="color: var(--slate);">
-                                <li>• Word, Excel, PowerPoint, Outlook</li>
-                                <li>• Microsoft Teams for collaboration</li>
-                                <li>• 1TB OneDrive cloud storage</li>
-                                <li>• Access on up to 5 devices</li>
-                                <li>• Free as long as you're enrolled</li>
-                            </ul>
+                            <p class="text-xs font-bold text-blue-700 uppercase mb-2"><i
+                                    class="fas fa-lightbulb mr-1"></i> Pro Tip: Offline Access</p>
+                            <p class="text-sm mb-3" style="color: var(--slate);">
+                                You can download Office apps and sign in with your <strong>@byupathway.edu</strong>
+                                email for full offline access!
+                            </p>
+                            <div class="flex items-start pt-3 border-t border-blue-100">
+                                <i class="fas fa-exclamation-circle text-orange-500 mt-0.5 mr-2 text-sm"></i>
+                                <p class="text-xs text-slate-500">
+                                    <strong>Caution:</strong> Learn to separate your school login from your
+                                    personal Microsoft account to avoid conflicts.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <a href="how-to.html"
+                                class="text-sm font-medium text-orange-500 hover:text-orange-600 hover:underline transition-colors inline-flex items-center gap-1">
+                                How to? <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1080,14 +1130,15 @@
                         <div class="flex items-start">
                             <div
                                 class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fab fa-facebook-f text-xl"></i>
+                                <i class="fas fa-hand-holding-heart text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold" style="color: var(--navy);">Official Facebook Groups</h4>
-                                <p class="text-sm" style="color: var(--slate);">Join thousands of students in regional
-                                    and global groups to share tips and encouragement.</p>
-                                <a href="https://www.facebook.com/groups/byupathwayworldwide/" target="_blank"
-                                    class="text-blue-600 text-xs font-semibold hover:underline">Join Global Group →</a>
+                                <h4 class="font-bold" style="color: var(--navy);">Service Missionaries</h4>
+                                <p class="text-sm" style="color: var(--slate);">Dedicated volunteers who facilitate
+                                    weekly gatherings and provide personal support and encouragement throughout your
+                                    journey.</p>
+                                <a href="how-to.html" class="text-blue-600 text-xs font-semibold hover:underline">Learn
+                                    about them →</a>
                             </div>
                         </div>
 
@@ -1098,8 +1149,9 @@
                             </div>
                             <div>
                                 <h4 class="font-bold" style="color: var(--navy);">Peer Mentors</h4>
-                                <p class="text-sm" style="color: var(--slate);">Your mentor is a fellow student who has
-                                    been where you are. They are your first point of contact for support.</p>
+                                <p class="text-sm" style="color: var(--slate);">Professionals who help you navigate
+                                    your studies with success strategies, important reminders, and connections to
+                                    university resources.</p>
                                 <a href="registration.html"
                                     class="text-orange-600 text-xs font-semibold hover:underline">Learn About Mentors
                                     →</a>
@@ -1148,34 +1200,44 @@
     <script>
         // Setup-specific JavaScript
         let completedTasks = new Set();
-        const totalTasks = 8;
+        const totalTasks = 7;
 
         // Initialize progress from localStorage
         function initializeProgress() {
-            const saved = localStorage.getItem('byu-setup-progress');
-            if (saved) {
-                completedTasks = new Set(JSON.parse(saved));
-
-                // Restore visual state for each completed task
-                completedTasks.forEach(taskId => {
-                    const taskElement = document.querySelector(`[data-task="${taskId}"]`);
-                    if (taskElement) {
-                        taskElement.classList.add('completed');
-                        const checkbox = taskElement.querySelector('.checkbox');
-                        if (checkbox) {
-                            checkbox.innerHTML = '<i class="fas fa-check text-sm"></i>';
-                        }
-                    }
-                });
-
-                updateProgress();
+            try {
+                const saved = localStorage.getItem('byu-setup-progress');
+                if (saved) {
+                    completedTasks = new Set(JSON.parse(saved));
+                }
+            } catch (e) {
+                console.warn('LocalStorage unavailable:', e);
             }
+            // Always refresh UI state
+            refreshChecklistUI();
+            updateProgress();
+        }
+
+        // Refresh visual state for all tasks
+        function refreshChecklistUI() {
+            document.querySelectorAll('.checklist-item').forEach(item => {
+                const taskId = item.dataset.task;
+                const checkbox = item.querySelector('.checkbox');
+
+                if (completedTasks.has(taskId)) {
+                    item.classList.add('completed');
+                    if (checkbox) checkbox.innerHTML = '<i class="fas fa-check text-sm"></i>';
+                } else {
+                    item.classList.remove('completed');
+                    if (checkbox) checkbox.innerHTML = '';
+                }
+            });
         }
 
         // Toggle task completion
         function toggleTask(taskId) {
             const taskElement = document.querySelector(`[data-task="${taskId}"]`);
             const checkbox = taskElement.querySelector('.checkbox');
+            let justCompleted = false;
 
             if (completedTasks.has(taskId)) {
                 completedTasks.delete(taskId);
@@ -1186,17 +1248,29 @@
                 taskElement.classList.add('completed');
                 checkbox.innerHTML = '<i class="fas fa-check text-sm"></i>';
 
-                // Celebration animation
+                // Tick animation
                 anime({
                     targets: checkbox,
                     scale: [1, 1.2, 1],
-                    duration: 600,
+                    duration: 400,
                     easing: 'easeOutElastic(1, .8)'
                 });
+                justCompleted = true;
             }
 
             updateProgress();
             saveProgress();
+            showToast('Progress Saved');
+
+            // Trigger celebration only on explicit completion action
+            if (justCompleted && completedTasks.size === totalTasks) {
+                // Delay slightly to allow the checkmark animation to finish
+                setTimeout(() => {
+                    triggerConfetti();
+                    // Show modal after confetti starts
+                    setTimeout(showCompletionModal, 800);
+                }, 300);
+            }
         }
 
         // Update progress visualization
@@ -1205,36 +1279,132 @@
             const percentage = Math.round((completed / totalTasks) * 100);
 
             // Update text
-            document.getElementById('progress-text').textContent = `${completed}/${totalTasks}`;
-            document.getElementById('completion-percentage').textContent = `${percentage}%`;
+            const progressText = document.getElementById('progress-text');
+            if (progressText) progressText.textContent = `${completed}/${totalTasks}`;
 
             // Update circle
             const circle = document.getElementById('progress-circle');
-            const circumference = 2 * Math.PI * 56; // radius = 56
-            const strokeDasharray = (percentage / 100) * circumference;
-            circle.style.strokeDasharray = `${strokeDasharray} ${circumference}`;
+            if (circle) {
+                const circumference = 2 * Math.PI * 56; // radius = 56
+                const strokeDasharray = (percentage / 100) * circumference;
+                circle.style.strokeDasharray = `${strokeDasharray} ${circumference}`;
+            }
 
-            // Update header percentage
-            document.getElementById('completion-percentage').textContent = `${percentage}%`;
+            // Update hero section percentage
+            const heroPercentage = document.getElementById('completion-percentage');
+            if (heroPercentage) {
+                heroPercentage.textContent = `${percentage}%`;
+            }
         }
 
         // Save progress to localStorage
         function saveProgress() {
-            localStorage.setItem('byu-setup-progress', JSON.stringify([...completedTasks]));
+            try {
+                localStorage.setItem('byu-setup-progress', JSON.stringify([...completedTasks]));
+            } catch (e) {
+                console.warn('Could not save progress:', e);
+            }
         }
 
         // Reset all progress
         function resetProgress() {
             if (confirm('Are you sure you want to reset your progress? This cannot be undone.')) {
                 completedTasks.clear();
-                document.querySelectorAll('.checklist-item').forEach(item => {
-                    item.classList.remove('completed');
-                    item.querySelector('.checkbox').innerHTML = '';
-                });
+                refreshChecklistUI();
                 updateProgress();
                 saveProgress();
+                showToast('Progress Reset');
             }
         }
+
+        // Show Toast Notification
+        let toastTimeout;
+        function showToast(message) {
+            // Create toast element if it doesn't exist
+            let toast = document.getElementById('toast-notification');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast-notification';
+                toast.className = 'toast';
+                document.body.appendChild(toast);
+            }
+
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Enhanced Confetti using canvas-confetti
+        function triggerConfetti() {
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.7 },
+                zIndex: 1500
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+
+        // Completion Modal
+        function showCompletionModal() {
+            // Create modal if it doesn't exist
+            let modal = document.getElementById('completion-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'completion-modal';
+                modal.className = 'modal-overlay';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-trophy text-2xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2" style="color: var(--navy);">Mission Accomplished!</h3>
+                        <p class="text-gray-600 mb-6">You've completed a lot! Don't give up, keep learning.</p>
+                        <button onclick="closeCompletionModal()" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                            Awesome, let's go!
+                        </button>
+                    </div>
+                 `;
+                document.body.appendChild(modal);
+            }
+
+            // Small delay to ensure render before adding class for transition
+            requestAnimationFrame(() => {
+                modal.classList.add('show');
+            });
+        }
+
+        function closeCompletionModal() {
+            const modal = document.getElementById('completion-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+
+        // Listen for storage changes (Cross-tab sync)
+        window.addEventListener('storage', function (e) {
+            if (e.key === 'byu-setup-progress') {
+                initializeProgress();
+            }
+        });
 
         // Show system tour information
         function showTourInfo(system) {

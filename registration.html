@@ -936,7 +936,7 @@
                     </div>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-item" id="holds-faq">
                     <div class="faq-question p-6 flex justify-between items-center" onclick="toggleFAQ(3)">
                         <h3 class="text-lg font-semibold" style="color: var(--navy);">I'm getting a "hold" message when
                             trying to register</h3>
@@ -1459,6 +1459,10 @@
                     // In a real implementation, this would filter FAQ items and content
                     console.log('Searching for:', query);
                 });
+            }
+            // Check for hash and expand generic FAQ if needed
+            if (window.location.hash === '#holds-faq') {
+                setTimeout(() => toggleFAQ(3), 500); // Slight delay to ensure visibility
             }
         });
     </script>
