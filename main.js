@@ -10,12 +10,13 @@ class BYUPathwayApp {
     init() {
         this.setupTypingAnimation();
         this.setupScrollAnimations();
-        this.setupSearchFunctionality();
+        // this.setupSearchFunctionality(); // Search in nav bar removed
         this.setupTestimonialSlider();
         this.setupStatsCounter();
         this.setupSmoothScrolling();
-        this.setupMobileNavigation();
+        // this.setupMobileNavigation(); // Redundant, using setupMobileMenuToggle
         this.setupMobileMenuToggle();
+        this.setupNavbarScroll();
         this.initializeFadeInObserver();
         this.setupAccessibilityFeatures();
         this.setupProgressTracking();
@@ -200,7 +201,7 @@ class BYUPathwayApp {
         });
     }
 
-    // Setup comprehensive search functionality
+    /* Global search functionality commented out
     setupSearchFunctionality() {
         const searchInput = document.getElementById('globalSearch');
         if (!searchInput) return;
@@ -240,7 +241,6 @@ class BYUPathwayApp {
         });
     }
 
-    // Perform intelligent search across all content
     performSearch(query) {
         const results = [];
         const queryWords = query.toLowerCase().split(' ');
@@ -268,7 +268,6 @@ class BYUPathwayApp {
         this.displaySearchResults(results.slice(0, 6), query);
     }
 
-    // Display search results with highlighting
     displaySearchResults(results, query) {
         let resultsHTML = '';
 
@@ -315,7 +314,6 @@ class BYUPathwayApp {
         resultsContainer.style.display = 'block';
     }
 
-    // Hide search results
     hideSearchResults() {
         const resultsContainer = document.getElementById('searchResults');
         if (resultsContainer) {
@@ -323,11 +321,11 @@ class BYUPathwayApp {
         }
     }
 
-    // Highlight search terms in results
     highlightText(text, query) {
         const regex = new RegExp(`(${query.split(' ').join('|')})`, 'gi');
         return text.replace(regex, '<mark class="bg-yellow-200">$1</mark>');
     }
+    */
 
     // Setup testimonial slider
     setupTestimonialSlider() {
@@ -468,6 +466,20 @@ class BYUPathwayApp {
                     menuBtn.classList.remove('active');
                     mobileMenu.classList.remove('active');
                 });
+            });
+        }
+    }
+
+    // Setup navbar appearance on scroll
+    setupNavbarScroll() {
+        const nav = document.querySelector('nav');
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
             });
         }
     }

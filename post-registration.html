@@ -302,24 +302,18 @@
                 </div>
 
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
+                    <div class="ml-10 flex items-baseline lg:space-x-8 md:space-x-4">
                         <a href="index.html" class="nav-link text-sm font-medium">Home</a>
                         <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
                         <a href="post-registration.html" class="nav-link text-sm font-medium text-orange-600">Setup
                             Guide</a>
                         <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
-                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">Tutorials</a>
                         <a href="scholarships.html" class="nav-link text-sm font-medium">Scholarships</a>
                     </div>
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <input type="text" id="setupSearch" placeholder="Search setup guides..."
-                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
-                    </div>
-
                     <!-- Hamburger Menu Button -->
                     <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
                         <span></span>
@@ -333,9 +327,9 @@
             <div class="mobile-nav-menu md:hidden" id="mobileNavMenu">
                 <a href="index.html">Home</a>
                 <a href="registration.html">Registration Help</a>
-                <a href="post-registration.html">Setup Guide</a>
+                <a href="post-registration.html" class="active">Setup Guide</a>
                 <a href="jobs.html">Career Resources</a>
-                <a href="how-to.html">How-To Tutorials</a>
+                <a href="how-to.html">Tutorials</a>
                 <a href="scholarships.html">Scholarships</a>
             </div>
         </div>
@@ -1373,7 +1367,7 @@
                             <i class="fas fa-trophy text-2xl text-green-600"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-2" style="color: var(--navy);">Mission Accomplished!</h3>
-                        <p class="text-gray-600 mb-6">You've completed a lot! Don't give up, keep learning.</p>
+                        <p class="text-gray-600 mb-6">You've made great progress, keep learning.</p>
                         <button onclick="closeCompletionModal()" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
                             Awesome, let's go!
                         </button>

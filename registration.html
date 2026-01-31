@@ -247,6 +247,82 @@
             background-color: #dcfce7;
             color: #166534;
         }
+
+        /* English Test Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+            cursor: default;
+        }
+
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1.5rem;
+                padding-top: 3rem;
+                border-radius: 1rem;
+            }
+
+            .modal-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--slate);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 10;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-close:hover {
+            color: var(--navy);
+            background-color: #f3f4f6;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -265,23 +341,19 @@
                 </div>
 
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
+                    <div class="ml-10 flex items-baseline lg:space-x-8 md:space-x-4">
                         <a href="index.html" class="nav-link text-sm font-medium">Home</a>
                         <a href="registration.html" class="nav-link text-sm font-medium text-orange-600">Registration
                             Help</a>
                         <a href="post-registration.html" class="nav-link text-sm font-medium">Setup Guide</a>
                         <a href="jobs.html" class="nav-link text-sm font-medium">Career Resources</a>
-                        <a href="how-to.html" class="nav-link text-sm font-medium">How-To Tutorials</a>
+                        <a href="how-to.html" class="nav-link text-sm font-medium">Tutorials</a>
                         <a href="scholarships.html" class="nav-link text-sm font-medium">Scholarships</a>
                     </div>
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <input type="text" id="pageSearch" placeholder="Search registration help..."
-                            class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
-                    </div>
+                    <!-- Nav Search removed -->
 
                     <!-- Hamburger Menu Button -->
                     <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
@@ -295,10 +367,10 @@
             <!-- Mobile Navigation Menu -->
             <div class="mobile-nav-menu md:hidden" id="mobileNavMenu">
                 <a href="index.html">Home</a>
-                <a href="registration.html">Registration Help</a>
+                <a href="registration.html" class="active">Registration Help</a>
                 <a href="post-registration.html">Setup Guide</a>
                 <a href="jobs.html">Career Resources</a>
-                <a href="how-to.html">How-To Tutorials</a>
+                <a href="how-to.html">Tutorials</a>
                 <a href="scholarships.html">Scholarships</a>
             </div>
         </div>
@@ -475,8 +547,13 @@
                                             immediately with feedback.</p>
                                     </div>
                                 </div>
-                                <p class="text-xs italic" style="color: var(--slate);">EnglishConnect or
-                                    BYU-PathwayConnect—either way, you grow! 🌱</p>
+                                <div class="mt-2 flex justify-end">
+                                    <a href="javascript:void(0)" onclick="openEnglishTestModal()"
+                                        class="text-xs font-semibold text-blue-600 underline flex items-center gap-1">
+                                        <i class="fas fa-question-circle"></i>
+                                        Why English Test?
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10"
@@ -1559,8 +1636,72 @@
         </div>
     </footer>
 
+    <!-- English Test Explanation Modal -->
+    <div id="english-test-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeEnglishTestModal()" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-language text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Why the English Assessment?</h3>
+            <div class="text-left space-y-4 mb-6" style="color: var(--slate);">
+                <p>
+                    To succeed in BYU-Pathway's university-level courses, students need a specific level of English
+                    proficiency. This assessment ensures you can confidently understand course materials, participate in
+                    discussions, and complete assignments.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <p class="font-semibold text-blue-900 mb-1">No "Pass" or "Fail"</p>
+                    <p class="text-sm">
+                        You cannot fail this test! Based on your results:
+                    </p>
+                    <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+                        <li>You'll either be admitted directly to <strong>PathwayConnect</strong>.</li>
+                        <li>Or you'll start in <a href="https://www.englishconnect.org/" target="_blank"
+                                class="text-blue-600 font-bold hover:underline">EnglishConnect</a> to improve your
+                            skills until you're ready.</li>
+                    </ul>
+                </div>
+                <p class="italic text-sm">
+                    Either way, you are starting your journey toward a degree!
+                </p>
+            </div>
+            <button onclick="closeEnglishTestModal()"
+                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                I Understand
+            </button>
+        </div>
+    </div>
+
     <script src="main.js"></script>
     <script src="live-chat.js"></script>
+    <script>
+        function openEnglishTestModal() {
+            const modal = document.getElementById('english-test-modal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+
+        function closeEnglishTestModal() {
+            const modal = document.getElementById('english-test-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // Close on outside click
+        window.onclick = function (event) {
+            const modal = document.getElementById('english-test-modal');
+            if (event.target == modal) {
+                closeEnglishTestModal();
+            }
+        }
+    </script>
 </body>
 
 </html>
