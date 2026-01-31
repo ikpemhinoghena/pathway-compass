@@ -168,7 +168,8 @@
 
     /* Fix search input on mobile */
     nav input[type="text"] {
-        width: 180px !important;
+        width: 100% !important;
+        max-width: 220px !important;
         font-size: 0.875rem;
         padding: 0.5rem 0.75rem 0.5rem 2rem !important;
     }
@@ -360,9 +361,9 @@
     }
 
     /* Prevent box overflow */
-    div,
-    section,
-    article {
+    .partner-card-pro,
+    .job-card,
+    .video-card {
         max-width: 100%;
         overflow-x: hidden;
     }
@@ -502,13 +503,12 @@
    ============================================ */
 @media screen and (max-width: 768px) {
 
-    /* Ensure no horizontal scroll */
-    body {
-        overflow-x: hidden;
-    }
-
+    /* Ensure no horizontal scroll with safe reset */
+    body,
     html {
         overflow-x: hidden;
+        width: 100%;
+        position: relative;
     }
 
     /* Max width for containers */

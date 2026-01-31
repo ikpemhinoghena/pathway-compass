@@ -251,16 +251,17 @@
         /* Professional Partner Card Styles (Duplicated & Restyled) */
         .partner-card-pro {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1.5px solid #cbd5e1;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
         .partner-card-pro:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.08);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             border-color: var(--navy);
         }
 
@@ -278,11 +279,7 @@
             border: 1px solid #f1f5f9;
         }
 
-        .partner-card-pro:hover .partner-icon-wrapper-pro {
-            background: var(--navy);
-            color: white;
-            border-color: var(--navy);
-        }
+
 
         .partner-badge-pro {
             font-size: 0.7rem;
@@ -814,10 +811,10 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
-                    Additional Career Resources
+                    Career Resources
                 </h2>
                 <p class="text-xl max-w-3xl mx-auto" style="color: var(--slate);">
-                    Access valuable resources from BYU Pathway's trusted partners and career development organizations.
+                    Access valuable resources from BYU Pathway, trusted partners and career development resources.
                 </p>
             </div>
 
@@ -839,92 +836,25 @@
                     </a>
                 </div>
 
-                <!-- Resource 2 -->
+                <!-- Resource 2: LinkedIn Mastery -->
                 <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
                     <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
-                        style="background-color: #ecfdf5;">
-                        <i class="fas fa-users text-2xl" style="color: var(--sage);"></i>
+                        style="background-color: #e0f2fe;">
+                        <i class="fab fa-linkedin text-2xl" style="color: #0077b5;"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">LinkedIn Networking</h3>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">LinkedIn Success</h3>
                     <p class="mb-6" style="color: var(--slate);">
-                        Connect with BYU Pathway alumni and professionals in your field of interest.
+                        Optimize your LinkedIn profile to attract recruiters and showcase your personal brand
+                        effectively.
                     </p>
-                    <a href="https://www.linkedin.com" target="_blank"
+                    <a href="https://www.byupathway.edu/linkedin" target="_blank"
                         class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
-                        Join Network
+                        Optimize Profile
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
 
-                <!-- Resource 3 -->
-                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
-                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
-                        style="background-color: #fef3c7;">
-                        <i class="fas fa-certificate text-2xl" style="color: #f59e0b;"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Professional Certifications</h3>
-                    <p class="mb-6" style="color: var(--slate);">
-                        Earn industry-recognized certifications to boost your resume and demonstrate your skills.
-                    </p>
-                    <button onclick="showCertificationInfo()"
-                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
-                        View Certifications
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-
-                <!-- Resource 4 -->
-                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
-                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
-                        style="background-color: var(--light-blue);">
-                        <i class="fas fa-chalkboard-teacher text-2xl" style="color: var(--navy);"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Interview Preparation</h3>
-                    <p class="mb-6" style="color: var(--slate);">
-                        Practice common interview questions and learn effective communication strategies.
-                    </p>
-                    <button onclick="startInterviewPrep()"
-                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
-                        Start Practice
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-
-                <!-- Resource 5 -->
-                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
-                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
-                        style="background-color: #ecfdf5;">
-                        <i class="fas fa-chart-bar text-2xl" style="color: var(--sage);"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Salary Research</h3>
-                    <p class="mb-6" style="color: var(--slate);">
-                        Research market rates for your role and location to ensure fair compensation.
-                    </p>
-                    <button onclick="openSalaryTool()" class="inline-flex items-center font-semibold transition-colors"
-                        style="color: var(--coral);">
-                        Research Salaries
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-
-                <!-- Resource 6 -->
-                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
-                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
-                        style="background-color: #fef3c7;">
-                        <i class="fas fa-rocket text-2xl" style="color: #f59e0b;"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Freelance Platform</h3>
-                    <p class="mb-6" style="color: var(--slate);">
-                        Find freelance and contract work to build experience while completing your studies.
-                    </p>
-                    <button onclick="exploreFreelance()"
-                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
-                        Explore Freelancing
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-
-                <!-- Resource 7: Career Chats & Job Alerts -->
+                <!-- Resource 3: Career Chats & Job Alerts -->
                 <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
                     <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
                         style="background-color: #ecfdf5;">
@@ -941,12 +871,371 @@
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
+
+                <!-- Resource 4: Church Employment Services -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fef2f2;">
+                        <i class="fas fa-hands-helping text-2xl" style="color: #dc2626;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Church Employment Services</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Access personalized employment services, webinars, and workshops to help you achieve your career
+                        and self-reliance goals.
+                    </p>
+                    <a href="https://www.churchofjesuschrist.org/life/help-for-job-seekers?lang=eng" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Find Church Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 5: BYU-Pathway Job Board -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fff7ed;">
+                        <i class="fas fa-briefcase text-2xl" style="color: #ea580c;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">BYU-Pathway Jobs</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Find seamless student employment opportunities and support roles directly
+                        within BYU-Pathway.
+                    </p>
+                    <a href="https://www.byupathway.edu/employment/job-openings" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View Student Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 6: Resume Tips & Building -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #f3e8ff;">
+                        <i class="fas fa-file-contract text-2xl" style="color: #9333ea;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Resume Building Guide</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Expert tips on structuring your resume, highlighting education, and tailoring content for
+                        specific
+                        job roles.
+                    </p>
+                    <a href="https://www.byupathway.edu/career-services/resources/resume-sections" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Improve Resume
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 8: Interview Preparation -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: var(--light-blue);">
+                        <i class="fas fa-chalkboard-teacher text-2xl" style="color: var(--navy);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Interview Preparation</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Learn how to answer common interview questions like "Tell me about yourself" using the STAR
+                        method
+                        (Situation, Task, Action, Result).
+                    </p>
+                    <a href="https://resourcecenter.byupathway.org/professional-skills/preparing-for-interview-questions"
+                        target="_blank" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Start Practice
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 9: Networking Strategies -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ccfbf1;">
+                        <i class="fas fa-network-wired text-2xl" style="color: #0d9488;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Networking Strategies</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Learn effective networking techniques to build professional relationships and uncover hidden job
+                        opportunities.
+                    </p>
+                    <a href="https://www.byupathway.edu/career-services/resources/networking" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Start Networking
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 10: EnglishConnect -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #dcfce7;">
+                        <i class="fas fa-comments-dollar text-2xl" style="color: #16a34a;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">EnglishConnect</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Can't speak English? Improve your grammar and learn English skills that will help you qualify
+                        for better employment opportunities.
+                    </p>
+                    <a href="https://www.englishconnect.org/" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Start Learning
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 11: BYU Employment -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #dbeafe;">
+                        <i class="fas fa-graduation-cap text-2xl" style="color: #1e40af;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">BYU Employment</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Explore job openings at Brigham Young University.
+                    </p>
+                    <a href="https://hrs.byu.edu/job-seekers" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View BYU Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 12: BYU-Idaho Employment -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #dcfce7;">
+                        <i class="fas fa-school text-2xl" style="color: #16a34a;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">BYU-Idaho Employment</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Explore job openings at Brigham Young University-Idaho.
+                    </p>
+                    <a href="https://www.byui.edu/human-resources/employment" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View BYUI Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 13: BYU-Hawaii Employment -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #f0f9ff;">
+                        <i class="fas fa-university text-2xl" style="color: #0369a1;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">BYU-Hawaii Employment</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Discover career opportunities at Brigham Young University-Hawaii.
+                    </p>
+                    <a href="https://byuhi.wd1.myworkdayjobs.com/BYU_H" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View BYUH Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Resource 14: Ensign College Employment -->
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ede9fe;">
+                        <i class="fas fa-school text-2xl" style="color: #6d28d9;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Ensign College Employment</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Find employment opportunities at Ensign College.
+                    </p>
+                    <a href="https://www.ensign.edu/employment-opportunities" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View Ensign College Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- To be used later
+                 
+                 CES Employment - might be useful later
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #f0f9ff;">
+                        <i class="fas fa-university text-2xl" style="color: #0369a1;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">CES Employment</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Find rewarding careers within the Church Educational System (CES), including BYU, BYU-Idaho,
+                        BYU-Hawaii, Ensign College, and Seminaries & Institutes.
+                    </p>
+                    <a href="https://careers.churchofjesuschrist.org/search/?q=CES" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Search CES Jobs
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                 Resource 11: LinkedIn Networking
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ecfdf5;">
+                        <i class="fas fa-users text-2xl" style="color: var(--sage);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">LinkedIn Networking</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Connect with BYU Pathway alumni and professionals in your field of interest.
+                    </p>
+                    <a href="https://www.linkedin.com" target="_blank"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Join Network
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                 Resource 12: Professional Certifications
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fef3c7;">
+                        <i class="fas fa-certificate text-2xl" style="color: #f59e0b;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Professional Certifications</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Earn industry-recognized certifications to boost your resume and demonstrate your skills.
+                    </p>
+                    <button onclick="showCertificationInfo()"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        View Certifications
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                 Resource 13: Salary Research
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ecfdf5;">
+                        <i class="fas fa-chart-bar text-2xl" style="color: var(--sage);"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Salary Research</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Research market rates for your role and location to ensure fair compensation.
+                    </p>
+                    <button onclick="openSalaryTool()" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Research Salaries
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                 Resource 14: Freelance Platform
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fef3c7;">
+                        <i class="fas fa-rocket text-2xl" style="color: #f59e0b;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Freelance Platform</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Find freelance and contract work to build experience while completing your studies.
+                    </p>
+                    <button onclick="exploreFreelance()"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Explore Freelancing
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                 Resource 15: AI Resume Builder
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ede9fe;">
+                        <i class="fas fa-wand-magic-sparkles text-2xl" style="color: #7c3aed;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">AI Resume Builder</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Leverage cutting-edge AI tools to craft ATS-friendly resumes tailored to your specific job
+                        applications.
+                    </p>
+                    <button onclick="startAIResume()" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Build Resume
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                 Resource 16: Remote Work Toolkit
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #e0f2fe;">
+                        <i class="fas fa-laptop-house text-2xl" style="color: #0284c7;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Remote Work Toolkit</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Essential tools, time management strategies, and best practices for succeeding in global remote
+                        work environments.
+                    </p>
+                    <button onclick="openRemoteToolkit()"
+                        class="inline-flex items-center font-semibold transition-colors" style="color: var(--coral);">
+                        Access Toolkit
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                 Resource 17: Entrepreneurship Hub
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fffbeb;">
+                        <i class="fas fa-lightbulb text-2xl" style="color: #d97706;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Entrepreneurship Hub</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Resources for starting your own business, including business planning guides, micro-funding, and
+                        mentor networks.
+                    </p>
+                    <a href="#" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Launch Business
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                 Resource 18: Alumni Mentorship
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #fae8ff;">
+                        <i class="fas fa-user-friends text-2xl" style="color: #c026d3;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Alumni Mentorship</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Connect with successful BYU-Pathway alumni who can guide you through your specific career path
+                        and industry.
+                    </p>
+                    <button onclick="findMentor()" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Find a Mentor
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                 Resource 19: Soft Skills Workshop
+                <div class="card-hover bg-white p-8 rounded-2xl shadow-lg border border-gray-100 fade-in">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
+                        style="background-color: #ecfeff;">
+                        <i class="fas fa-shapes text-2xl" style="color: #0891b2;"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Soft Skills Workshop</h3>
+                    <p class="mb-6" style="color: var(--slate);">
+                        Interactive modules to develop crucial interpersonal skills like teamwork, emotional
+                        intelligence, and leadership.
+                    </p>
+                    <button onclick="startWorkshop()" class="inline-flex items-center font-semibold transition-colors"
+                        style="color: var(--coral);">
+                        Join Workshop
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                -->
             </div>
         </div>
     </section>
 
-    <!-- Strategic Career Partners -->
-    <section id="strategic-partners" class="py-24 bg-slate-50">
+    <!-- Strategic Career Partners (ORIGINAL - COMMENTED FOR LATER PATTERN)
+    <!--
+    <section id="strategic-partners-original" class="py-24 bg-slate-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <div
@@ -963,7 +1252,7 @@
             </div>
 
             <div class="grid lg:grid-cols-2 gap-10">
-                <!-- Bloom Card -->
+                <!- - Bloom Card - ->
                 <div class="partner-card p-10 rounded-3xl fade-in">
                     <div class="flex justify-between items-start mb-6">
                         <div class="partner-icon-wrapper">
@@ -1014,7 +1303,7 @@
                     </a>
                 </div>
 
-                <!-- Handshake Card -->
+                <!- - Handshake Card - ->
                 <div class="partner-card p-10 rounded-3xl fade-in">
                     <div class="flex justify-between items-start mb-6">
                         <div class="partner-icon-wrapper" style="background-color: #fef2f2; color: #dc2626;">
@@ -1065,7 +1354,7 @@
                     </a>
                 </div>
 
-                <!-- Springboard Card -->
+                <!- - Springboard Card - ->
                 <div class="partner-card p-10 rounded-3xl fade-in">
                     <div class="flex justify-between items-start mb-6">
                         <div class="partner-icon-wrapper" style="background-color: #f0fdf4; color: #16a34a;">
@@ -1116,7 +1405,7 @@
                     </a>
                 </div>
 
-                <!-- Church Employment Services Card -->
+                <!- - Church Employment Services Card - ->
                 <div class="partner-card p-10 rounded-3xl fade-in">
                     <div class="flex justify-between items-start mb-6">
                         <div class="partner-icon-wrapper" style="background-color: #fffbeb; color: #d97706;">
@@ -1165,6 +1454,342 @@
                     <a href="https://www.churchofjesuschrist.org/self-reliance/employment" target="_blank"
                         class="partner-link w-full inline-flex items-center justify-center gap-2 border-2 border-amber-500 text-amber-700 font-bold py-4 rounded-2xl hover:bg-amber-50 transition-all">
                         Find Local Support <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+
+    <!-- Strategic Career Partners (PROFESSIONAL REDESIGN) -->
+    <section id="strategic-partners" class="py-24 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <div
+                    class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-wider text-orange-600 uppercase bg-white border border-orange-200 rounded-md">
+                    Global Network
+                </div>
+                <h2 class="font-display text-4xl font-semibold mb-6" style="color: var(--navy);">
+                    Hiring Partners
+                </h2>
+                <p class="text-lg max-w-3xl mx-auto leading-relaxed" style="color: var(--slate);">
+                    Organizations that actively hire BYU Pathway students and connect them to <strong>meaningful
+                        employment opportunities</strong>.
+                </p>
+            </div>
+
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Interstride Card -->
+                <div class="partner-card-pro p-8 fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper-pro"
+                            style="width: 120px; height: 64px; background: white; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 5px; border: none; margin-left: -8px;">
+                            <!-- <i class="fas fa-globe text-2xl"></i> -->
+                            <img src="resources/interstride-logo.png" alt="Interstride Logo"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge-pro"
+                                style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;">Career
+                                Linker</span>
+                            <span class="partner-badge-pro"
+                                style="background: #dbeafe; color: #1e3a8a; border: 1px solid #bfdbfe;">Visa
+                                Support</span>
+                            <span class="partner-badge-pro"
+                                style="background: #e0f2fe; color: #075985; border: 1px solid #bae6fd;">Global
+                                Scope</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Interstride</h3>
+                    <p class="text-base mb-8 leading-relaxed" style="color: var(--slate);">
+                        Free global career platform with 2.5M+ jobs and internships in 150+ countries.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-blue-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Global Job Search</h4>
+                                <p class="text-sm text-gray-600">Access millions of jobs and internships worldwide with
+                                    visa sponsorship filters.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-blue-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Career Resources</h4>
+                                <p class="text-sm text-gray-600">Resume tools, interview prep, webinars, and self-paced
+                                    courses.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-blue-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Immigration Support</h4>
+                                <p class="text-sm text-gray-600">Guidance on visa applications and work authorization
+                                    for international opportunities.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://student.interstride.com/" target="_blank"
+                        class="partner-link-pro w-full inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-700 font-bold py-3 rounded-lg hover:bg-blue-50 transition-all">
+                        Access Interstride <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Bloom Card -->
+                <div class="partner-card-pro p-8 fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper-pro"
+                            style="width: 160px; height: 80px; background: white; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 4px; border: none;">
+                            <!-- <i class="fas fa-seedling text-2xl"></i> -->
+                            <img src="resources/hirebloomlogo.png" alt="Bloom Logo"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge-pro"
+                                style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;">Career
+                                Linker</span>
+                            <span class="partner-badge-pro"
+                                style="background: #f0f9ff; color: #0369a1; border: 1px solid #e0f2fe;">Remote
+                                Specialist</span>
+                            <span class="partner-badge-pro"
+                                style="background: #fdf2f7; color: #9d174d; border: 1px solid #fce7f3;">Impact
+                                Hiring</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Bloom</h3>
+                    <p class="text-base mb-8 leading-relaxed" style="color: var(--slate);">
+                        A social-impact staffing giant connecting BYU-Pathway talent with global firms.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-orange-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Premium Remote Roles</h4>
+                                <p class="text-sm text-gray-600">Access roles in Customer Success, Sales, and Operations
+                                    typically reserved for US-based talent.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-orange-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Income Acceleration</h4>
+                                <p class="text-sm text-gray-600">Historically, students see their income <strong>double
+                                        or triple</strong> through Bloom placements.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-orange-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Holistic Support</h4>
+                                <p class="text-sm text-gray-600">Includes interview coaching, technical onboarding, and
+                                    career mentorship.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.hirebloom.com/" target="_blank"
+                        class="partner-link-pro w-full inline-flex items-center justify-center gap-2 bg-navy text-white px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all"
+                        style="background-color: var(--navy);">
+                        Apply via Bloom <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Handshake Card - Might be used later
+                <div class="partner-card-pro p-8 fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper-pro" style="color: #dc2626;">
+                            <i class="fas fa-handshake text-2xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge-pro"
+                                style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;">Career
+                                Linker</span>
+                            <span class="partner-badge-pro"
+                                style="background: #fff1f2; color: #be123c; border: 1px solid #ffe4e6;">Fortune 500
+                                Network</span>
+                            <span class="partner-badge-pro"
+                                style="background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7;">Entry-Level
+                                Focus</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Handshake</h3>
+                    <p class="text-base mb-8 leading-relaxed" style="color: var(--slate);">
+                        The #1 way college students find jobs. BYU-Pathway students get exclusive access.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-red-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Direct Employer Messaging</h4>
+                                <p class="text-sm text-gray-600">Skip the line and talk directly to recruiters at
+                                    Fortune 500 companies.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-red-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Pathway Specific Filters</h4>
+                                <p class="text-sm text-gray-600">Find employers specifically looking for <strong>Pathway
+                                        Worldwide</strong> graduates.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-red-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Virtual Career Fairs</h4>
+                                <p class="text-sm text-gray-600">Attend global hiring events from the comfort of your
+                                    home.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://joinhandshake.com/" target="_blank"
+                        class="partner-link-pro w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold border border-red-600 text-red-600 hover:bg-red-50 transition-all">
+                        Launch Handshake <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+                -->
+
+                <!-- Springboard Card -->
+                <div class="partner-card-pro p-8 fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper-pro"
+                            style="width: 160px; height: 80px; background: white; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 4px; border: none;">
+                            <!-- <i class="fas fa-rocket text-2xl"></i> -->
+                            <img src="resources/hirespringboard-logo.svg" alt="Springboard Logo"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge-pro"
+                                style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;">Career
+                                Linker</span>
+                            <span class="partner-badge-pro"
+                                style="background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7;">Work-Study
+                                Jobs</span>
+                            <span class="partner-badge-pro"
+                                style="background: #eef2ff; color: #4338ca; border: 1px solid #e0e7ff;">Human-Driven
+                                AI</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Springboard</h3>
+                    <p class="text-base mb-8 leading-relaxed" style="color: var(--slate);">
+                        Connecting BYU-Pathway talent with work-study opportunities and global firms for data services
+                        and student support.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Work-Study Placements</h4>
+                                <p class="text-sm text-gray-600">Connect with flexible employment opportunities while
+                                    pursuing your education.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Global Data Services</h4>
+                                <p class="text-sm text-gray-600">Work on complex data projects, AI training, and
+                                    customer outreach for international clients.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Student Support Roles</h4>
+                                <p class="text-sm text-gray-600">Provide academic mentoring and enrollment support to
+                                    students worldwide.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 mb-8 p-4 rounded-lg bg-amber-50 border border-amber-200">
+                        <div class="flex gap-3">
+                            <div class="text-amber-500 mt-1"><i class="fas fa-info-circle"></i></div>
+                            <p class="text-sm text-amber-800 leading-relaxed">
+                                <strong>Important Notice:</strong> Springboard opportunities are usually obtained by
+                                filling out your work profile in the <strong>BYU-Pathway Companion App</strong>.
+                                <a href="how-to.html"
+                                    class="block mt-2 font-bold underline hover:text-amber-900 transition-colors">
+                                    See how to set it up here <i class="fas fa-arrow-right text-xs ml-1"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="https://www.hirespringboard.com/" target="_blank"
+                        class="partner-link-pro w-full inline-flex items-center justify-center gap-2 border border-green-600 text-green-700 font-bold py-3 rounded-lg hover:bg-green-50 transition-all">
+                        Explore Opportunities <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+
+
+                <!-- Church Employment Card -->
+                <div class="partner-card-pro p-8 fade-in self-start">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper-pro" style="color: #d97706;">
+                            <i class="fas fa-briefcase text-2xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge-pro"
+                                style="background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7;">Direct
+                                Employer</span>
+                            <span class="partner-badge-pro"
+                                style="background: #fffbeb; color: #b45309; border: 1px solid #fef3c7;">Global
+                                Opportunities</span>
+                            <span class="partner-badge-pro"
+                                style="background: #f5f3ff; color: #5b21b6; border: 1px solid #ede9fe;">Service-Driven</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Church Employment</h3>
+                    <p class="text-base mb-8 leading-relaxed" style="color: var(--slate);">
+                        Official employment portal for career opportunities at The Church of Jesus Christ of Latter-day
+                        Saints.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-amber-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Church Career Opportunities</h4>
+                                <p class="text-sm text-gray-600">Browse and apply for positions across various Church
+                                    departments and locations.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-amber-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Diverse Roles</h4>
+                                <p class="text-sm text-gray-600">Find opportunities in administration, education,
+                                    technology, facilities, and more.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-amber-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Global Positions</h4>
+                                <p class="text-sm text-gray-600">Access job openings worldwide in multiple languages.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://careers.churchofjesuschrist.org/en/sites/ChurchEmployment" target="_blank"
+                        class="partner-link-pro w-full inline-flex items-center justify-center gap-2 border border-amber-500 text-amber-700 font-bold py-3 rounded-lg hover:bg-amber-50 transition-all">
+                        Browse Church Jobs <i class="fas fa-external-link-alt text-sm"></i>
                     </a>
                 </div>
             </div>
