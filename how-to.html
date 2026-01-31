@@ -458,16 +458,17 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="bookmarkedTutorials">
-                <div class="text-center py-12 col-span-full bg-white rounded-2xl shadow-inner">
-                    <i class="fas fa-inbox text-6xl mb-4 text-gray-300"></i>
-                    <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
-                    <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by
-                        clicking the <i class="fas fa-bookmark text-yellow-500"></i> icon on any video.</p>
-                    <button onclick="scrollToSection('tutorials')"
-                        class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
-                        Browse Tutorials
-                    </button>
-                </div>
+                <!-- Bookmarks will be loaded here -->
+            </div>
+
+            <!-- Bookmarks Load More -->
+            <div id="bookmarksLoadMoreContainer" class="text-center mt-12 hidden">
+                <button id="loadMoreBookmarksBtn" onclick="loadMoreBookmarks()"
+                    class="bg-white border-2 px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:bg-gray-50"
+                    style="border-color: var(--navy); color: var(--navy);">
+                    <i class="fas fa-plus mr-2"></i>
+                    View More Bookmarked Videos
+                </button>
             </div>
         </div>
     </section>
@@ -604,7 +605,7 @@
             // Update UI for bookmarked items
             document.querySelectorAll('.bookmark-btn').forEach(btn => {
                 const tutorialId = btn.getAttribute('data-tutorial-id');
-                if (tutorialId && bookmarks.includes(tutorialId)) {
+                if (tutorialId && bookmarks.includes(String(tutorialId))) {
                     btn.classList.add('bookmarked');
                     btn.innerHTML = '<i class="fas fa-bookmark"></i>';
                 }
@@ -637,14 +638,18 @@
             updateBookmarkedTutorials();
         }
 
+        // Bookmarks pagination state
+        let bookmarksToShow = 3;
+
         // Update bookmarked tutorials display
-        function updateBookmarkedTutorials() {
+        function updateBookmarkedTutorials(limit = bookmarksToShow) {
             const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
             const bookmarkedContainer = document.getElementById('bookmarkedTutorials');
+            const loadMoreContainer = document.getElementById('bookmarksLoadMoreContainer');
 
             if (!bookmarks.length) {
                 bookmarkedContainer.innerHTML = `
-                    <div class="text-center py-12 col-span-full">
+                    <div class="text-center py-12 col-span-full bg-white rounded-2xl shadow-inner w-full">
                         <i class="fas fa-bookmark text-6xl mb-4" style="color: var(--slate);"></i>
                         <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">No Bookmarks Yet</h3>
                         <p class="mb-6" style="color: var(--slate);">Start bookmarking tutorials you want to watch later by
@@ -655,19 +660,24 @@
                         </button>
                     </div>
                 `;
+                loadMoreContainer.classList.add('hidden');
                 return;
             }
+
+            // Get tutorial data for bookmarks
+            const allBookmarkedTutorials = tutorialData.filter(tutorial =>
+                bookmarks.includes(String(tutorial.id))
+            );
 
             // Clear existing content
             bookmarkedContainer.innerHTML = '';
 
-            // Get tutorial data and create cards for bookmarks
-            const bookmarkedTutorials = tutorialData.filter(tutorial =>
-                bookmarks.includes(tutorial.id)
-            );
+            // Show only up to the limit
+            const tutorialsToDisplay = allBookmarkedTutorials.slice(0, limit);
 
-            bookmarkedTutorials.forEach(tutorial => {
+            tutorialsToDisplay.forEach(tutorial => {
                 const card = createTutorialCard(tutorial);
+                card.classList.add('visible');
 
                 // Add remove button to bookmarked items
                 const removeBtn = document.createElement('button');
@@ -677,7 +687,10 @@
                 removeBtn.onclick = (e) => {
                     e.stopPropagation();
                     toggleBookmarkFromBookmarked(tutorial.id);
-                    card.remove();
+                    wrapper.remove();
+                    if (bookmarkedContainer.children.length === 0) {
+                        updateBookmarkedTutorials(bookmarksToShow);
+                    }
                 };
 
                 // Create a wrapper div to hold the card and remove button
@@ -688,12 +701,28 @@
 
                 bookmarkedContainer.appendChild(wrapper);
             });
+
+            // Handle "Load More" button visibility
+            if (allBookmarkedTutorials.length > limit) {
+                loadMoreContainer.classList.remove('hidden');
+            } else {
+                loadMoreContainer.classList.add('hidden');
+            }
+
+            // Ensure bookmarked cards are interactive
+            initializeVideoCards();
+        }
+
+        // Function to load more bookmarks
+        function loadMoreBookmarks() {
+            bookmarksToShow += 3;
+            updateBookmarkedTutorials(bookmarksToShow);
         }
 
         // Remove bookmark from bookmarked section
         function toggleBookmarkFromBookmarked(tutorialId) {
             const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-            const index = bookmarks.indexOf(tutorialId);
+            const index = bookmarks.indexOf(String(tutorialId));
 
             if (index > -1) {
                 bookmarks.splice(index, 1);
@@ -707,31 +736,17 @@
             }
         }
 
-        // Initialize bookmark functionality
-        function initializeBookmarks() {
-            // Load bookmarks from localStorage
-            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-
-            // Update UI for bookmarked items
-            document.querySelectorAll('.bookmark-btn').forEach(btn => {
-                const tutorialId = btn.getAttribute('data-tutorial-id');
-                if (bookmarks.includes(tutorialId)) {
-                    btn.classList.add('bookmarked');
-                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
-                }
-            });
-
-            // Initial update of bookmarked tutorials section
-            updateBookmarkedTutorials();
-        }
 
         // Initialize video card click handlers
         function initializeVideoCards() {
             const videoCards = document.querySelectorAll('.video-card');
             videoCards.forEach(card => {
+                // Prevent duplicate listeners
+                if (card.getAttribute('data-initialized')) return;
+
                 card.addEventListener('click', function (e) {
-                    // Don't trigger if clicking bookmark button
-                    if (e.target.closest('.bookmark-btn')) return;
+                    // Don't trigger if clicking bookmark button or remove button
+                    if (e.target.closest('.bookmark-btn') || e.target.closest('.fa-times')) return;
 
                     const videoUrl = this.getAttribute('data-video-url');
                     const title = this.querySelector('h3').textContent.trim();
@@ -740,6 +755,7 @@
                         playVideo(null, videoUrl, title);
                     }
                 });
+                card.setAttribute('data-initialized', 'true');
             });
         }
 
