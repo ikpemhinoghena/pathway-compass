@@ -98,6 +98,1344 @@ nav.nav-scrolled {
 }
 
 /* ============================================
+   INDEX PAGE - HERO SECTION RESPONSIVE
+   ============================================ */
+
+/* Hero floating "Live Support" card - hide on smaller screens to prevent overflow */
+@media screen and (max-width: 768px) {
+
+    .hero-bg .absolute.-bottom-6.-right-6,
+    .absolute.-bottom-6.-right-6 {
+        display: none !important;
+    }
+}
+
+/* Hero section scroll indicator - hidden on mobile as it can be confusing */
+@media screen and (max-width: 768px) {
+
+    .hero-bg .absolute.bottom-8,
+    section.hero-bg>.absolute {
+        display: none !important;
+    }
+}
+
+/* ============================================
+   INDEX PAGE - JOURNEY STEPS RESPONSIVE
+   ============================================ */
+
+/* Journey steps - 5 columns to proper responsive grid */
+@media screen and (max-width: 1024px) {
+    .grid.grid-cols-1.md\:grid-cols-5 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .grid.grid-cols-1.md\:grid-cols-5 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Journey step cards - more compact on mobile */
+    .journey-step {
+        padding: 1.25rem !important;
+    }
+
+    .journey-step .journey-icon {
+        width: 3rem !important;
+        height: 3rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .journey-step .journey-icon i {
+        font-size: 1.25rem !important;
+    }
+
+    .journey-step h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .journey-step p {
+        font-size: 0.8125rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .journey-step .action-btn {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8125rem !important;
+    }
+}
+
+/* ============================================
+   INDEX PAGE - STATISTICS SECTION RESPONSIVE
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+
+    /* Stats grid - 2 columns on tablet, 1 on mobile */
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    /* Stat cards - more compact */
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4>div {
+        padding: 1.25rem !important;
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    /* Key highlights section */
+    .grid.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Inner stat boxes - keep 2 columns but smaller */
+    .grid.grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+
+    .grid.grid-cols-2>div {
+        padding: 0.75rem !important;
+    }
+
+    .grid.grid-cols-2 .text-2xl {
+        font-size: 1.25rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* Stats grid - single column on small mobile */
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================
+   INDEX PAGE - QUICK ACCESS RESOURCES RESPONSIVE
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+
+    /* Resource cards section heading */
+    #resources .font-display.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    #resources .text-xl {
+        font-size: 0.9375rem !important;
+    }
+
+    #resources .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+}
+
+/* ============================================
+   FOOTER RESPONSIVE - ALL PAGES
+   ============================================ */
+
+/* Base footer improvements */
+footer {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer .grid.md\:grid-cols-4 {
+    width: 100%;
+}
+
+/* Tablet and below (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    footer {
+        padding-top: 3rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    footer .grid.md\:grid-cols-4 {
+        gap: 2rem !important;
+    }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 2.5rem 1rem 1.5rem 1rem !important;
+    }
+
+    /* Footer container */
+    footer>div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Footer grid - 2 columns on tablet/mobile */
+    footer .grid.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* Footer logo/brand column - full width on mobile */
+    footer .grid.md\:grid-cols-4>div:first-child {
+        grid-column: 1 / -1 !important;
+        text-align: center !important;
+        margin-bottom: 0.5rem !important;
+        padding-bottom: 1.5rem !important;
+        border-bottom: 1px solid #e5e7eb !important;
+    }
+
+    /* Center the logo */
+    footer .grid.md\:grid-cols-4>div:first-child .flex.items-center {
+        justify-content: center !important;
+    }
+
+    /* Center the tagline */
+    footer .grid.md\:grid-cols-4>div:first-child p {
+        text-align: center !important;
+        max-width: 280px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Center social icons */
+    footer .grid.md\:grid-cols-4>div:first-child .flex.space-x-4 {
+        justify-content: center !important;
+    }
+
+    /* Footer column headings */
+    footer h4 {
+        font-size: 0.9375rem !important;
+        margin-bottom: 0.875rem !important;
+        color: #1e3a8a !important;
+    }
+
+    /* Footer links list */
+    footer ul {
+        padding-left: 0 !important;
+    }
+
+    footer ul.space-y-2 {
+        gap: 0.5rem !important;
+    }
+
+    footer ul li {
+        margin-bottom: 0.5rem !important;
+        list-style: none !important;
+    }
+
+    footer ul li a {
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        display: inline-block !important;
+        padding: 0.125rem 0 !important;
+    }
+
+    /* Social icons - larger touch targets */
+    footer .flex.space-x-4 a {
+        width: 40px !important;
+        height: 40px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        background-color: #f3f4f6 !important;
+        transition: all 0.2s ease !important;
+    }
+
+    footer .flex.space-x-4 a:hover {
+        background-color: #e5e7eb !important;
+    }
+
+    footer .flex.space-x-4 a i {
+        font-size: 1rem !important;
+    }
+
+    /* Footer bottom bar */
+    footer .border-t {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1rem !important;
+        padding-top: 1.5rem !important;
+        margin-top: 0 !important;
+    }
+
+    footer .border-t p {
+        order: 2 !important;
+    }
+
+    footer .border-t .flex.gap-6 {
+        order: 1 !important;
+        gap: 1.5rem !important;
+    }
+
+    footer .border-t .flex.gap-6 a {
+        font-size: 0.8125rem !important;
+    }
+}
+
+/* Small mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    footer {
+        padding: 2rem 0.75rem 1.25rem 0.75rem !important;
+    }
+
+    /* Single column footer on very small screens */
+    footer .grid.md\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: 1.75rem !important;
+        text-align: center !important;
+    }
+
+    /* All footer columns centered */
+    footer .grid.md\:grid-cols-4>div {
+        text-align: center !important;
+    }
+
+    /* Reset first column special styling */
+    footer .grid.md\:grid-cols-4>div:first-child {
+        grid-column: 1 !important;
+    }
+
+    /* Center all footer lists */
+    footer ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* Footer headings */
+    footer h4 {
+        font-size: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* Slightly larger links for touch */
+    footer ul li a {
+        font-size: 0.9375rem !important;
+        padding: 0.25rem 0 !important;
+    }
+
+    /* Bottom bar more compact */
+    footer .border-t {
+        padding-top: 1.25rem !important;
+        gap: 0.75rem !important;
+    }
+
+    footer .border-t .flex.gap-6 {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Very small screens (max-width: 360px) */
+@media screen and (max-width: 360px) {
+    footer {
+        padding: 1.5rem 0.5rem 1rem 0.5rem !important;
+    }
+
+    footer .grid.md\:grid-cols-4 {
+        gap: 1.5rem !important;
+    }
+
+    footer h4 {
+        font-size: 0.9375rem !important;
+    }
+
+    footer ul li a {
+        font-size: 0.875rem !important;
+    }
+
+    /* Logo text smaller */
+    footer .text-xl {
+        font-size: 1.125rem !important;
+    }
+
+    footer .text-2xl {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* ============================================
+   INDEX PAGE - TESTIMONIALS RESPONSIVE
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+
+    /* Testimonial cards */
+    .splide__slide .bg-white {
+        padding: 1.25rem !important;
+        margin: 0 0.25rem !important;
+    }
+
+    .splide__slide .text-lg {
+        font-size: 0.9375rem !important;
+    }
+
+    .splide__slide .w-16.h-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .splide__slide .mr-4 {
+        margin-right: 0.75rem !important;
+    }
+}
+
+/* ============================================
+   INDEX PAGE - CTA SECTION RESPONSIVE
+   ============================================ */
+
+@media screen and (max-width: 640px) {
+
+    /* Journey CTA text wrapping */
+    .mt-12.text-center p.text-lg {
+        font-size: 0.9375rem !important;
+    }
+
+    .mt-12.text-center span.inline-flex {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
+
+/* ============================================
+   REGISTRATION PAGE - RESPONSIVE STYLES
+   ============================================ */
+
+/* Hero Section - Stack on mobile */
+@media screen and (max-width: 768px) {
+
+    /* Registration hero grid */
+    section.pt-24.pb-12 .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    section.pt-24.pb-12 h1.font-display.text-5xl {
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    section.pt-24.pb-12 p.text-xl {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    section.pt-24.pb-12 .relative img {
+        border-radius: 1rem !important;
+    }
+
+    /* Hero CTA button */
+    section.pt-24.pb-12 a.inline-block {
+        display: block !important;
+        text-align: center !important;
+        padding: 1rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Registration Timeline - Mobile Layout */
+@media screen and (max-width: 768px) {
+
+    /* Timeline section title */
+    #registration-timeline .font-display.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    #registration-timeline .text-xl {
+        font-size: 0.9375rem !important;
+    }
+
+    #registration-timeline .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+
+    /* Hide the center timeline line on mobile */
+    #registration-timeline .absolute.left-1\/2.w-1 {
+        display: none !important;
+    }
+
+    /* Timeline steps - stack vertically */
+    #registration-timeline .space-y-12 {
+        gap: 2rem !important;
+    }
+
+    /* Each timeline step - convert to single column */
+    #registration-timeline .flex.items-center.fade-in {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    /* Remove half-width and text alignment */
+    #registration-timeline .flex-shrink-0.w-1\/2 {
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+    #registration-timeline .flex-shrink-0.w-1\/2.pr-8.text-right {
+        order: 2 !important;
+        margin-top: 0.5rem !important;
+    }
+
+    #registration-timeline .flex-shrink-0.w-1\/2.pl-8 {
+        order: 3 !important;
+        margin-top: 1rem !important;
+    }
+
+    /* Step number circle - positioned at top left */
+    #registration-timeline .absolute.left-1\/2.transform.-translate-x-1\/2 {
+        position: relative !important;
+        left: 0 !important;
+        transform: none !important;
+        order: 1 !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* Timeline cards */
+    #registration-timeline .bg-white.p-6.rounded-xl {
+        padding: 1.25rem !important;
+    }
+
+    #registration-timeline .bg-white h3.text-xl {
+        font-size: 1.125rem !important;
+    }
+
+    #registration-timeline .bg-white p.text-sm {
+        font-size: 0.875rem !important;
+    }
+
+    /* Final step card */
+    #registration-timeline .flex.flex-col.items-center.fade-in {
+        padding-top: 0 !important;
+    }
+
+    #registration-timeline .max-w-2xl {
+        max-width: 100% !important;
+    }
+
+    #registration-timeline .bg-gradient-to-br.from-indigo-50 {
+        padding: 1.5rem !important;
+    }
+
+    #registration-timeline .bg-gradient-to-br.from-indigo-50 h3.text-2xl {
+        font-size: 1.375rem !important;
+    }
+}
+
+/* Testimonial Section - Registration Page */
+@media screen and (max-width: 768px) {
+    section:has(.font-display.text-3xl):has(blockquote) {
+        padding: 2.5rem 0 !important;
+    }
+
+    section .font-display.text-3xl {
+        font-size: 1.5rem !important;
+    }
+
+    /* Testimonial card */
+    section .bg-white.p-8.rounded-2xl.shadow-xl {
+        padding: 1.5rem !important;
+    }
+
+    section .flex.items-start.gap-6 {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center !important;
+    }
+
+    section .flex.items-start.gap-6 .w-16.h-16 {
+        margin: 0 auto !important;
+    }
+
+    section .flex.items-start.gap-6 .flex-1.text-left {
+        text-align: center !important;
+    }
+
+    section blockquote.text-lg {
+        font-size: 0.9375rem !important;
+        line-height: 1.6 !important;
+    }
+}
+
+/* FAQ Section - Registration Page */
+@media screen and (max-width: 768px) {
+    section.py-20.bg-white .font-display.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    section.py-20.bg-white .text-xl {
+        font-size: 0.9375rem !important;
+    }
+
+    section.py-20.bg-white .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+
+    /* FAQ items */
+    .faq-question {
+        padding: 1rem !important;
+    }
+
+    .faq-question h3.text-lg {
+        font-size: 0.9375rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .faq-answer .px-6.pb-6 {
+        padding: 0 1rem 1rem 1rem !important;
+    }
+
+    /* FAQ grid comparison (PathwayConnect vs Advanced) */
+    .faq-answer .grid.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .faq-answer .bg-blue-50.p-6,
+    .faq-answer .bg-green-50.p-6 {
+        padding: 1rem !important;
+    }
+}
+
+/* Video Tutorials Section - Registration Page */
+@media screen and (max-width: 768px) {
+    section[style*="background-color: var(--cream)"] .font-display.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    section[style*="background-color: var(--cream)"] .text-xl {
+        font-size: 0.9375rem !important;
+        padding: 0 0.5rem !important;
+    }
+
+    /* Video grid - single column on mobile */
+    section[style*="background-color: var(--cream)"] .grid.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Video card improvements */
+    .video-thumbnail.relative.h-48 {
+        height: 12rem !important;
+    }
+
+    .card-hover.bg-white.rounded-2xl .p-6 {
+        padding: 1rem !important;
+    }
+
+    .card-hover.bg-white.rounded-2xl h3.text-lg {
+        font-size: 1rem !important;
+    }
+
+    .card-hover.bg-white.rounded-2xl p.text-sm {
+        font-size: 0.8125rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* Device badge */
+    .device-badge {
+        font-size: 0.625rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    /* View all button */
+    section[style*="background-color: var(--cream)"] .text-center.mt-12 a {
+        display: block !important;
+        margin: 0 1rem !important;
+        padding: 1rem !important;
+        font-size: 0.9375rem !important;
+    }
+}
+
+/* Contact Support Section - Registration Page */
+@media screen and (max-width: 768px) {
+    #contact-support .font-display.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    #contact-support .text-xl {
+        font-size: 0.9375rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Support options grid - single column */
+    #contact-support .grid.md\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    #contact-support .text-center .w-16.h-16 {
+        width: 4rem !important;
+        height: 4rem !important;
+    }
+
+    #contact-support .text-center h3.text-lg {
+        font-size: 1rem !important;
+    }
+
+    #contact-support .text-center p.text-sm {
+        font-size: 0.8125rem !important;
+    }
+
+    /* Hours box */
+    #contact-support .bg-blue-50.p-6 {
+        padding: 1rem !important;
+    }
+
+    #contact-support .bg-blue-50 h3 {
+        font-size: 0.9375rem !important;
+    }
+
+    #contact-support .bg-blue-50 p.text-sm {
+        font-size: 0.8125rem !important;
+    }
+}
+
+/* English Test Modal - Responsive */
+@media screen and (max-width: 640px) {
+    .modal-content {
+        padding: 1.25rem !important;
+        padding-top: 2.5rem !important;
+        border-radius: 1rem !important;
+        margin: 0.5rem !important;
+    }
+
+    .modal-content h3 {
+        font-size: 1.25rem !important;
+    }
+
+    .modal-content p {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Small mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+
+    /* Registration hero */
+    section.pt-24.pb-12 {
+        padding-top: 5rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    section.pt-24.pb-12 h1.font-display.text-5xl {
+        font-size: 1.5rem !important;
+    }
+
+    /* Timeline */
+    #registration-timeline {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    #registration-timeline .font-display.text-4xl {
+        font-size: 1.5rem !important;
+    }
+
+    /* Smaller step circles */
+    #registration-timeline .w-12.h-12 {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    #registration-timeline .w-16.h-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    /* Testimonial */
+    section .flex.items-start.gap-6 .w-16.h-16 {
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+    }
+
+    /* FAQ */
+    .faq-question h3.text-lg {
+        font-size: 0.875rem !important;
+    }
+
+    /* Contact */
+    #contact-support .text-center .w-16.h-16 {
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+    }
+}
+
+/* ============================================
+   SETUP GUIDE (POST-REGISTRATION) RESPONSIVE
+   ============================================ */
+
+/* Mobile styles (max-width: 768px) */
+@media screen and (max-width: 768px) {
+
+    /* Hero section */
+    section.pt-24.pb-12 h1.font-display.text-5xl {
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    section.pt-24.pb-12 .text-xl {
+        font-size: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Hero buttons/stats stack */
+    section.pt-24.pb-12 .flex.items-center.space-x-6 {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    section.pt-24.pb-12 .flex.items-center.space-x-6>* {
+        margin-left: 0 !important;
+    }
+
+    section.pt-24.pb-12 button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* System tour hotspots - hide on small mobile, show list instead? 
+       For now, ensure image container is okay 
+    */
+    .system-tour-hotspot {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    /* Checklist Section */
+    #checklist .font-display.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    /* Progress Ring */
+    #checklist .flex.justify-center.mb-12 {
+        margin-bottom: 2rem !important;
+    }
+
+    /* Checklist Items */
+    .checklist-item {
+        padding: 1rem !important;
+    }
+
+    .checklist-item .checkbox {
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 0.75rem !important;
+    }
+
+    .checklist-item h3.text-lg {
+        font-size: 1rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .checklist-item p.mb-3 {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .checklist-item .flex.items-center.space-x-4 {
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+    }
+
+    .checklist-item .flex.items-center.space-x-4>* {
+        margin-left: 0 !important;
+    }
+
+    .checklist-item a {
+        font-size: 0.8125rem !important;
+    }
+
+    /* Essential Tools Grid */
+    section[style*="background-color: var(--light-blue)"] .grid.lg\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Tool Cards */
+    .card-hover.bg-white.p-8.rounded-2xl {
+        padding: 1.5rem !important;
+    }
+
+    .card-hover h3.text-xl {
+        font-size: 1.125rem !important;
+    }
+
+    .card-hover p.mb-6 {
+        font-size: 0.9375rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .card-hover ul li {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Pro Tip Box */
+    .pro-tip {
+        padding: 0.75rem !important;
+        margin-top: 1rem !important;
+    }
+
+    /* Canvas & Microsoft Sections */
+    section#canvas .grid.lg\:grid-cols-2,
+    section#microsoft365 .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    /* Feature lists */
+    section#canvas .flex.items-start,
+    section#microsoft365 .flex.items-start {
+        margin-bottom: 1rem !important;
+    }
+
+    section#canvas .w-12.h-12,
+    section#microsoft365 .w-12.h-12 {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        min-width: 2.5rem !important;
+        /* Prevent shrinking */
+        font-size: 0.875rem !important;
+    }
+
+    section#canvas h4.font-semibold,
+    section#microsoft365 h4.font-semibold {
+        font-size: 1rem !important;
+    }
+
+    section#canvas p.text-sm,
+    section#microsoft365 p.text-sm {
+        font-size: 0.875rem !important;
+    }
+
+    /* Simulated Canvas Interface */
+    .bg-gray-100.rounded-xl.p-8 {
+        padding: 1rem !important;
+    }
+
+    .bg-white.rounded-lg.shadow-sm.p-4 {
+        padding: 0.75rem !important;
+    }
+
+    /* M365 Icons Grid */
+    section#microsoft365 .grid.grid-cols-2 {
+        gap: 0.75rem !important;
+    }
+
+    section#microsoft365 .bg-white.p-6 {
+        padding: 1rem !important;
+    }
+
+    section#microsoft365 .w-16.h-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    section#microsoft365 .w-16.h-16 i {
+        font-size: 1.25rem !important;
+    }
+
+    /* Quick Links Grid */
+    section[style*="background-color: var(--light-blue)"]+section .grid.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Quick Link Cards */
+    .quick-link-card {
+        padding: 1.25rem !important;
+        display: flex !important;
+        align-items: center !important;
+        text-align: left !important;
+        gap: 1rem !important;
+    }
+
+    .quick-link-card .mx-auto {
+        margin: 0 !important;
+    }
+
+    .quick-link-card .w-12.h-12 {
+        width: 3rem !important;
+        height: 3rem !important;
+        flex-shrink: 0 !important;
+    }
+
+    .quick-link-card .text-xs {
+        font-size: 0.8125rem !important;
+    }
+
+    /* Community Section */
+    section:has(.fa-hand-holding-heart) .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    section:has(.fa-hand-holding-heart) h2.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    section:has(.fa-hand-holding-heart) .bg-gradient-to-tr {
+        padding: 1.5rem !important;
+    }
+
+    section:has(.fa-hand-holding-heart) .text-8xl {
+        font-size: 4rem !important;
+        top: 0.5rem !important;
+        left: 0.5rem !important;
+    }
+
+    section:has(.fa-hand-holding-heart) .text-xl.italic {
+        font-size: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+}
+
+/* Very small screens adjustments */
+@media screen and (max-width: 480px) {
+
+    /* Progress ring smaller */
+    #checklist .w-32.h-32 {
+        width: 6rem !important;
+        height: 6rem !important;
+    }
+
+    #checklist .text-2xl {
+        font-size: 1.25rem !important;
+    }
+
+    /* Stack modal buttons */
+    .modal-content button {
+        width: 100% !important;
+    }
+}
+
+/* ============================================
+   CAREER RESOURCES (JOBS) PAGE RESPONSIVE
+   ============================================ */
+
+/* Mobile styles (max-width: 768px) */
+@media screen and (max-width: 768px) {
+
+    /* Hero Section */
+    section.pt-24.pb-12 h1.font-display.text-5xl {
+        font-size: 1.875rem !important;
+        /* Slightly larger for impact */
+    }
+
+    /* Hero image stats box */
+    section.pt-24.pb-12 .absolute.-bottom-6.-right-6 {
+        right: 0 !important;
+        bottom: -1rem !important;
+        left: 0 !important;
+        margin: 0 auto !important;
+        width: 90% !important;
+        text-align: center !important;
+    }
+
+    /* Job Search Strategy Grid */
+    section[style*="background-color: var(--white)"] .grid.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+
+    /* Strategy Steps adjustments */
+    .w-20.h-20 {
+        width: 4rem !important;
+        height: 4rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .text-2xl.font-bold span {
+        font-size: 1.25rem !important;
+    }
+
+    /* Resources Grid */
+    #resources .grid.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Strategic Partner Cards */
+    .partner-card,
+    .partner-card-pro {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Partner card header stack */
+    .partner-card .flex.justify-between.items-start,
+    .partner-card-pro .flex.justify-between.items-start {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .partner-card .flex.flex-col.gap-2.items-end,
+    .partner-card-pro .flex.flex-col.gap-2.items-end {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        margin-top: 1rem !important;
+        width: 100% !important;
+    }
+
+    /* Partner card icon */
+    .partner-icon-wrapper,
+    .partner-icon-wrapper-pro {
+        margin-bottom: 0 !important;
+    }
+
+    /* Partner card badges */
+    .partner-badge,
+    .partner-badge-pro {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    /* Partner features list */
+    .partner-card .flex.gap-4,
+    .partner-card-pro .flex.gap-4 {
+        gap: 0.75rem !important;
+    }
+
+    .partner-card h4.font-bold,
+    .partner-card-pro h4.font-bold {
+        font-size: 0.9375rem !important;
+        margin-bottom: 0.125rem !important;
+    }
+
+    .partner-card p.text-sm,
+    .partner-card-pro p.text-sm {
+        font-size: 0.8125rem !important;
+    }
+
+    /* Job Board (if used) */
+    .filter-btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.875rem !important;
+        flex: 1 1 auto !important;
+        /* Make buttons grow to fill row */
+        text-align: center !important;
+    }
+
+    .job-card {
+        padding: 1.25rem !important;
+    }
+}
+
+
+
+/* ============================================
+   SCHOLARSHIPS PAGE RESPONSIVE
+   ============================================ */
+@media screen and (max-width: 768px) {
+
+    /* Hero */
+    .hero-bg h1 {
+        font-size: 2rem !important;
+    }
+
+    .hero-bg .flex.flex-col.sm\:flex-row {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .hero-bg a.inline-flex {
+        width: 100% !important;
+    }
+
+    /* Laptop & Tuition Sections */
+    #laptop .grid.md\:grid-cols-2,
+    #tuition .grid.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    /* Section Headers */
+    #laptop .flex.items-center.gap-4,
+    #tuition .flex.items-center.gap-4 {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    #laptop .w-12.h-12,
+    #tuition .w-12.h-12 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Card Content */
+    .card-hover.p-8 {
+        padding: 1.5rem !important;
+    }
+}
+
+/* ============================================
+   TUTORIALS (HOW-TO) PAGE RESPONSIVE
+   ============================================ */
+@media screen and (max-width: 768px) {
+
+    /* Hero */
+    section.pt-24.pb-12 .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    section.pt-24.pb-12 h1.font-display {
+        font-size: 2rem !important;
+    }
+
+    section.pt-24.pb-12 .flex.items-center.space-x-6 {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    section.pt-24.pb-12 .flex.items-center.space-x-6>* {
+        width: 100% !important;
+        margin-left: 0 !important;
+        /* Reset space-x */
+        justify-content: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    section.pt-24.pb-12 button {
+        width: 100% !important;
+    }
+
+    /* Search & Filter Container */
+    .bg-gray-50.p-6 {
+        padding: 1.25rem !important;
+    }
+
+    .grid.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Tutorial Grid */
+    #tutorialGrid,
+    #bookmarkedTutorials {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Device Toggle & Filters */
+    #deviceToggle {
+        flex-direction: column !important;
+    }
+
+    #deviceToggle button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    #filterTags {
+        justify-content: center !important;
+    }
+
+    /* Video Modal */
+    .video-container {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 1rem !important;
+    }
+}
+
+/* ============================================
+   WHAT IS BYU PATHWAY PAGE RESPONSIVE
+   ============================================ */
+@media screen and (max-width: 768px) {
+
+    /* Hero Section */
+    .hero-gradient h1.font-display {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-gradient .text-lg.sm\:text-xl {
+        font-size: 1rem !important;
+    }
+
+    /* Center Help/CTA in Hero */
+    .hero-gradient .flex.flex-col.sm\:flex-row {
+        align-items: center !important;
+    }
+
+    .hero-gradient a.inline-flex {
+        width: 100% !important;
+    }
+
+    /* How It Works - Align Steps */
+    #how-it-works .md\:text-right {
+        text-align: center !important;
+        padding-right: 0 !important;
+    }
+
+    #how-it-works .md\:col-start-2.md\:pl-12 {
+        padding-left: 0 !important;
+        text-align: center !important;
+    }
+
+    #how-it-works .inline-flex.w-12.h-12 {
+        margin: 0 auto 1rem auto !important;
+        /* Center numbers */
+    }
+
+    /* Degree Grid */
+    .degree-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Testimonial Quote */
+    .quote-mark {
+        font-size: 4rem !important;
+        top: -10px !important;
+        left: 0 !important;
+    }
+
+    .glass-card p.text-xl.sm\:text-2xl {
+        font-size: 1.125rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* History Timeline */
+    .py-20[style*="background-color: var(--cream)"] .flex.items-start {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .py-20[style*="background-color: var(--cream)"] .flex-shrink-0.w-16.h-16 {
+        margin-right: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Final CTA */
+    section.py-20.bg-gradient-to-r h2 {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* ============================================
    TABLET STYLES (max-width: 1024px)
    ============================================ */
 @media screen and (max-width: 1024px) {
@@ -579,5 +1917,137 @@ nav.nav-scrolled {
     textarea:focus {
         outline: 2px solid #f97316;
         outline-offset: 2px;
+    }
+}
+
+/* ============================================
+   GLOBAL OVERFLOW PREVENTION
+   ============================================ */
+
+/* Prevent horizontal scroll globally */
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Ensure all content containers respect boundaries */
+main,
+section,
+footer,
+header,
+nav {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Word break for long text */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a,
+span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Prevent images from causing overflow */
+img,
+video,
+iframe,
+embed,
+object {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================
+   ADDITIONAL MOBILE SAFEGUARDS
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+
+    /* Ensure all sections don't overflow */
+    section {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        box-sizing: border-box;
+    }
+
+    /* Container max-width safety */
+    .max-w-6xl,
+    .max-w-4xl,
+    .max-w-3xl,
+    .max-w-2xl {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Flex containers - prevent overflow */
+    .flex {
+        flex-wrap: wrap;
+    }
+
+    /* Hero buttons grid - proper stacking */
+    .grid.grid-cols-1.sm\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    /* Hero button sizing */
+    .hero-btn {
+        padding: 0.875rem 1.25rem !important;
+        font-size: 0.9375rem !important;
+    }
+
+    /* Prevent any absolutely positioned elements from causing scroll */
+    .absolute {
+        max-width: 100vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* Extra padding reduction for very small screens */
+    section {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    /* Reduce spacing between elements */
+    .gap-8 {
+        gap: 1.5rem !important;
+    }
+
+    .gap-6 {
+        gap: 1rem !important;
+    }
+
+    .gap-4 {
+        gap: 0.75rem !important;
+    }
+
+    /* Smaller margins */
+    .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+
+    .mb-12 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .mb-8 {
+        margin-bottom: 1rem !important;
     }
 }
