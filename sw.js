@@ -1,4 +1,4 @@
-const CACHE_NAME = 'byu-pathway-v1';
+const CACHE_NAME = 'byu-pathway-v2'; // Incremented version to force refresh
 const urlsToCache = [
   '/',
   '/index.html',
@@ -8,7 +8,7 @@ const urlsToCache = [
   '/how-to.html',
   '/tutorials-data.js',
   '/main.js',
-  '/styles.css', // assuming you might split styles later
+  '/responsive.css',  // Changed from 'styles.css' to 'responsive.css'
   'https://cdn.tailwindcss.com',
   'https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js',
