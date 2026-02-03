@@ -1,18 +1,3 @@
-#mobileNavMenu {
-    /* ... */
-    transform-origin: top center !important;
-    transform: scaleY(0) !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    /* ... */
-}
-
-#mobileNavMenu.active {
-    transform: scaleY(1) !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
-
 /* Pathway Compass - Responsive Styles
  * Complete mobile and tablet optimizations with working hamburger menu
  * Updated to prevent broken animations on small screens
@@ -91,7 +76,6 @@ nav.nav-scrolled {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    display: block;
 }
 
 /* Mobile menu when active */
@@ -136,14 +120,6 @@ nav.nav-scrolled {
         display: none !important;
     }
 
-    /* Ensure mobile menu is hidden by default on mobile */
-    .mobile-nav-menu {
-        display: none;
-    }
-
-    .mobile-nav-menu.active {
-        display: block;
-    }
 }
 
 /* ============================================

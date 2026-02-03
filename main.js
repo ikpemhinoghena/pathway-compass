@@ -10,11 +10,9 @@ class BYUPathwayApp {
     init() {
         this.setupTypingAnimation();
         this.setupScrollAnimations();
-        // this.setupSearchFunctionality(); // Search in nav bar removed
         this.setupTestimonialSlider();
         this.setupStatsCounter();
         this.setupSmoothScrolling();
-        // this.setupMobileNavigation(); // Redundant, using setupMobileMenuToggle
         this.setupMobileMenuToggle();
         this.setupNavbarScroll();
         this.initializeFadeInObserver();
@@ -433,12 +431,6 @@ class BYUPathwayApp {
             menuBtn.setAttribute('aria-expanded', !isExpanded);
             mobileMenu.setAttribute('aria-hidden', isExpanded);
 
-            // Ensure proper display (fallback for CSS issues)
-            if (!isExpanded) {
-                mobileMenu.style.display = 'block';
-            } else {
-                mobileMenu.style.display = 'none';
-            }
         });
 
         // Close menu when clicking outside
@@ -453,7 +445,6 @@ class BYUPathwayApp {
                     mobileMenu.classList.remove('active');
                     menuBtn.setAttribute('aria-expanded', 'false');
                     mobileMenu.setAttribute('aria-hidden', 'true');
-                    mobileMenu.style.display = 'none';
                 }
             }
         });
@@ -465,7 +456,6 @@ class BYUPathwayApp {
                 mobileMenu.classList.remove('active');
                 menuBtn.setAttribute('aria-expanded', 'false');
                 mobileMenu.setAttribute('aria-hidden', 'true');
-                mobileMenu.style.display = 'none';
             });
         });
     }
