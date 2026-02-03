@@ -231,6 +231,252 @@ class PathwayLiveChat {
             #tawkchat-minified-wrapper {
                 display: none !important;
             }
+
+            /* ========== SIDE PANEL CHAT MODE STYLES ========== */
+            .pw-chat-side-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(30, 58, 138, 0.4);
+                backdrop-filter: blur(4px);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .pw-chat-side-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .pw-chat-side-panel {
+                position: relative;
+                width: 100%;
+                max-width: 420px;
+                height: 100vh;
+                background: white;
+                box-shadow: -2px 0 20px rgba(0, 0, 0, 0.15);
+                display: flex;
+                flex-direction: column;
+                animation: slide-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+                transform: translateX(100%);
+            }
+
+            @keyframes slide-in {
+                0% { transform: translateX(100%); opacity: 0; }
+                100% { transform: translateX(0); opacity: 1; }
+            }
+
+            .pw-chat-side-content {
+                padding: 2.5rem 2rem;
+                overflow-y: auto;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .pw-chat-side-icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 1.5rem;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+                animation: intro-icon-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+                transform: scale(0) rotate(-45deg);
+            }
+
+            @keyframes intro-icon-entrance {
+                0% { transform: scale(0) rotate(-45deg); }
+                100% { transform: scale(1) rotate(0deg); }
+            }
+
+            .pw-chat-side-icon i {
+                font-size: 2rem;
+                color: white;
+            }
+
+            .pw-chat-side-title {
+                font-family: 'Crimson Pro', serif;
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                color: #1e3a8a;
+                opacity: 0;
+                animation: text-fade-up 0.5s 0.2s ease-out forwards;
+            }
+
+            .pw-chat-side-message {
+                font-size: 0.95rem;
+                color: #64748b;
+                margin-bottom: 2rem;
+                opacity: 0;
+                animation: text-fade-up 0.5s 0.4s ease-out forwards;
+            }
+
+            @keyframes text-fade-up {
+                0% { opacity: 0; transform: translateY(15px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+
+            .pw-chat-wa-section {
+                width: 100%;
+                background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+                border: 2px solid #bbf7d0;
+                border-radius: 12px;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                animation: text-fade-up 0.5s 0.6s ease-out forwards;
+                opacity: 0;
+            }
+
+            .pw-chat-wa-subtitle {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #1e3a8a;
+                margin-bottom: 0.5rem;
+            }
+
+            .pw-chat-response-time {
+                font-size: 0.85rem;
+                color: #15803d;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                animation: pulse-text 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse-text {
+                0%, 100% { opacity: 0.7; }
+                50% { opacity: 1; }
+            }
+
+            .pw-chat-wa-number {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                font-weight: 600;
+                color: #16a34a;
+                margin-bottom: 1rem;
+                font-size: 1rem;
+            }
+
+            .pw-chat-wa-number i {
+                font-size: 1.2rem;
+            }
+
+            .pw-chat-wa-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                width: 100%;
+                padding: 0.75rem;
+                background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 0.95rem;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+            }
+
+            .pw-chat-wa-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);
+                background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+            }
+
+            .pw-chat-wa-btn:active {
+                transform: translateY(0);
+            }
+
+            .pw-chat-wa-btn i {
+                font-size: 1.1rem;
+            }
+
+            /* Close button styling for side panel */
+            .pw-chat-side-panel .pw-chat-close-btn {
+                top: 1rem;
+                right: 1rem;
+                background: rgba(59, 130, 246, 0.1);
+                color: #1e3a8a;
+            }
+
+            .pw-chat-side-panel .pw-chat-close-btn:hover {
+                background: rgba(59, 130, 246, 0.2);
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+                .pw-chat-side-panel {
+                    max-width: 100%;
+                }
+
+                .pw-chat-side-title {
+                    font-size: 1.5rem;
+                }
+
+                .pw-chat-side-content {
+                    padding: 1.5rem 1rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .pw-chat-launcher {
+                    padding: 0.65rem 1rem;
+                    font-size: 0.8rem;
+                    bottom: 0.75rem;
+                    right: 0.75rem;
+                }
+
+                .pw-chat-launcher span {
+                    display: none;
+                }
+
+                .pw-chat-launcher .chat-icon {
+                    font-size: 1.25rem;
+                }
+
+                .pw-chat-intro-content {
+                    padding: 1rem;
+                }
+
+                .pw-chat-intro-title {
+                    font-size: 1.5rem;
+                }
+
+                .pw-chat-side-panel {
+                    max-width: 100%;
+                    width: 100%;
+                }
+
+                .pw-chat-side-title {
+                    font-size: 1.25rem;
+                }
+
+                .pw-chat-side-content {
+                    padding: 1rem 0.75rem;
+                    padding-top: 3.5rem;
+                }
+
+                .pw-chat-wa-section {
+                    padding: 0.75rem;
+                }
+            }
+            /* ========== END SIDE PANEL STYLES ========== */
         `;
         document.head.appendChild(styles);
     }
@@ -249,29 +495,68 @@ class PathwayLiveChat {
     }
 
     createChatIntro() {
-        const overlay = document.createElement('div');
-        overlay.className = 'pw-chat-intro-overlay';
-        overlay.id = 'pw-chat-intro';
-        overlay.innerHTML = `
-            <button class="pw-chat-close-btn" aria-label="Close">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="pw-chat-intro-content">
-                <div class="pw-chat-intro-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <h2 class="pw-chat-intro-title">Connecting You Now</h2>
-                <p class="pw-chat-intro-text">A friendly support agent is ready to help with your registration questions.</p>
-                <div class="pw-chat-intro-loader">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        // ============ FULL-SCREEN CHAT MODE (COMMENTED OUT - MIGHT USE LATER) ============
+        // const overlay = document.createElement('div');
+        // overlay.className = 'pw-chat-intro-overlay';
+        // overlay.id = 'pw-chat-intro';
+        // overlay.innerHTML = `
+        //     <button class="pw-chat-close-btn" aria-label="Close">
+        //         <i class="fas fa-times"></i>
+        //     </button>
+        //     <div class="pw-chat-intro-content">
+        //         <div class="pw-chat-intro-icon">
+        //             <i class="fas fa-comments"></i>
+        //         </div>
+        //         <h2 class="pw-chat-intro-title">Connecting You Now</h2>
+        //         <p class="pw-chat-intro-text">A friendly support agent is ready to help with your registration questions.</p>
+        //         <div class="pw-chat-intro-loader">
+        //             <span></span>
+        //             <span></span>
+        //             <span></span>
+        //         </div>
+        //     </div>
+        // `;
+        //
+        // overlay.querySelector('.pw-chat-close-btn').addEventListener('click', () => this.closeIntro());
+        // document.body.appendChild(overlay);
+        // ================================================================================
+
+        // ============ SIDE PANEL CHAT MODE (CURRENT IMPLEMENTATION) ============
+        const sidePanelOverlay = document.createElement('div');
+        sidePanelOverlay.className = 'pw-chat-side-overlay';
+        sidePanelOverlay.id = 'pw-chat-intro';
+        sidePanelOverlay.innerHTML = `
+            <div class="pw-chat-side-panel">
+                <button class="pw-chat-close-btn" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="pw-chat-side-content">
+                    <div class="pw-chat-side-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h2 class="pw-chat-side-title">Live Chat Coming Soon</h2>
+                    <p class="pw-chat-side-message">Live web chat hasn't been implemented yet.</p>
+                    
+                    <div class="pw-chat-wa-section">
+                        <p class="pw-chat-wa-subtitle">Contact us on WhatsApp for immediate assistance</p>
+                        <p class="pw-chat-response-time">⚡ We respond immediately</p>
+                        <a href="https://wa.me/2347075041664" target="_blank" class="pw-chat-wa-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            Contact on WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
         `;
 
-        overlay.querySelector('.pw-chat-close-btn').addEventListener('click', () => this.closeIntro());
-        document.body.appendChild(overlay);
+        sidePanelOverlay.querySelector('.pw-chat-close-btn').addEventListener('click', () => this.closeIntro());
+        sidePanelOverlay.addEventListener('click', (e) => {
+            // Close if clicking on the overlay background, not the panel
+            if (e.target === sidePanelOverlay) {
+                this.closeIntro();
+            }
+        });
+        document.body.appendChild(sidePanelOverlay);
     }
 
     setupTriggers() {
@@ -373,58 +658,59 @@ class PathwayLiveChat {
         // Hide the launcher button
         this.hideLauncher();
 
-        // Show the intro overlay
+        // Show the side panel
         const overlay = document.getElementById('pw-chat-intro');
         if (overlay) {
             overlay.classList.add('active');
         }
 
-        // Load Tawk.to widget after 2.5 seconds
-        setTimeout(() => {
-            this.loadTawkWidget();
-        }, 2500);
+        // COMMENTED OUT: Original full-screen Tawk widget loading
+        // setTimeout(() => {
+        //     this.loadTawkWidget();
+        // }, 2500);
     }
 
-    loadTawkWidget() {
-        if (this.isTawkLoaded) {
-            // If already loaded, just maximize the widget
-            if (window.Tawk_API) {
-                window.Tawk_API.maximize();
-            }
-            this.closeIntro();
-            return;
-        }
-
-        // Tawk.to integration placeholder
-        // Replace YOUR_PROPERTY_ID and YOUR_WIDGET_ID with actual values
-        var Tawk_API = window.Tawk_API || {};
-        var Tawk_LoadStart = new Date();
-
-        (function () {
-            var s1 = document.createElement("script");
-            var s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = `https://embed.tawk.to/${TAWK_PROPERTY_ID}/${TAWK_WIDGET_ID}`;
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-
-        this.isTawkLoaded = true;
-
-        // Setup Tawk event listeners
-        window.Tawk_API = window.Tawk_API || {};
-        window.Tawk_API.onLoad = () => {
-            // Maximize the chat when loaded
-            window.Tawk_API.maximize();
-            this.closeIntro();
-        };
-
-        // Fallback: close intro after 4 seconds if Tawk doesn't load
-        setTimeout(() => {
-            this.closeIntro();
-        }, 4000);
-    }
+    // COMMENTED OUT: Full-screen Tawk widget loading (keeping for future use)
+    // loadTawkWidget() {
+    //     if (this.isTawkLoaded) {
+    //         // If already loaded, just maximize the widget
+    //         if (window.Tawk_API) {
+    //             window.Tawk_API.maximize();
+    //         }
+    //         this.closeIntro();
+    //         return;
+    //     }
+    //
+    //     // Tawk.to integration placeholder
+    //     // Replace YOUR_PROPERTY_ID and YOUR_WIDGET_ID with actual values
+    //     var Tawk_API = window.Tawk_API || {};
+    //     var Tawk_LoadStart = new Date();
+    //
+    //     (function () {
+    //         var s1 = document.createElement("script");
+    //         var s0 = document.getElementsByTagName("script")[0];
+    //         s1.async = true;
+    //         s1.src = `https://embed.tawk.to/${TAWK_PROPERTY_ID}/${TAWK_WIDGET_ID}`;
+    //         s1.charset = 'UTF-8';
+    //         s1.setAttribute('crossorigin', '*');
+    //         s0.parentNode.insertBefore(s1, s0);
+    //     })();
+    //
+    //     this.isTawkLoaded = true;
+    //
+    //     // Setup Tawk event listeners
+    //     window.Tawk_API = window.Tawk_API || {};
+    //     window.Tawk_API.onLoad = () => {
+    //         // Maximize the chat when loaded
+    //         window.Tawk_API.maximize();
+    //         this.closeIntro();
+    //     };
+    //
+    //     // Fallback: close intro after 4 seconds if Tawk doesn't load
+    //     setTimeout(() => {
+    //         this.closeIntro();
+    //     }, 4000);
+    // }
 
     closeIntro() {
         const overlay = document.getElementById('pw-chat-intro');

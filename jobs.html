@@ -346,26 +346,25 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu"
-                        aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navPanel">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </button>
                 </div>
             </div>
-
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav-menu" id="mobileNavMenu">
-                <a href="index.html">Home</a>
-                <a href="registration.html">Registration Help</a>
-                <a href="post-registration.html">Setup Guide</a>
-                <a href="jobs.html" class="active">Career Resources</a>
-                <a href="how-to.html">Tutorials</a>
-                <a href="scholarships.html">Scholarships</a>
-            </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Menu (moved outside nav to avoid stacking/interaction issues) -->
+    <div class="nav-panel" id="navPanel">
+        <a href="index.html">Home</a>
+        <a href="registration.html">Registration Help</a>
+        <a href="post-registration.html">Setup Guide</a>
+        <a href="jobs.html" class="active">Career Resources</a>
+        <a href="how-to.html">Tutorials</a>
+        <a href="scholarships.html">Scholarships</a>
+    </div>
 
     <!-- Page Header -->
     <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-green-50">
@@ -1787,6 +1786,57 @@
                         Browse Church Jobs <i class="fas fa-external-link-alt text-sm"></i>
                     </a>
                 </div>
+
+                <!-- Welfare and Self Reliance Card -->
+                <div class="partner-card-pro p-8 fade-in">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="partner-icon-wrapper-pro" style="color: #059669;">
+                            <i class="fas fa-leaf text-2xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <span class="partner-badge-pro"
+                                style="background: #ecfdf5; color: #065f46; border: 1px solid #d1fae5;">Resources</span>
+                            <span class="partner-badge-pro"
+                                style="background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7;">Self-Reliance</span>
+                            <span class="partner-badge-pro"
+                                style="background: #f5f3ff; color: #5b21b6; border: 1px solid #ede9fe;">Spiritual</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Welfare and Self Reliance</h3>
+                    <p class="text-base mb-8 leading-relaxed" style="color: var(--slate);">
+                        Access comprehensive resources designed to help you achieve personal financial stability and self-sufficiency.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Financial Literacy</h4>
+                                <p class="text-sm text-gray-600">Learn budgeting, saving, and debt management strategies aligned with gospel principles.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Employment Resources</h4>
+                                <p class="text-sm text-gray-600">Access job search tools, career planning guides, and employment preparation materials.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 text-green-500"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Personal Development</h4>
+                                <p class="text-sm text-gray-600">Strengthen education, health, and spiritual growth through structured programs and support groups.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.churchofjesuschrist.org/self-reliance?lang=eng" target="_blank"
+                        class="partner-link-pro w-full inline-flex items-center justify-center gap-2 border border-green-600 text-green-700 font-bold py-3 rounded-lg hover:bg-green-50 transition-all">
+                        Explore Resources <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1932,8 +1982,8 @@
                         <li><a href="how-to.html"
                                 class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
                         </li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                        <li><a href="registration.html#faq" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="registration.html#contact-support" class="hover:text-orange-500 hover:underline transition-colors">Contact
                                 Mentors</a></li>
                     </ul>
                 </div>

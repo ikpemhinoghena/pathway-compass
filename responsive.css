@@ -25,11 +25,9 @@ nav.nav-scrolled {
    MOBILE NAVIGATION & HAMBURGER MENU
    ============================================ */
 
-/* Hamburger menu button - hidden by default, shown on mobile */
-.mobile-menu-button {
+/* New hamburger (nav-toggle) */
+.nav-toggle {
     display: none;
-    flex-direction: column;
-    justify-content: space-around;
     width: 2rem;
     height: 2rem;
     background: transparent;
@@ -37,82 +35,82 @@ nav.nav-scrolled {
     cursor: pointer;
     padding: 0;
     z-index: 100;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
-.mobile-menu-button span {
-    width: 100%;
-    height: 3px;
+.nav-toggle .line {
+    width: 22px;
+    height: 2px;
     background-color: #1e3a8a;
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    position: relative;
-    transform-origin: 1px;
+    transition: transform 200ms ease, opacity 200ms ease;
 }
 
-/* Hamburger to X animation */
-.mobile-menu-button.active span:nth-child(1) {
-    transform: rotate(45deg);
+.nav-toggle.active .line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
 }
-
-.mobile-menu-button.active span:nth-child(2) {
+.nav-toggle.active .line:nth-child(2) {
     opacity: 0;
-    transform: translateX(20px);
+}
+.nav-toggle.active .line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
-.mobile-menu-button.active span:nth-child(3) {
-    transform: rotate(-45deg);
-}
-
-/* Mobile menu container */
-.mobile-nav-menu {
+/* New nav panel */
+.nav-panel {
     position: fixed;
     top: 4rem;
-    /* Height of the navigation bar */
     left: 0;
     right: 0;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 9998;
-    max-height: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
 }
 
-/* Mobile menu when active */
-.mobile-nav-menu.active {
-    max-height: 500px;
-    /* Adjust based on content */
-    overflow-y: auto;
+.nav-panel.open {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
-/* Mobile menu links */
-.mobile-nav-menu a {
+/* Nav panel links */
+.nav-panel a {
     display: block;
     padding: 1rem 1.5rem;
     color: #64748b;
     text-decoration: none;
     border-bottom: 1px solid #f3f4f6;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     width: 100%;
     text-align: left;
     background-color: white;
 }
 
-.mobile-nav-menu a:hover,
-.mobile-nav-menu a:active {
+.nav-panel a:hover,
+.nav-panel a:active {
     background-color: #f9fafb;
     color: #1e3a8a;
 }
 
-.mobile-nav-menu a.active {
+.nav-panel a.active {
     color: #f97316;
     font-weight: 600;
 }
 
 /* Show hamburger button only on mobile screens */
 @media screen and (max-width: 768px) {
-    .mobile-menu-button {
-        display: flex !important;
+    .nav-toggle {
+        display: inline-flex !important;
     }
 
     /* Hide desktop navigation on mobile */
@@ -121,6 +119,79 @@ nav.nav-scrolled {
     }
 
 }
+
+/* Splide pagination (testimonial bubbles) styling */
+.splide__pagination.custom-pagination {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.splide__pagination.custom-pagination button,
+.splide__pagination button {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 9999px;
+    border: none;
+    background: #cbd5e1; /* slate-300 */
+    opacity: 0.95;
+    transition: transform .18s ease, background-color .18s ease;
+    box-shadow: 0 1px 2px rgba(2,6,23,0.06);
+}
+.splide__pagination.custom-pagination .is-active,
+.splide__pagination button.is-active {
+    background: var(--navy);
+    transform: scale(1.25);
+}
+.splide__pagination button:focus {
+    outline: 2px solid rgba(59,130,246,0.35);
+    outline-offset: 2px;
+}
+
+/* Ensure slides have smooth transitions and fit nicely */
+.splide__slide {
+    transition: transform .6s cubic-bezier(.22,.9,.35,1);
+}
+
+/* Mobile-specific testimonial layout */
+@media screen and (max-width: 640px) {
+    /* Stack avatar and text vertically and center */
+    #testimonial-slider .splide__slide .flex.items-center.mb-6 {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.5rem;
+    }
+
+    #testimonial-slider .splide__slide .w-16.h-16 {
+        width: 3.25rem !important;
+        height: 3.25rem !important;
+        margin-right: 0 !important;
+    }
+
+    #testimonial-slider .splide__slide .bg-white {
+        padding: 1rem !important;
+        margin: 0 0.375rem !important;
+    }
+
+    .splide__pagination.custom-pagination button,
+    .splide__pagination button {
+        width: 14px;
+        height: 14px;
+    }
+
+    .splide__pagination.custom-pagination {
+        margin-top: 0.75rem;
+    }
+
+    /* Hide pagination bubbles on small screens to avoid oversized indicators */
+    #testimonial-slider .splide__pagination {
+        display: none !important;
+    }
+}
+
 
 /* ============================================
    INDEX PAGE - HERO SECTION RESPONSIVE
@@ -713,11 +784,19 @@ footer .grid.md\:grid-cols-4 {
     /* FAQ items */
     .faq-question {
         padding: 1rem !important;
+        flex-wrap: nowrap !important;
     }
 
     .faq-question h3.text-lg {
         font-size: 0.9375rem !important;
         line-height: 1.4 !important;
+        flex: 1 !important;
+        text-align: left !important;
+    }
+
+    .faq-question i {
+        flex-shrink: 0 !important;
+        margin-left: auto !important;
     }
 
     .faq-answer .px-6.pb-6 {
@@ -1513,45 +1592,25 @@ footer .grid.md\:grid-cols-4 {
    ============================================ */
 @media screen and (max-width: 768px) {
 
-    /* Show mobile menu button, hide desktop nav */
-    .mobile-menu-button {
-        display: flex !important;
+    /* Show new mobile menu button, hide desktop nav */
+    .nav-toggle {
+        display: inline-flex !important;
     }
 
-    .mobile-nav-menu {
-        /* Use transform/opacity rather than display:none so we can animate */
-        transform-origin: top center;
-        transform: scaleY(0);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 260ms cubic-bezier(.2, .8, .2, 1), opacity 200ms ease;
-        overflow: hidden;
-    }
-
-    .mobile-nav-menu.active {
-        transform: scaleY(1);
-        opacity: 1;
-        pointer-events: auto;
-    }
+    /* ensure panel remains controlled solely by .open */
+    .nav-panel { /* styles defined above */ }
+    .nav-panel.open { /* styles defined above */ }
 
     nav .hidden.md\\:block {
         display: none !important;
     }
 
     /* DISABLE ANIMATIONS ON MOBILE */
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-
-    /* Keep only essential transitions */
-    .mobile-menu-button span,
-    .mobile-nav-menu {
-        animation-duration: 0.3s !important;
-        transition-duration: 0.3s !important;
+    /* remove global animation killer that interferes with menu */
+    /* Keep minimal transitions for toggle */
+    .nav-toggle .line,
+    .nav-panel {
+        transition-duration: 0.22s !important;
     }
 
     /* Base font adjustments */
@@ -1828,7 +1887,7 @@ footer .grid.md\:grid-cols-4 {
     }
 
     /* Navigation links in mobile menu */
-    .mobile-nav-menu a {
+    .nav-panel a {
         padding: 0.875rem 1rem;
         font-size: 0.9375rem;
     }
@@ -2086,5 +2145,255 @@ object {
 
     .mb-8 {
         margin-bottom: 1rem !important;
+    }
+}
+
+/* ============================================
+   LIVE CHAT RESPONSIVE OPTIMIZATIONS
+   ============================================ */
+
+/* Mobile chat launcher adjustments */
+@media (max-width: 768px) {
+    .pw-chat-launcher {
+        bottom: 1rem !important;
+        right: 1rem !important;
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    .pw-chat-launcher .chat-icon {
+        font-size: 1rem !important;
+    }
+
+    /* Chat intro overlay for mobile */
+    .pw-chat-intro-content {
+        padding: 1.5rem !important;
+        max-width: calc(100vw - 2rem) !important;
+    }
+
+    .pw-chat-intro-icon {
+        width: 100px !important;
+        height: 100px !important;
+        margin: 0 auto 1rem !important;
+    }
+
+    .pw-chat-intro-icon i {
+        font-size: 2.5rem !important;
+    }
+
+    .pw-chat-intro-title {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .pw-chat-intro-text {
+        font-size: 0.95rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Close button mobile adjustments */
+    .pw-chat-close-btn {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.25rem !important;
+    }
+
+    /* Side panel adjustments */
+    .pw-chat-side-panel {
+        max-width: 100% !important;
+        height: 100vh !important;
+    }
+
+    .pw-chat-side-content {
+        padding: 1.5rem 1rem !important;
+        justify-content: flex-start !important;
+        padding-top: 4rem !important;
+    }
+
+    .pw-chat-side-icon {
+        width: 70px !important;
+        height: 70px !important;
+        margin: 0 auto 1rem !important;
+    }
+
+    .pw-chat-side-icon i {
+        font-size: 1.75rem !important;
+    }
+
+    .pw-chat-side-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .pw-chat-side-message {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .pw-chat-wa-section {
+        padding: 1rem !important;
+        margin-top: 1rem !important;
+        border-radius: 8px !important;
+    }
+
+    .pw-chat-wa-subtitle {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .pw-chat-response-time {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .pw-chat-wa-number {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .pw-chat-wa-btn {
+        padding: 0.65rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .pw-chat-side-panel .pw-chat-close-btn {
+        top: 0.75rem !important;
+        right: 0.75rem !important;
+    }
+}
+
+/* Extra small screens (under 480px) */
+@media (max-width: 480px) {
+    .pw-chat-launcher {
+        bottom: 0.75rem !important;
+        right: 0.75rem !important;
+        padding: 0.65rem 1rem !important;
+        font-size: 0.8rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .pw-chat-launcher .chat-icon {
+        font-size: 0.9rem !important;
+    }
+
+    /* Full-screen intro for very small screens */
+    .pw-chat-intro-overlay {
+        padding: 0 !important;
+    }
+
+    .pw-chat-intro-content {
+        padding: 1rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    .pw-chat-intro-icon {
+        width: 80px !important;
+        height: 80px !important;
+        margin: 0 auto 1rem !important;
+    }
+
+    .pw-chat-intro-icon i {
+        font-size: 2rem !important;
+    }
+
+    .pw-chat-intro-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .pw-chat-intro-text {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.25rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .pw-chat-close-btn {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1.1rem !important;
+        top: 0.5rem !important;
+        right: 0.5rem !important;
+    }
+
+    /* Side panel for very small screens */
+    .pw-chat-side-panel {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+    }
+
+    .pw-chat-side-content {
+        padding: 1rem 0.75rem !important;
+        padding-top: 3.5rem !important;
+    }
+
+    .pw-chat-side-icon {
+        width: 60px !important;
+        height: 60px !important;
+        margin: 0 auto 0.75rem !important;
+    }
+
+    .pw-chat-side-icon i {
+        font-size: 1.5rem !important;
+    }
+
+    .pw-chat-side-title {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.4rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .pw-chat-side-message {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.25rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .pw-chat-wa-section {
+        padding: 0.75rem !important;
+        margin-top: 0.75rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: 6px !important;
+    }
+
+    .pw-chat-wa-subtitle {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .pw-chat-response-time {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+
+    .pw-chat-wa-number {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+
+    .pw-chat-wa-number i {
+        font-size: 1rem !important;
+    }
+
+    .pw-chat-wa-btn {
+        padding: 0.6rem !important;
+        font-size: 0.85rem !important;
+        gap: 0.4rem !important;
+    }
+
+    .pw-chat-wa-btn i {
+        font-size: 1rem !important;
+    }
+
+    .pw-chat-side-panel .pw-chat-close-btn {
+        top: 0.5rem !important;
+        right: 0.5rem !important;
     }
 }

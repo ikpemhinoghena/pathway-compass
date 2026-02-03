@@ -132,6 +132,12 @@ class BYUPathwayApp {
                 description: 'Build your professional network and connections',
                 keywords: ['networking', 'linkedin', 'professional', 'connect', 'career', 'job'],
                 url: 'jobs.html#networking'
+            },
+            'welfare': {
+                title: 'Welfare and Self Reliance',
+                description: 'Explore welfare and self reliance resources',
+                keywords: ['welfare', 'self reliance', 'financial', 'stability', 'personal development', 'self-sufficiency', 'budgeting'],
+                url: 'jobs.html#strategic-partners'
             }
         };
     }
@@ -144,7 +150,7 @@ class BYUPathwayApp {
                     'Help for BYU Pathway Students',
                     'Step-by-Step Tutorials',
                     'Registration Made Simple',
-                    'Career Resources & Jobs',
+                    'Career Resources',
                     'Your Success Journey Starts Here'
                 ],
                 typeSpeed: 60,
@@ -328,22 +334,116 @@ class BYUPathwayApp {
     // Setup testimonial slider
     setupTestimonialSlider() {
         if (document.getElementById('testimonial-slider') && typeof Splide !== 'undefined') {
-            new Splide('#testimonial-slider', {
+            const splide = new Splide('#testimonial-slider', {
                 type: 'loop',
                 perPage: 1,
                 perMove: 1,
-                gap: '2rem',
+                gap: '1rem',
                 autoplay: true,
                 interval: 5000,
                 pauseOnHover: true,
+                pauseOnFocus: true,
+                autoHeight: true,
                 arrows: false,
                 pagination: true,
+                keyboard: 'global',
+                drag: true,
+                speed: 600,
+                focus: 'center',
+                rewind: false,
                 breakpoints: {
-                    768: {
-                        perPage: 1,
+                    1024: { perPage: 1 },
+                    768: { perPage: 1 }
+                },
+                classes: {
+                    pagination: 'splide__pagination custom-pagination',
+                    page: 'splide__pagination__page'
+                }
+            });
+
+            splide.on('mounted move updated', () => {
+                // Ensure pagination buttons have accessible labels
+                const pagination = document.querySelectorAll('#testimonial-slider .splide__pagination button');
+                pagination.forEach((btn, idx) => {
+                    btn.setAttribute('aria-label', `Go to testimonial ${idx + 1}`);
+                    btn.setAttribute('title', `Testimonial ${idx + 1}`);
+                });
+            });
+
+            // Improve focus management for keyboard users
+            splide.on('move', (newIndex) => {
+                const slides = document.querySelectorAll('#testimonial-slider .splide__slide');
+                slides.forEach((s, i) => {
+                    const active = i === splide.index;
+                    s.setAttribute('aria-hidden', active ? 'false' : 'true');
+                    // Manage focusability
+                    const focusable = s.querySelectorAll('a, button, input, [tabindex]');
+                    focusable.forEach(el => {
+                        if (active) el.removeAttribute('tabindex');
+                        else el.setAttribute('tabindex', '-1');
+                    });
+                });
+            });
+
+            // Make pagination buttons bigger on touch devices for easier tapping
+            function increaseTouchTargets() {
+                const buttons = document.querySelectorAll('#testimonial-slider .splide__pagination button');
+                buttons.forEach(btn => {
+                    btn.style.width = '14px';
+                    btn.style.height = '14px';
+                });
+            }
+
+            if ('ontouchstart' in window) increaseTouchTargets();
+
+            splide.mount();
+
+            // Small-screen: hide pagination and show compact counter (1/3)
+            splide.on('mounted', () => {
+                const root = document.getElementById('testimonial-slider');
+                if (!root) return;
+
+                let counter = root.querySelector('.testimonial-counter');
+
+                function createCounter() {
+                    if (!counter) {
+                        counter = document.createElement('div');
+                        counter.className = 'testimonial-counter';
+                        counter.setAttribute('aria-hidden', 'false');
+                        root.appendChild(counter);
+                    }
+                    counter.textContent = `${splide.index + 1}/${splide.length}`;
+                }
+
+                function removeCounter() {
+                    if (counter && counter.parentNode) {
+                        counter.parentNode.removeChild(counter);
+                        counter = null;
                     }
                 }
-            }).mount();
+
+                function updatePaginationVisibility() {
+                    const pagination = root.querySelector('.splide__pagination');
+                    if (window.innerWidth <= 640) {
+                        if (pagination) pagination.style.display = 'none';
+                        createCounter();
+                    } else {
+                        if (pagination) pagination.style.display = '';
+                        removeCounter();
+                    }
+                }
+
+                updatePaginationVisibility();
+
+                window.addEventListener('resize', () => {
+                    updatePaginationVisibility();
+                });
+
+                // keep counter in sync
+                splide.on('move updated', () => {
+                    if (counter) counter.textContent = `${splide.index + 1}/${splide.length}`;
+                });
+            });
         }
     }
 
@@ -407,56 +507,100 @@ class BYUPathwayApp {
 
     // Setup mobile menu toggle (hamburger)
     setupMobileMenuToggle() {
-        const menuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileNavMenu');
+        const oldBtn = document.getElementById('mobileMenuBtn');
+        const oldMenu = document.getElementById('mobileNavMenu');
+        const newBtn = document.getElementById('navToggle');
+        const newMenu = document.getElementById('navPanel');
+        const btn = newBtn || oldBtn;
+        const panel = newMenu || oldMenu;
+        // Optional backdrop (used on some pages like post-registration)
+        const backdrop = document.getElementById('mobileNavBackdrop');
 
-        if (!menuBtn || !mobileMenu) {
-            console.error('Mobile menu elements not found!');
+        if (!btn || !panel) {
+            console.warn('No mobile navigation elements found.');
             return;
         }
 
         // Set initial ARIA attributes
-        menuBtn.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+
+        // Guard to avoid immediate outside-click close right after open
+        let lastToggleTs = 0;
+
+        // Helper: open/close states
+        const openMenu = () => {
+            lastToggleTs = Date.now();
+            btn.classList.add('active');
+            panel.classList.add('open');
+            // Hard-enable visibility in case of lingering CSS conflicts
+            panel.style.display = 'block';
+            panel.style.pointerEvents = 'auto';
+            panel.style.opacity = '1';
+            panel.style.transform = 'translateY(0)';
+            if (backdrop) backdrop.classList.remove('hidden');
+            btn.setAttribute('aria-expanded', 'true');
+            panel.setAttribute('aria-hidden', 'false');
+        };
+
+        const closeMenu = () => {
+            lastToggleTs = Date.now();
+            btn.classList.remove('active');
+            panel.classList.remove('open');
+            // Hard-disable interactions
+            panel.style.display = 'none';
+            panel.style.pointerEvents = 'none';
+            panel.style.opacity = '0';
+            panel.style.transform = 'translateY(-6px)';
+            if (backdrop) backdrop.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            panel.setAttribute('aria-hidden', 'true');
+        };
+
+        const isMenuOpen = () => btn.classList.contains('active') || panel.classList.contains('open');
 
         // Toggle mobile menu when hamburger button is clicked
-        menuBtn.addEventListener('click', () => {
-            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-
-            // Toggle active class on button and menu
-            menuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-
-            // Update ARIA attributes
-            menuBtn.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.setAttribute('aria-hidden', isExpanded);
-
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isMenuOpen()) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (event) => {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnMenuButton = menuBtn.contains(event.target);
+            const isClickInsideMenu = panel.contains(event.target);
+            const isClickOnMenuButton = btn.contains(event.target);
 
-            if (!isClickInsideMenu && !isClickOnMenuButton) {
-                // Close menu if it's open
-                if (menuBtn.classList.contains('active')) {
-                    menuBtn.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    menuBtn.setAttribute('aria-expanded', 'false');
-                    mobileMenu.setAttribute('aria-hidden', 'true');
-                }
+            // Ignore outside clicks occurring immediately after toggle to prevent flash-close
+            if (Date.now() - lastToggleTs < 350) return;
+
+            if (!isClickInsideMenu && !isClickOnMenuButton && isMenuOpen()) {
+                closeMenu();
             }
         });
 
         // Close menu when clicking a link inside it
-        mobileMenu.querySelectorAll('a').forEach(link => {
+        panel.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                menuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
+                if (isMenuOpen()) closeMenu();
             });
+        });
+
+        // Close via backdrop click if present
+        if (backdrop) {
+            backdrop.addEventListener('click', () => {
+                if (isMenuOpen()) closeMenu();
+            });
+        }
+
+        // Close menu on resize up to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && isMenuOpen()) {
+                closeMenu();
+            }
         });
     }
 
@@ -681,23 +825,31 @@ function exploreFreelance() {
     alert('Freelance platform would be accessible here, connecting students with project-based work opportunities.');
 }
 
-// Initialize app when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    window.byuApp = new BYUPathwayApp();
+// Initialize app even if DOMContentLoaded already fired
+(function initApp() {
+    const bootstrap = () => {
+        window.byuApp = new BYUPathwayApp();
 
-    // Add loading animation
-    document.body.style.opacity = '0';
-    if (typeof anime !== 'undefined') {
-        anime({
-            targets: document.body,
-            opacity: 1,
-            duration: 800,
-            easing: 'easeOutQuart'
-        });
+        // Add loading animation
+        document.body.style.opacity = '0';
+        if (typeof anime !== 'undefined') {
+            anime({
+                targets: document.body,
+                opacity: 1,
+                duration: 800,
+                easing: 'easeOutQuart'
+            });
+        } else {
+            document.body.style.opacity = '1';
+        }
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootstrap);
     } else {
-        document.body.style.opacity = '1';
+        bootstrap();
     }
-});
+})();
 
 // Handle page visibility changes for performance
 document.addEventListener('visibilitychange', () => {

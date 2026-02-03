@@ -240,26 +240,26 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu"
-                        aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+                        aria-controls="navPanel">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </button>
                 </div>
             </div>
-
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav-menu" id="mobileNavMenu">
-                <a href="index.html">Home</a>
-                <a href="registration.html">Registration Help</a>
-                <a href="post-registration.html">Setup Guide</a>
-                <a href="jobs.html">Career Resources</a>
-                <a href="how-to.html" class="active">Tutorials</a>
-                <a href="scholarships.html">Scholarships</a>
-            </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Menu (moved outside nav to avoid stacking/interaction issues) -->
+    <div class="nav-panel" id="navPanel">
+        <a href="index.html">Home</a>
+        <a href="registration.html">Registration Help</a>
+        <a href="post-registration.html">Setup Guide</a>
+        <a href="jobs.html">Career Resources</a>
+        <a href="how-to.html" class="active">Tutorials</a>
+        <a href="scholarships.html">Scholarships</a>
+    </div>
 
     <!-- Page Header -->
     <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-green-50">
@@ -1229,8 +1229,10 @@
                         <li><a href="how-to.html"
                                 class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
                         </li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                        <li><a href="registration.html#faq"
+                                class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="registration.html#contact-support"
+                                class="hover:text-orange-500 hover:underline transition-colors">Contact
                                 Mentors</a></li>
                     </ul>
                 </div>

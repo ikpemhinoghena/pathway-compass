@@ -353,26 +353,25 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu"
-                        aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navPanel">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </button>
                 </div>
             </div>
-
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav-menu" id="mobileNavMenu">
-                <a href="index.html">Home</a>
-                <a href="registration.html" class="active">Registration Help</a>
-                <a href="post-registration.html">Setup Guide</a>
-                <a href="jobs.html">Career Resources</a>
-                <a href="how-to.html">Tutorials</a>
-                <a href="scholarships.html">Scholarships</a>
-            </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Menu (moved outside nav to avoid stacking/interaction issues) -->
+    <div class="nav-panel" id="navPanel">
+        <a href="index.html">Home</a>
+        <a href="registration.html" class="active">Registration Help</a>
+        <a href="post-registration.html">Setup Guide</a>
+        <a href="jobs.html">Career Resources</a>
+        <a href="how-to.html">Tutorials</a>
+        <a href="scholarships.html">Scholarships</a>
+    </div>
 
     <!-- Page Header -->
     <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-green-50">
@@ -527,17 +526,14 @@
                                 </h3>
                                 <p class="mb-4 text-sm" style="color: var(--slate);">Start your application at <a
                                         href="https://www.byupathway.edu"
-                                        class="text-blue-600 font-medium underline">byupathway.edu</a>. You'll need
-                                    basic personal
-                                    info and your credentials.</p>
+                                        class="text-blue-600 font-medium underline">byupathway.edu</a>. You'll need basic personal info(i.e Name).</p>
 
                                 <div class="bg-orange-50 p-3 rounded-lg text-left mb-4">
                                     <h4 class="text-xs font-bold uppercase tracking-wider mb-2"
                                         style="color: var(--coral);">What to Expect:</h4>
                                     <div class="flex items-start gap-2 text-sm mb-2">
-                                        <i class="fas fa-clock mt-1" style="color: var(--coral);"></i>
-                                        <p style="color: var(--navy);"><strong>40-min English Assessment:</strong> Quick
-                                            test to check your level.</p>
+                                        <i class="fas fa-language mt-1" style="color: var(--coral);"></i>
+                                        <p style="color: var(--navy);"><strong>Eng. Assessment:</strong> Quick test to check your level.</p>
                                     </div>
                                     <div class="flex items-start gap-2 text-sm">
                                         <i class="fas fa-bolt mt-1" style="color: var(--coral);"></i>
@@ -582,9 +578,7 @@
                                         <i class="fas fa-id-card mt-1 text-blue-500"></i>
                                         <div>
                                             <strong>Church MRN</strong>
-                                            <p class="text-sm">Member Record Number - <strong
-                                                    class="text-orange-600 font-bold underline">if applicable</strong>
-                                            </p>
+                                            <p class="text-sm">Member Record Number - <button onclick="openMRNModal()" class="text-orange-600 font-bold underline bg-none border-none cursor-pointer hover:text-orange-700">if applicable</button></p>
                                         </div>
                                     </li>
                                 </ul>
@@ -597,9 +591,7 @@
                         <div class="flex-shrink-0 w-1/2 pr-8 text-right">
                             <div class="bg-white p-6 rounded-xl shadow-lg border-r-4 border-green-500">
                                 <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Await a Response</h3>
-                                <p class="mb-4 text-sm" style="color: var(--slate);">Check the email you used
-                                    for registration and you'll get a welcome message and your <strong>student
-                                        email</strong>.</p>
+                                <p class="mb-4 text-sm" style="color: var(--slate);">After you have submitted your application check the email you used for registration often, you'll get a welcome message and your <strong>student email</strong>.</p>
                                 <div class="space-y-3">
                                     <div class="text-sm font-medium" style="color: var(--sage);">
                                         <i class="fas fa-envelope-open-text mr-1"></i>
@@ -645,7 +637,7 @@
                             <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
                                 <h3 class="text-xl font-semibold mb-2" style="color: var(--navy);">Portal & Course
                                     Registration</h3>
-                                <p class="mb-4 text-sm" style="color: var(--slate);">Log into your portal once you
+                                <p class="mb-4 text-sm" style="color: var(--slate);">Log into your portal once you've
                                     receive your student email and welcome message to begin your journey.</p>
                             </div>
                         </div>
@@ -667,7 +659,7 @@
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <i class="fas fa-check-circle text-sky-500"></i>
-                                        Enroll in two courses
+                                        Enroll for courses
                                     </li>
                                 </ul>
                                 <div class="flex flex-col gap-2 pt-3 border-t border-gray-100">
@@ -699,7 +691,7 @@
                                     <h4 class="text-xs font-bold uppercase tracking-wider mb-1"
                                         style="color: var(--sage);">Need Financial Aid?</h4>
                                     <p class="text-xs" style="color: var(--navy);">The HJG Scholarship is available for
-                                        all students in need.</p>
+                                        all <strong>students in need</strong>.</p>
                                 </div>
                             </div>
                         </div>
@@ -723,7 +715,7 @@
                                         <div>10-50% Tuition Discount</div>
                                     </li>
                                 </ul>
-                                <a href="scholarships.html"
+                                <a href="scholarships.html#tuition"
                                     class="inline-flex items-center gap-2 text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
                                     <span>How to Apply</span>
                                     <i class="fas fa-external-link-alt text-xs"></i>
@@ -787,8 +779,8 @@
                                 </div>
 
                                 <a href="how-to.html"
-                                    class="block text-xs font-bold text-rose-600 hover:text-rose-700 transition-colors">
-                                    <i class="fas fa-external-link-alt mr-1"></i> Guide: Setup Canvas App (Mobile & PC)
+                                    class="block text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline transition-colors">
+                                    <i class="fas fa-external-link-alt mr-1"></i> How to setup and navigate canvas app? (Mobile & PC)
                                 </a>
                             </div>
                         </div>
@@ -932,7 +924,7 @@
     </section>
 
     <!-- Common Issues FAQ -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" id="faq">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="font-display text-4xl font-semibold mb-4" style="color: var(--navy);">
@@ -1285,7 +1277,7 @@
                         </div>
                         <h3 class="text-lg font-semibold mb-2" style="color: var(--navy);">WA Support</h3>
                         <p class="text-sm mb-4" style="color: var(--slate);">Chat with our agent <br>on WhatsApp</p>
-                        <a href="https://wa.me/18558426976" class="text-sm font-semibold hover:underline"
+                        <a href="https://wa.me/2347075041664" class="text-sm font-semibold hover:underline" target="_blank"
                             style="color: var(--coral);">
                             Start Chat
                         </a>
@@ -1591,8 +1583,8 @@
                         <li><a href="how-to.html"
                                 class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
                         </li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                        <li><a href="#faq" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="#contact-support" class="hover:text-orange-500 hover:underline transition-colors">Contact
                                 Mentors</a></li>
                     </ul>
                 </div>
@@ -1633,6 +1625,40 @@
             </div>
         </div>
     </footer>
+
+    <!-- MRN Modal -->
+    <div id="mrn-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeMRNModal()" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-id-card text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--navy);">Member Record Number (MRN)</h3>
+            <div class="text-left space-y-4 mb-6" style="color: var(--slate);">
+                <p>
+                    The Member Record Number (MRN) is <strong>only applicable to members</strong> of The Church of Jesus Christ of Latter-day Saints.
+                </p>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <p class="text-sm mb-3"><strong>Non-members can skip this field.</strong> It's optional during registration.</p>
+                    <p class="text-sm">If you're a member and don't know your MRN, contact your local <strong>Leader or Ward Clerk</strong>.</p>
+                </div>
+            </div>
+            <button onclick="closeMRNModal()"
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                Got It
+            </button>
+        </div>
+    </div>
+                </p>
+            </div>
+            <button onclick="closeMRNModal()"
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                Got It
+            </button>
+        </div>
+    </div>
 
     <!-- English Test Explanation Modal -->
     <div id="english-test-modal" class="modal-overlay">
@@ -1676,6 +1702,22 @@
     <script src="main.js"></script>
     <script src="live-chat.js"></script>
     <script>
+        function openMRNModal() {
+            const modal = document.getElementById('mrn-modal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMRNModal() {
+            const modal = document.getElementById('mrn-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
         function openEnglishTestModal() {
             const modal = document.getElementById('english-test-modal');
             if (modal) {
@@ -1694,12 +1736,17 @@
 
         // Close on outside click
         window.onclick = function (event) {
-            const modal = document.getElementById('english-test-modal');
-            if (event.target == modal) {
+            const mrnModal = document.getElementById('mrn-modal');
+            const englishModal = document.getElementById('english-test-modal');
+            if (event.target == mrnModal) {
+                closeMRNModal();
+            }
+            if (event.target == englishModal) {
                 closeEnglishTestModal();
             }
         }
     </script>
+<script src="main.js"></script>
 </body>
 
 </html>

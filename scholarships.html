@@ -151,17 +151,21 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu"
-                        aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle md:hidden" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+                        aria-controls="navPanel">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </button>
                 </div>
             </div>
+        </div>
+    </nav>
 
-            <!-- Mobile Navigation Menu -->
-            <div class="mobile-nav-menu" id="mobileNavMenu">
+    <!-- Mobile Navigation Menu -->
+    <div class="nav-panel fixed top-16 left-0 right-0 bg-white shadow-lg z-40 md:hidden" id="navPanel">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-4">
                 <a href="index.html">Home</a>
                 <a href="registration.html">Registration Help</a>
                 <a href="post-registration.html">Setup Guide</a>
@@ -170,7 +174,7 @@
                 <a href="scholarships.html" class="active">Scholarships</a>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Main Content -->
     <main id="main-content">
@@ -493,8 +497,10 @@
                         <li><a href="how-to.html"
                                 class="hover:text-orange-500 hover:underline transition-colors">Tutorials Library</a>
                         </li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-orange-500 hover:underline transition-colors">Contact
+                        <li><a href="registration.html#faq"
+                                class="hover:text-orange-500 hover:underline transition-colors">FAQ</a></li>
+                        <li><a href="registration.html#contact-support"
+                                class="hover:text-orange-500 hover:underline transition-colors">Contact
                                 Mentors</a></li>
                     </ul>
                 </div>
