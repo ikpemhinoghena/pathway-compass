@@ -238,6 +238,48 @@
         .journey-step:has(.action-btn:hover) .journey-icon {
             transform: scale(1) !important;
         }
+
+        /* Mobile navigation styles */
+        .mobile-nav-menu {
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 9998;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .mobile-nav-menu.active {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #64748b;
+            text-decoration: none;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.2s;
+            width: 100%;
+            text-align: left;
+            background-color: white;
+        }
+
+        .mobile-nav-menu a:hover,
+        .mobile-nav-menu a:active {
+            background-color: #f9fafb;
+            color: #1e3a8a;
+        }
+
+        .mobile-nav-menu a.active {
+            color: #f97316;
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -260,7 +302,7 @@
                     </div>
                 </div>
 
-                <div class="hidden md:block">
+                <div class="hidden md:block desktop-nav-links">
                     <div class="ml-10 flex items-baseline lg:space-x-8 md:space-x-4">
                         <a href="index.html" class="nav-link text-sm font-medium text-orange-600">Home</a>
                         <a href="registration.html" class="nav-link text-sm font-medium">Registration Help</a>
@@ -272,10 +314,8 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <!-- Nav Search removed -->
-
-                    <!-- Hamburger Menu Button -->
-                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <button class="mobile-menu-button md:hidden" id="mobileMenuBtn" aria-label="Toggle menu"
+                        aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>

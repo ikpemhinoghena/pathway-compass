@@ -140,7 +140,7 @@ class BYUPathwayApp {
 
     // Setup typing animation for hero section
     setupTypingAnimation() {
-        if (document.getElementById('typed-text')) {
+        if (document.getElementById('typed-text') && typeof Typed !== 'undefined') {
             const typed = new Typed('#typed-text', {
                 strings: [
                     'Help for BYU Pathway Students',
@@ -329,7 +329,7 @@ class BYUPathwayApp {
 
     // Setup testimonial slider
     setupTestimonialSlider() {
-        if (document.getElementById('testimonial-slider')) {
+        if (document.getElementById('testimonial-slider') && typeof Splide !== 'undefined') {
             new Splide('#testimonial-slider', {
                 type: 'loop',
                 perPage: 1,
@@ -405,69 +405,69 @@ class BYUPathwayApp {
         });
     }
 
-    // Setup mobile navigation
-    setupMobileNavigation() {
-        const mobileMenuButton = document.querySelector('.md\\:hidden button');
-        const mobileMenu = document.querySelector('.mobile-menu');
 
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', () => {
-                // Toggle mobile menu visibility
-                if (mobileMenu) {
-                    mobileMenu.classList.toggle('hidden');
-                } else {
-                    // Create mobile menu if it doesn't exist
-                    this.createMobileMenu();
-                }
-            });
-        }
-    }
-
-    // Create mobile menu
-    createMobileMenu() {
-        const nav = document.querySelector('nav');
-        const mobileMenu = document.createElement('div');
-        mobileMenu.className = 'mobile-menu md:hidden bg-white border-t border-gray-200';
-        mobileMenu.innerHTML = `
-            <div class="px-4 py-2 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Home</a>
-                <a href="registration.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Registration Help</a>
-                <a href="post-registration.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Setup Guide</a>
-                <a href="jobs.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Career Resources</a>
-                <a href="how-to.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">How-To Tutorials</a>
-                <a href="scholarships.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Scholarships</a>
-            </div>
-        `;
-        nav.appendChild(mobileMenu);
-    }
 
     // Setup mobile menu toggle (hamburger)
     setupMobileMenuToggle() {
         const menuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileNavMenu');
 
-        if (menuBtn && mobileMenu) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                    menuBtn.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                }
-            });
-
-            // Close menu when clicking a link
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    menuBtn.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
+        if (!menuBtn || !mobileMenu) {
+            console.error('Mobile menu elements not found!');
+            return;
         }
+
+        // Set initial ARIA attributes
+        menuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+
+        // Toggle mobile menu when hamburger button is clicked
+        menuBtn.addEventListener('click', () => {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+
+            // Toggle active class on button and menu
+            menuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+
+            // Update ARIA attributes
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.setAttribute('aria-hidden', isExpanded);
+
+            // Ensure proper display (fallback for CSS issues)
+            if (!isExpanded) {
+                mobileMenu.style.display = 'block';
+            } else {
+                mobileMenu.style.display = 'none';
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnMenuButton = menuBtn.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnMenuButton) {
+                // Close menu if it's open
+                if (menuBtn.classList.contains('active')) {
+                    menuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    mobileMenu.style.display = 'none';
+                }
+            }
+        });
+
+        // Close menu when clicking a link inside it
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenu.style.display = 'none';
+            });
+        });
     }
 
     // Setup navbar appearance on scroll
@@ -620,13 +620,15 @@ class BYUPathwayApp {
             if (filter === 'all' || categories.includes(filter)) {
                 card.style.display = 'block';
                 // Add animation
-                anime({
-                    targets: card,
-                    opacity: [0, 1],
-                    translateY: [20, 0],
-                    duration: 300,
-                    easing: 'easeOutQuart'
-                });
+                if (typeof anime !== 'undefined') {
+                    anime({
+                        targets: card,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    });
+                }
             } else {
                 card.style.display = 'none';
             }
@@ -695,22 +697,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add loading animation
     document.body.style.opacity = '0';
-    anime({
-        targets: document.body,
-        opacity: 1,
-        duration: 800,
-        easing: 'easeOutQuart'
-    });
+    if (typeof anime !== 'undefined') {
+        anime({
+            targets: document.body,
+            opacity: 1,
+            duration: 800,
+            easing: 'easeOutQuart'
+        });
+    } else {
+        document.body.style.opacity = '1';
+    }
 });
 
 // Handle page visibility changes for performance
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
         // Pause animations when page is not visible
-        anime.running.forEach(animation => animation.pause());
+        if (typeof anime !== 'undefined' && Array.isArray(anime.running)) {
+            anime.running.forEach(animation => animation.pause());
+        }
     } else {
         // Resume animations when page becomes visible
-        anime.running.forEach(animation => animation.play());
+        if (typeof anime !== 'undefined' && Array.isArray(anime.running)) {
+            anime.running.forEach(animation => animation.play());
+        }
     }
 });
 
