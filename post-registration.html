@@ -343,7 +343,7 @@
                     </h1>
                     <p class="text-xl mb-8 leading-relaxed" style="color: var(--slate);">
                         Congratulations on registering! Now let's get you set up for success.
-                        Follow this comprehensive guide to configure your systems and understand how everything works.
+                        Follow this comprehensive guide to configure your systems and understand how things work.
                     </p>
                     <div class="flex items-center space-x-6">
                         <div class="text-center">
@@ -361,6 +361,7 @@
                 <div class="relative">
                     <img src="resources/microsoft365-setup.jpg" alt="BYU Pathway setup and configuration"
                         class="rounded-2xl shadow-2xl w-full h-auto">
+                    <div class="mt-2 text-sm text-gray-500 text-center">*Screenshot shown is a sample - actual interface may vary</div>
                     <!-- System Tour Hotspots -->
                     <div class="system-tour-hotspot" style="top: 20%; left: 15%;" onclick="showTourInfo('portal')">
                     </div>
@@ -393,7 +394,7 @@
             <!-- Progress Visualization -->
             <div class="flex justify-center mb-12 fade-in">
                 <div class="relative">
-                    <svg class="progress-ring w-32 h-32">
+                    <svg class="progress-ring w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40" viewBox="0 0 128 128">
                         <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="8" fill="transparent" r="56"
                             cx="64" cy="64" />
                         <circle class="progress-ring-circle" stroke="var(--sage)" stroke-width="8" fill="transparent"
@@ -401,8 +402,8 @@
                     </svg>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="text-center">
-                            <div class="text-2xl font-bold" style="color: var(--navy);" id="progress-text">0/7</div>
-                            <div class="text-xs" style="color: var(--slate);">Completed</div>
+                            <div class="text-2xl font-bold sm:text-3xl" style="color: var(--navy);" id="progress-text">0/7</div>
+                            <div class="text-xs sm:text-sm" style="color: var(--slate);">Completed</div>
                         </div>
                     </div>
                 </div>
@@ -425,10 +426,10 @@
                             <div class="flex items-center space-x-4 text-sm">
 
                                 <a href="how-to.html" class="text-blue-600 underline font-medium"
-                                    onclick="event.stopPropagation();">Watch Tutorial</a>
-                                <a href="https://portal.byupathway.edu" target="_blank"
+                                    onclick="event.stopPropagation();" target="_blank">Watch Guide</a>
+                                <a href="https://byupw.instructure.com" target="_blank"
                                     class="text-green-600 hover:underline font-medium"
-                                    onclick="event.stopPropagation();">Go to Portal →</a>
+                                    onclick="event.stopPropagation();">Go to Canvas →</a>
                             </div>
                         </div>
 
@@ -449,8 +450,8 @@
                                 prevent course registration.</p>
                             <div class="flex items-center space-x-4 text-sm">
 
-                                <a href="registration.html#holds-faq" class="text-blue-600 underline font-medium"
-                                    onclick="event.stopPropagation();">View Hold Types</a>
+                                <a href="how-to.html" class="text-blue-600 underline font-medium"
+                                    onclick="event.stopPropagation();" target="_blank">Watch Guide</a>
                             </div>
                         </div>
 
@@ -474,7 +475,7 @@
                                 academic meetings and religion course.</p>
                             <div class="flex items-center space-x-4 text-sm">
 
-                                <a href="how-to.html" class="text-blue-600 underline font-medium"
+                                <a href="how-to.html" target="_blank" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
                             </div>
                         </div>
@@ -495,8 +496,8 @@
                                 your spot for the upcoming semester.</p>
                             <div class="flex items-center space-x-4 text-sm">
 
-                                <a href="registration.html" class="text-blue-600 underline font-medium"
-                                    onclick="event.stopPropagation();">Registration Help</a>
+                                <a href="scholarships.html#tuition" class="text-blue-600 underline font-medium"
+                                    onclick="event.stopPropagation();" target="_blank">View Scholarships</a>
                             </div>
                         </div>
 
@@ -516,7 +517,7 @@
                                 including Word, Excel, PowerPoint, and Teams.</p>
                             <div class="flex items-center space-x-4 text-sm">
 
-                                <a href="how-to.html" class="text-blue-600 underline font-medium"
+                                <a href="how-to.html" target="_blank" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
                                 <a href="https://m365.cloud.microsoft/" target="_blank"
                                     class="text-green-600 hover:underline font-medium"
@@ -540,7 +541,7 @@
                                 assignments, and participate in discussions.</p>
                             <div class="flex items-center space-x-4 text-sm">
 
-                                <a href="how-to.html" class="text-blue-600 underline font-medium"
+                                <a href="how-to.html" target="_blank" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">Watch Tutorial</a>
                                 <a href="https://byupw.instructure.com" target="_blank"
                                     class="text-green-600 hover:underline font-medium"
@@ -563,9 +564,10 @@
                                 Discounts</h3>
                             <p class="mb-3" style="color: var(--slate);">Apply for the Heber J. Grant Tuition Discount
                                 (10-50% off) by completing the self-reliance lesson in your Portal.</p>
+                            <p class="mb-3 text-sm font-medium" style="color: var(--slate);">Note: This step is optional and recommended for those who need financial assistance.</p>
                             <div class="flex items-center space-x-4 text-sm">
 
-                                <a href="scholarships.html" class="text-blue-600 underline font-medium"
+                                <a href="scholarships.html#tuition" class="text-blue-600 underline font-medium"
                                     onclick="event.stopPropagation();">View Scholarships</a>
                             </div>
                         </div>
@@ -605,7 +607,7 @@
                         </div>
                         <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Student Portal</h3>
                         <p class="mb-6" style="color: var(--slate);">
-                            Your central dashboard for everything BYU Pathway. Access courses, grades, finances,
+                            Your central dashboard for your school essentials. Access courses, grades, finances,
                             personal information, and more.
                         </p>
                         <ul class="text-sm space-y-2" style="color: var(--slate);">
@@ -630,9 +632,7 @@
                             <p class="text-xs font-bold text-green-700 uppercase mb-1"><i
                                     class="fas fa-lightbulb mr-1"></i>
                                 Pro Tip</p>
-                            <p class="text-xs text-green-800">Check your Portal often for new "Holds", "Alerts" and
-                                school
-                                materials.</p>
+                            <p class="text-xs text-green-800">Check your Portal often for Alerts and other resources and info and school materials</p>
                         </div>
                     </div>
                     <div class="mt-4 text-center">
@@ -653,8 +653,7 @@
                         <h3 class="text-xl font-semibold mb-4" style="color: var(--navy);">Canvas LMS</h3>
                         <p class="mb-6" style="color: var(--slate);">
                             Your learning environment where you'll access course materials, submit assignments, and
-                            interact
-                            with instructors.
+                            interact instrutors and classmates.
                         </p>
                         <ul class="text-sm space-y-2" style="color: var(--slate);">
                             <li class="flex items-center">
@@ -765,7 +764,7 @@
                             <div>
                                 <h4 class="font-semibold mb-2" style="color: var(--navy);">Modules</h4>
                                 <p class="text-sm" style="color: var(--slate);">Navigate through your course content
-                                    week by week. Always start here!</p>
+                                    week by week. Usually the best place to find your weekly coursework !</p>
                             </div>
                         </div>
 
@@ -934,6 +933,14 @@
                             </div>
                         </div>
 
+                        <div class="mt-8 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <p class="text-xs font-bold text-yellow-700 uppercase mb-2"><i
+                                    class="fas fa-info-circle mr-1"></i> Important Note</p>
+                            <p class="text-sm mb-3" style="color: var(--slate);">
+                                You don't need to use the school M365 access if you don't want to. You can choose to work with your own M365 account if you prefer.
+                            </p>
+                        </div>
+
                         <div class="mt-8 p-4 bg-blue-50 rounded-lg">
                             <p class="text-xs font-bold text-blue-700 uppercase mb-2"><i
                                     class="fas fa-lightbulb mr-1"></i> Pro Tip: Offline Access</p>
@@ -975,7 +982,7 @@
                                 <i class="fas fa-file-excel text-2xl text-white"></i>
                             </div>
                             <h4 class="font-semibold mb-2">Excel</h4>
-                            <p class="text-sm" style="color: var(--slate);">Data analysis</p>
+                            <p class="text-sm" style="color: var(--slate);">Data analysis and more</p>
                         </div>
 
                         <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
@@ -990,10 +997,10 @@
                         <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
                             <div class="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4"
                                 style="background-color: #6264a7;">
-                                <i class="fas fa-users text-2xl text-white"></i>
+                                <i class="fas fa-th-large text-2xl text-white"></i>
                             </div>
-                            <h4 class="font-semibold mb-2">Teams</h4>
-                            <p class="text-sm" style="color: var(--slate);">Collaboration</p>
+                            <h4 class="font-semibold mb-2">More tools</h4>
+                            <p class="text-sm" style="color: var(--slate);">And more tools</p>
                         </div>
                     </div>
                 </div>
@@ -1069,17 +1076,7 @@
                         <i class="fas fa-laptop text-xl"></i>
                     </div>
                     <h4 class="font-bold mb-2" style="color: var(--navy);">Laptop Funding</h4>
-                    <p class="text-xs" style="color: var(--slate);">Explore grants from HSEF and The Lord's Hands.</p>
-                </a>
-
-                <!-- Career Launchpad -->
-                <a href="jobs.html" class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
-                    <div
-                        class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-briefcase text-xl"></i>
-                    </div>
-                    <h4 class="font-bold mb-2" style="color: var(--navy);">Job Search</h4>
-                    <p class="text-xs" style="color: var(--slate);">Access internships and career resources.</p>
+                    <p class="text-xs" style="color: var(--slate);">Explore grants from third-party organizations.</p>
                 </a>
 
                 <!-- Mastery Tutorials -->
@@ -1092,15 +1089,25 @@
                     <p class="text-xs" style="color: var(--slate);">Master complex portal and Canvas features.</p>
                 </a>
 
+                <!-- Career Launchpad -->
+                <a href="jobs.html" class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
+                    <div
+                        class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2" style="color: var(--navy);">Job Search</h4>
+                    <p class="text-xs" style="color: var(--slate);">Access job opportunities and career resources.</p>
+                </a>
+
                 <!-- Help Center -->
-                <a href="registration.html"
+                <a href="registration.html#contact-support"
                     class="quick-link-card bg-white p-6 rounded-2xl shadow-sm text-center fade-in">
                     <div
                         class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-headset text-xl"></i>
                     </div>
                     <h4 class="font-bold mb-2" style="color: var(--navy);">Help Center</h4>
-                    <p class="text-xs" style="color: var(--slate);">Find answers to registration blocks & FAQs.</p>
+                    <p class="text-xs" style="color: var(--slate);">Answers to FAQs and connect with support.</p>
                 </a>
             </div>
         </div>
@@ -1170,16 +1177,16 @@
                         <i class="fas fa-quote-left absolute top-4 left-4 text-white/10 text-8xl"></i>
                         <div class="relative z-10">
                             <p class="text-xl italic mb-6 leading-relaxed">
-                                "BYU-Pathway changed my life not just through my degree, but through the friends I made
-                                in my gathering who supported me every step of the way."
+                                "BYU-Pathway changed my life not just through my degree, but through the service missionaries, 
+                                peer mentors, and spiritual support that guided me every step of the way."
                             </p>
                             <div class="flex items-center">
                                 <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
                                     <i class="fas fa-user text-xl"></i>
                                 </div>
                                 <div>
-                                    <p class="font-bold">Maria S.</p>
-                                    <p class="text-sm text-white/70">Applied Business Management Student</p>
+                                    <p class="font-bold">Name Withheld</p>
+                                    <p class="text-sm text-white/70">Software Development Student</p>
                                 </div>
                             </div>
                         </div>

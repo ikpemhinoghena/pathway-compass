@@ -1032,6 +1032,17 @@ footer .grid.md\:grid-cols-4 {
         margin-bottom: 2rem !important;
     }
 
+    /* Adjust the progress ring container for smaller screens */
+    .progress-ring {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .progress-ring.w-32.h-32 {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
     /* Checklist Items */
     .checklist-item {
         padding: 1rem !important;
@@ -1216,13 +1227,33 @@ footer .grid.md\:grid-cols-4 {
 @media screen and (max-width: 480px) {
 
     /* Progress ring smaller */
-    #checklist .w-32.h-32 {
-        width: 6rem !important;
-        height: 6rem !important;
+    .progress-ring {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .progress-ring.w-32.h-32 {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .progress-ring-circle {
+        r: 40 !important;
+        cx: 50 !important;
+        cy: 50 !important;
     }
 
     #checklist .text-2xl {
         font-size: 1.25rem !important;
+    }
+    
+    /* Adjust the text inside the progress circle */
+    #progress-text {
+        font-size: 1.2rem !important;
+    }
+    
+    #progress-text + div {
+        font-size: 0.7rem !important;
     }
 
     /* Stack modal buttons */
