@@ -52,9 +52,11 @@ nav.nav-scrolled {
 .nav-toggle.active .line:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
 }
+
 .nav-toggle.active .line:nth-child(2) {
     opacity: 0;
 }
+
 .nav-toggle.active .line:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
 }
@@ -66,7 +68,7 @@ nav.nav-scrolled {
     left: 0;
     right: 0;
     background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 9999;
     display: none;
     opacity: 0;
@@ -127,6 +129,7 @@ nav.nav-scrolled {
     justify-content: center;
     margin-top: 1rem;
 }
+
 .splide__pagination.custom-pagination button,
 .splide__pagination button {
     width: 10px;
@@ -134,28 +137,32 @@ nav.nav-scrolled {
     padding: 0;
     border-radius: 9999px;
     border: none;
-    background: #cbd5e1; /* slate-300 */
+    background: #cbd5e1;
+    /* slate-300 */
     opacity: 0.95;
     transition: transform .18s ease, background-color .18s ease;
-    box-shadow: 0 1px 2px rgba(2,6,23,0.06);
+    box-shadow: 0 1px 2px rgba(2, 6, 23, 0.06);
 }
+
 .splide__pagination.custom-pagination .is-active,
 .splide__pagination button.is-active {
     background: var(--navy);
     transform: scale(1.25);
 }
+
 .splide__pagination button:focus {
-    outline: 2px solid rgba(59,130,246,0.35);
+    outline: 2px solid rgba(59, 130, 246, 0.35);
     outline-offset: 2px;
 }
 
 /* Ensure slides have smooth transitions and fit nicely */
 .splide__slide {
-    transition: transform .6s cubic-bezier(.22,.9,.35,1);
+    transition: transform .6s cubic-bezier(.22, .9, .35, 1);
 }
 
 /* Mobile-specific testimonial layout */
 @media screen and (max-width: 640px) {
+
     /* Stack avatar and text vertically and center */
     #testimonial-slider .splide__slide .flex.items-center.mb-6 {
         display: flex !important;
@@ -338,227 +345,50 @@ nav.nav-scrolled {
    FOOTER RESPONSIVE - ALL PAGES
    ============================================ */
 
-/* Base footer improvements */
-footer {
-    width: 100%;
-    box-sizing: border-box;
+/* Ensure social media icons stay on same line on all screen sizes */
+footer .flex.space-x-4 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
 }
 
-footer .grid.md\:grid-cols-4 {
-    width: 100%;
+/* More specific selector for social icons container */
+footer div[class*="space-x-4"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
 }
 
-/* Tablet and below (max-width: 1024px) */
-@media screen and (max-width: 1024px) {
-    footer {
-        padding-top: 3rem !important;
-        padding-bottom: 1.5rem !important;
-    }
-
-    footer .grid.md\:grid-cols-4 {
-        gap: 2rem !important;
-    }
-}
-
-/* Mobile styles (max-width: 768px) */
-@media screen and (max-width: 768px) {
-    footer {
-        padding: 2.5rem 1rem 1.5rem 1rem !important;
-    }
-
-    /* Footer container */
-    footer>div {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    /* Footer grid - 2 columns on tablet/mobile */
-    footer .grid.md\:grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 2rem 1.5rem !important;
-        margin-bottom: 2rem !important;
-    }
-
-    /* Footer logo/brand column - full width on mobile */
-    footer .grid.md\:grid-cols-4>div:first-child {
-        grid-column: 1 / -1 !important;
-        text-align: center !important;
-        margin-bottom: 0.5rem !important;
-        padding-bottom: 1.5rem !important;
-        border-bottom: 1px solid #e5e7eb !important;
-    }
-
-    /* Center the logo */
-    footer .grid.md\:grid-cols-4>div:first-child .flex.items-center {
-        justify-content: center !important;
-    }
-
-    /* Center the tagline */
-    footer .grid.md\:grid-cols-4>div:first-child p {
-        text-align: center !important;
-        max-width: 280px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    /* Center social icons */
-    footer .grid.md\:grid-cols-4>div:first-child .flex.space-x-4 {
-        justify-content: center !important;
-    }
-
-    /* Footer column headings */
-    footer h4 {
-        font-size: 0.9375rem !important;
-        margin-bottom: 0.875rem !important;
-        color: #1e3a8a !important;
-    }
-
-    /* Footer links list */
-    footer ul {
-        padding-left: 0 !important;
-    }
-
-    footer ul.space-y-2 {
-        gap: 0.5rem !important;
-    }
-
-    footer ul li {
-        margin-bottom: 0.5rem !important;
-        list-style: none !important;
-    }
-
-    footer ul li a {
-        font-size: 0.875rem !important;
-        line-height: 1.5 !important;
-        display: inline-block !important;
-        padding: 0.125rem 0 !important;
-    }
-
-    /* Social icons - larger touch targets */
-    footer .flex.space-x-4 a {
-        width: 40px !important;
-        height: 40px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 50% !important;
-        background-color: #f3f4f6 !important;
-        transition: all 0.2s ease !important;
-    }
-
-    footer .flex.space-x-4 a:hover {
-        background-color: #e5e7eb !important;
-    }
-
-    footer .flex.space-x-4 a i {
-        font-size: 1rem !important;
-    }
-
-    /* Footer bottom bar */
-    footer .border-t {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 1rem !important;
-        padding-top: 1.5rem !important;
-        margin-top: 0 !important;
-    }
-
-    footer .border-t p {
-        order: 2 !important;
-    }
-
-    footer .border-t .flex.gap-6 {
-        order: 1 !important;
-        gap: 1.5rem !important;
-    }
-
-    footer .border-t .flex.gap-6 a {
-        font-size: 0.8125rem !important;
-    }
-}
-
-/* Small mobile (max-width: 480px) */
+/* On smaller screens, reduce spacing between social icons to prevent wrapping */
 @media screen and (max-width: 480px) {
-    footer {
-        padding: 2rem 0.75rem 1.25rem 0.75rem !important;
-    }
-
-    /* Single column footer on very small screens */
-    footer .grid.md\:grid-cols-4 {
-        grid-template-columns: 1fr !important;
-        gap: 1.75rem !important;
-        text-align: center !important;
-    }
-
-    /* All footer columns centered */
-    footer .grid.md\:grid-cols-4>div {
-        text-align: center !important;
-    }
-
-    /* Reset first column special styling */
-    footer .grid.md\:grid-cols-4>div:first-child {
-        grid-column: 1 !important;
-    }
-
-    /* Center all footer lists */
-    footer ul {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* Footer headings */
-    footer h4 {
-        font-size: 1rem !important;
-        margin-bottom: 0.75rem !important;
-    }
-
-    /* Slightly larger links for touch */
-    footer ul li a {
-        font-size: 0.9375rem !important;
-        padding: 0.25rem 0 !important;
-    }
-
-    /* Bottom bar more compact */
-    footer .border-t {
-        padding-top: 1.25rem !important;
+    footer .flex.space-x-4 {
         gap: 0.75rem !important;
     }
 
-    footer .border-t .flex.gap-6 {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 1rem !important;
-    }
-}
-
-/* Very small screens (max-width: 360px) */
-@media screen and (max-width: 360px) {
-    footer {
-        padding: 1.5rem 0.5rem 1rem 0.5rem !important;
-    }
-
-    footer .grid.md\:grid-cols-4 {
-        gap: 1.5rem !important;
-    }
-
-    footer h4 {
-        font-size: 0.9375rem !important;
-    }
-
-    footer ul li a {
+    footer .flex.space-x-4 a {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
         font-size: 0.875rem !important;
     }
-
-    /* Logo text smaller */
-    footer .text-xl {
-        font-size: 1.125rem !important;
-    }
-
-    footer .text-2xl {
-        font-size: 1.25rem !important;
-    }
 }
+
+/* Footer link hover effects - add underline to all footer links */
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer bottom links (Privacy, Terms, Cookie) - darker shade on hover, no orange */
+footer .border-t .flex.gap-6 a {
+    transition: color 0.2s ease;
+}
+
+footer .border-t .flex.gap-6 a:hover {
+    color: #64748b !important;
+    /* slate-500 - darker shade */
+    text-decoration: none !important;
+}
+
 
 /* ============================================
    INDEX PAGE - TESTIMONIALS RESPONSIVE
@@ -1037,7 +867,7 @@ footer .grid.md\:grid-cols-4 {
         width: 120px !important;
         height: 120px !important;
     }
-    
+
     .progress-ring.w-32.h-32 {
         width: 120px !important;
         height: 120px !important;
@@ -1231,12 +1061,12 @@ footer .grid.md\:grid-cols-4 {
         width: 100px !important;
         height: 100px !important;
     }
-    
+
     .progress-ring.w-32.h-32 {
         width: 100px !important;
         height: 100px !important;
     }
-    
+
     .progress-ring-circle {
         r: 40 !important;
         cx: 50 !important;
@@ -1246,13 +1076,13 @@ footer .grid.md\:grid-cols-4 {
     #checklist .text-2xl {
         font-size: 1.25rem !important;
     }
-    
+
     /* Adjust the text inside the progress circle */
     #progress-text {
         font-size: 1.2rem !important;
     }
-    
-    #progress-text + div {
+
+    #progress-text+div {
         font-size: 0.7rem !important;
     }
 
@@ -1629,8 +1459,13 @@ footer .grid.md\:grid-cols-4 {
     }
 
     /* ensure panel remains controlled solely by .open */
-    .nav-panel { /* styles defined above */ }
-    .nav-panel.open { /* styles defined above */ }
+    .nav-panel {
+        /* styles defined above */
+    }
+
+    .nav-panel.open {
+        /* styles defined above */
+    }
 
     nav .hidden.md\\:block {
         display: none !important;
@@ -1805,12 +1640,8 @@ footer .grid.md\:grid-cols-4 {
 
     /* Footer */
     footer {
-        padding: 2rem 0 !important;
-    }
-
-    footer .flex {
-        flex-direction: column;
-        gap: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
     }
 
     /* Section padding reduction */
