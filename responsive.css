@@ -389,6 +389,27 @@ footer .border-t .flex.gap-6 a:hover {
     text-decoration: none !important;
 }
 
+/* Ensure footer bottom section is visible on all screens */
+footer .border-t {
+    display: flex !important;
+    padding-top: 2rem !important;
+    margin-top: 3rem !important;
+}
+
+/* On small screens, ensure footer bottom is visible and properly spaced */
+@media screen and (max-width: 768px) {
+    footer .border-t {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center !important;
+    }
+
+    footer .border-t .flex.gap-6 {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+}
+
 
 /* ============================================
    INDEX PAGE - TESTIMONIALS RESPONSIVE
